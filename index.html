@@ -1,110 +1,230 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión IT | Soluciones Tecnológicas en República Dominicana</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Gestión IT | Ciberseguridad, Soporte MSP e Infraestructura en RD</title>
+    <meta name="description" content="Expertos en servicios gestionados de TI, ciberseguridad avanzada y soluciones de infraestructura para empresas en República Dominicana.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        .hero-section { background: linear-gradient(rgba(0, 31, 63, 0.85), rgba(0, 31, 63, 0.85)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80'); background-size: cover; background-position: center; padding: 100px 0; }
-        .service-card:hover { transform: translateY(-10px); transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; }
-        .btn-primary { background-color: #0056b3; border: none; } /* Ajusta al azul de tu logo */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .float-anim { animation: float 6s ease-in-out infinite; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .text-gradient { background: linear-gradient(to right, #60a5fa, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card-hover:hover { border-color: rgba(37, 99, 235, 0.5); transform: translateY(-5px); }
+        /* WhatsApp Pulse Effect */
+        .whatsapp-pulse { animation: pulse-green 2s infinite; }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
     </style>
 </head>
-<body>
+<body class="bg-[#020617] text-slate-200 antialiased font-sans">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="#"><strong>GESTIÓN <span class="text-primary">IT</span></strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
-                    <li class="nav-item"><a class="btn btn-primary ms-lg-3 text-white" href="#contacto">Diagnóstico Gratuito</a></li>
-                </ul>
+    <a href="https://wa.me/18093321705" target="_blank" class="fixed bottom-8 right-8 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl z-[100] hover:scale-110 transition-transform duration-300 whatsapp-pulse">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <nav class="fixed w-full z-50 glass py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tighter text-white">
+                GESTIÓN<span class="text-blue-500">IT</span>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center font-medium">
+                <a href="#inicio" class="hover:text-blue-400 transition">Inicio</a>
+                <a href="#servicios" class="hover:text-blue-400 transition">Servicios</a>
+                <a href="#metodologia" class="hover:text-blue-400 transition">Metodología</a>
+                <a href="#contacto" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition shadow-lg shadow-blue-500/20">
+                    Diagnóstico Gratis
+                </a>
             </div>
         </div>
     </nav>
 
-    <header id="inicio" class="hero-section text-white text-center">
-        <div class="container">
-            <h1 class="display-3 fw-bold">Protegemos y escalamos la tecnología de tu empresa</h1>
-            <p class="lead mb-5">Consultoría IT y Ciberseguridad estratégica en República Dominicana para negocios que no pueden permitirse detenerse.</p>
-            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                <a href="#contacto" class="btn btn-primary btn-lg px-4">Hablar con un experto</a>
-                <a href="#servicios" class="btn btn-outline-light btn-lg px-4">Ver Soluciones</a>
-            </div>
-        </div>
-    </header>
-
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="row g-4 text-center">
-                <div class="col-md-4">
-                    <i class="fas fa-clock fa-3x text-primary mb-3"></i>
-                    <h4>¿Sistemas Lentos?</h4>
-                    <p>Eliminamos los cuellos de botella que reducen la productividad de tu equipo.</p>
-                </div>
-                <div class="col-md-4">
-                    <i class="fas fa-user-shield fa-3x text-primary mb-3"></i>
-                    <h4>¿Miedo a Hackeos?</h4>
-                    <p>Blindamos tu información con estándares internacionales de seguridad.</p>
-                </div>
-                <div class="col-md-4">
-                    <i class="fas fa-headset fa-3x text-primary mb-3"></i>
-                    <h4>¿Soporte Inexistente?</h4>
-                    <p>Respuesta inmediata. No somos un ticket más, somos tu aliado tecnológico.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="servicios" class="py-5">
-        <div class="container">
-            <h2 class="text-center fw-bold mb-5">Nuestras Soluciones IT</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm service-card p-4">
-                        <div class="card-body">
-                            <h5 class="fw-bold">Ciberseguridad</h5>
-                            <p class="text-muted">Protección contra Ransomware, Firewalls y Auditorías de red.</p>
-                            <a href="#" class="btn btn-link p-0 text-decoration-none">Ver detalles →</a>
-                        </div>
+    <section id="inicio" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute top-40 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[150px]"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <span class="inline-block px-4 py-1 rounded-full bg-blue-500/10 text-blue-400 text-sm font-bold mb-6 border border-blue-500/20 uppercase tracking-widest">
+                        Soluciones IT en República Dominicana
+                    </span>
+                    <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-6 text-white">
+                        Tu tecnología no debe ser un costo, <br>
+                        <span class="text-gradient">sino tu mayor ventaja.</span>
+                    </h1>
+                    <p class="text-lg text-slate-400 mb-8 max-w-lg leading-relaxed">
+                        Blindamos tu infraestructura y optimizamos tus operaciones con soporte proactivo 24/7 y ciberseguridad de clase mundial.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contacto" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-center transition transform hover:scale-105 shadow-xl shadow-blue-600/20">
+                            Solicitar Diagnóstico
+                        </a>
+                        <a href="#servicios" class="glass hover:bg-white/10 text-white px-8 py-4 rounded-xl font-bold text-center transition">
+                            Nuestras Soluciones
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm service-card p-4">
-                        <div class="card-body">
-                            <h5 class="fw-bold">Soporte MSP</h5>
-                            <p class="text-muted">Mantenimiento preventivo y gestión 24/7 de tu infraestructura.</p>
-                            <a href="#" class="btn btn-link p-0 text-decoration-none">Ver detalles →</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm service-card p-4">
-                        <div class="card-body">
-                            <h5 class="fw-bold">Infraestructura Nube</h5>
-                            <p class="text-muted">Migración segura a Azure, AWS y servidores de alta disponibilidad.</p>
-                            <a href="#" class="btn btn-link p-0 text-decoration-none">Ver detalles →</a>
-                        </div>
-                    </div>
+                <div class="hidden md:block float-anim" data-aos="fade-left">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2092/2092663.png" alt="Seguridad IT" class="w-full max-w-md mx-auto opacity-90 drop-shadow-[0_0_50px_rgba(37,99,235,0.3)]">
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-dark text-white py-4 mt-5">
-        <div class="container text-center">
-            <p>© 2024 Gestión IT Dominicana. Calle Dr. Jacinto Ignacio Mañón #25, Santo Domingo.</p>
+    <section class="py-12 border-y border-white/5 bg-[#030a1f]/50">
+        <div class="container mx-auto px-6">
+            <p class="text-center text-slate-500 text-xs uppercase tracking-[0.3em] mb-10 font-bold">Aliados Tecnológicos Globales</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition duration-500">
+                <span class="text-2xl font-black text-white italic">FORTINET</span>
+                <span class="text-2xl font-black text-white italic">MICROSOFT</span>
+                <span class="text-2xl font-black text-white italic">AWS</span>
+                <span class="text-2xl font-black text-white italic">SOPHOS</span>
+                <span class="text-2xl font-black text-white italic">ZOHO</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="py-24 bg-[#020617]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Ingeniería que impulsa negocios</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto italic">Especialistas en mantener entornos críticos rindiendo a su máximo nivel.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass p-8 rounded-3xl card-hover transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-blue-600/20 rounded-xl flex items-center justify-center mb-6 text-blue-400">
+                        <i class="fas fa-user-shield text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Ciberseguridad 360°</h3>
+                    <p class="text-slate-400 mb-6 text-sm">Protección avanzada contra Ransomware, Firewalls de nueva generación y auditorías de seguridad.</p>
+                </div>
+
+                <div class="glass p-8 rounded-3xl border-blue-600/40 scale-105 shadow-2xl shadow-blue-600/10" data-aos="fade-up">
+                    <div class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 text-white">
+                        <i class="fas fa-headset text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4 text-blue-400">Soporte MSP</h3>
+                    <p class="text-slate-200 mb-6 text-sm font-medium">Gestión IT delegada. Monitoreo proactivo 24/7 que resuelve problemas antes de que afecten tu operación.</p>
+                </div>
+
+                <div class="glass p-8 rounded-3xl card-hover transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-blue-600/20 rounded-xl flex items-center justify-center mb-6 text-blue-400">
+                        <i class="fas fa-network-wired text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Redes & Cloud</h3>
+                    <p class="text-slate-400 mb-6 text-sm">Diseño de infraestructura híbrida, migración a la nube y conectividad WiFi corporativa de alta densidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="metodologia" class="py-24 bg-[#030a1f]">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl font-bold text-white mb-8">Nuestra Ruta al Éxito</h2>
+                    <div class="space-y-8">
+                        <div class="flex gap-6 group">
+                            <div class="text-4xl font-black text-blue-600/20 group-hover:text-blue-600 transition duration-500 italic">01</div>
+                            <div>
+                                <h4 class="text-white font-bold mb-2 text-lg">Diagnóstico Estratégico</h4>
+                                <p class="text-slate-400 text-sm">Evaluamos cada punto ciego de tu infraestructura actual sin costo.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6 group">
+                            <div class="text-4xl font-black text-blue-600/20 group-hover:text-blue-600 transition duration-500 italic">02</div>
+                            <div>
+                                <h4 class="text-white font-bold mb-2 text-lg">Blindaje IT</h4>
+                                <p class="text-slate-400 text-sm">Implementamos las capas de seguridad y optimización necesarias.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6 group">
+                            <div class="text-4xl font-black text-blue-600/20 group-hover:text-blue-600 transition duration-500 italic">03</div>
+                            <div>
+                                <h4 class="text-white font-bold mb-2 text-lg">Escalabilidad</h4>
+                                <p class="text-slate-400 text-sm">Tu tecnología crece al ritmo de tu empresa, sin cuellos de botella.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80" class="rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition duration-700" alt="Consultoría IT">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-24 bg-[#020617] relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="glass max-w-5xl mx-auto rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row shadow-2xl border-white/5">
+                <div class="md:w-2/5 bg-blue-600 p-12 text-white flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-4xl font-bold mb-6 italic text-white">¿Hablamos hoy?</h2>
+                        <p class="opacity-90 text-lg leading-relaxed mb-8 text-blue-50">
+                            Analizaremos tu red y te entregaremos un plan de acción proactivo.
+                        </p>
+                    </div>
+                    <div class="space-y-4 font-medium">
+                        <p><i class="fas fa-phone-alt mr-3"></i> 809 332 1705</p>
+                        <p><i class="fas fa-map-marker-alt mr-3"></i> Santo Domingo, RD</p>
+                    </div>
+                </div>
+                <div class="md:w-3/5 p-12 bg-[#0f172a]">
+                    <form action="#" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-widest mb-2 text-slate-500">Nombre</label>
+                                <input type="text" required class="w-full bg-[#1e293b] border border-white/5 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white transition" placeholder="Nombre completo">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-widest mb-2 text-slate-500">Empresa</label>
+                                <input type="text" required class="w-full bg-[#1e293b] border border-white/5 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white transition" placeholder="Nombre de empresa">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest mb-2 text-slate-500">Servicio de Interés</label>
+                            <select class="w-full bg-[#1e293b] border border-white/5 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white transition">
+                                <option>Auditoría de Ciberseguridad</option>
+                                <option>Soporte Mensual (MSP)</option>
+                                <option>Proyectos Cloud</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest mb-2 text-slate-500">Mensaje</label>
+                            <textarea rows="3" class="w-full bg-[#1e293b] border border-white/5 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white transition" placeholder="¿Cómo podemos ayudarte?"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-widest py-5 rounded-xl transition duration-300 shadow-xl shadow-blue-600/40">
+                            Obtener Diagnóstico Gratuito <i class="fas fa-paper-plane ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-[#020617] border-t border-white/5 text-center">
+        <div class="container mx-auto px-6">
+            <div class="text-xl font-bold text-white mb-6">GESTIÓN<span class="text-blue-500">IT</span></div>
+            <p class="text-slate-500 text-sm mb-4">Calle Dr. Jacinto Ignacio Mañón #25, Ens. Paraíso, Santo Domingo.</p>
+            <p class="text-slate-600 text-xs italic">© 2026 Gestión IT Dominicana. Elevando el estándar tecnológico.</p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true, easing: 'ease-in-out' });
+    </script>
 </body>
+</html>
 </html>
