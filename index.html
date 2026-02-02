@@ -15,21 +15,13 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
         
         :root {
-            /* Colores basados en el logo oficial */
             --navy: #002D5A; 
             --cyan: #00A4E4;
             --light-bg: #FFFFFF;
-            --section-bg: #F8FAFC;
             --text-main: #1E293B;
-            --text-muted: #64748B;
         }
 
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--light-bg); 
-            color: var(--text-main); 
-            overflow-x: hidden;
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--light-bg); color: var(--text-main); overflow-x: hidden; }
 
         /* Botón WhatsApp */
         .whatsapp-float {
@@ -47,14 +39,10 @@
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        /* Navegación */
-        .glass-nav { 
-            background: rgba(255, 255, 255, 0.9); 
-            backdrop-filter: blur(10px); 
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
-        }
+        /* Navegación Glass */
+        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
         
-        /* Botones Estilo Píldora */
+        /* Botones Píldora */
         .btn-pill {
             border-radius: 50px;
             background: linear-gradient(135deg, var(--navy) 0%, var(--cyan) 100%);
@@ -62,86 +50,67 @@
             color: white;
             box-shadow: 0 8px 15px rgba(0, 45, 90, 0.2);
         }
-        .btn-pill:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 12px 20px rgba(0, 164, 228, 0.3); 
-        }
+        .btn-pill:hover { transform: translateY(-2px); box-shadow: 0 12px 20px rgba(0, 164, 228, 0.3); }
 
-        /* Gradiente de Texto */
+        /* Texto Gradiente */
         .text-gradient {
             background: linear-gradient(to right, var(--navy), var(--cyan));
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* Tarjetas de Servicio */
-        .card-service {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            border-radius: 24px;
-            transition: all 0.4s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-        .card-service:hover { 
-            border-color: var(--cyan); 
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
+        /* Slider de Partners */
+        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .logos-slider { overflow: hidden; padding: 40px 0; background: white; white-space: nowrap; position: relative; }
+        .logos-slider:before, .logos-slider:after { position: absolute; top: 0; width: 100px; height: 100%; content: ""; z-index: 2; }
+        .logos-slider:before { left: 0; background: linear-gradient(to right, white 0%, transparent 100%); }
+        .logos-slider:after { right: 0; background: linear-gradient(to left, white 0%, transparent 100%); }
+        .logos-slide-track { display: inline-flex; animation: slide 25s linear infinite; width: max-content; }
+        .logos-slide-track img { height: 50px; margin: 0 40px; opacity: 0.5; filter: grayscale(100%); transition: 0.3s; }
+        .logos-slide-track img:hover { opacity: 1; filter: grayscale(0%); }
+
+        /* Tarjetas */
+        .card-custom { background: #FFFFFF; border: 1px solid rgba(0, 0, 0, 0.05); border-radius: 24px; transition: 0.4s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02); }
+        .card-custom:hover { border-color: var(--cyan); transform: translateY(-8px); box-shadow: 0 20px 25px rgba(0, 0, 0, 0.08); }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/18093321705" class="whatsapp-float" target="_blank" aria-label="Chat por WhatsApp">
+    <a href="https://wa.me/18093321705" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <header class="fixed w-full z-50 glass-nav py-4">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="logo gestion it.jpeg" alt="Gestión IT Logo" class="h-10 md:h-12 w-auto object-contain">
-            </div>
-            
-            <nav class="hidden lg:flex space-x-8 items-center font-bold text-[11px] uppercase tracking-widest">
-                <a href="index.html" class="text-slate-700 hover:text-blue-600 transition">Inicio</a>
-                <a href="infraestructura.html" class="text-slate-700 hover:text-blue-600 transition">Infraestructura</a>
-                <a href="proteccion.html" class="text-slate-700 hover:text-blue-600 transition">Protección</a>
-                <a href="nosotros.html" class="text-slate-700 hover:text-blue-600 transition">Nosotros</a>
-                <a href="casosexito.html" class="text-slate-700 hover:text-blue-600 transition">Casos de Exito</a>
-                <a href="formulario.html" class="btn-pill px-6 py-2.5 text-white">Diagnóstico Gratis</a>
+            <img src="logo gestion it.jpeg" alt="Gestión IT Logo" class="h-10 md:h-12 w-auto object-contain">
+            <nav class="hidden lg:flex space-x-8 items-center font-bold text-[11px] uppercase tracking-widest text-slate-700">
+                <a href="#inicio" class="hover:text-blue-600 transition">Inicio</a>
+                <a href="infraestructura.html" class="hover:text-blue-600 transition">Infraestructura</a>
+                <a href="proteccion.html" class="hover:text-blue-600 transition">Protección</a>
+                <a href="nosotros.html" class="hover:text-blue-600 transition">Nosotros</a>
+                <a href="casosexito.html" class="hover:text-blue-600 transition">Casos</a>
+                <a href="contacto.html" class="btn-pill px-6 py-2.5 text-white">Diagnóstico Gratis</a>
             </nav>
-
-            <button class="lg:hidden text-slate-800" id="mobile-btn">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+            <button class="lg:hidden text-slate-800" id="mobile-btn"><i class="fas fa-bars text-2xl"></i></button>
         </div>
-        
-        <div id="mobile-menu" class="hidden lg:hidden bg-white p-6 space-y-4 text-center font-bold uppercase text-xs tracking-widest border-t border-slate-100">
-            <a href="index.html" class="block py-2 text-slate-700">Inicio</a>
-            <a href="infraestructura.html" class="block py-2 text-slate-700">Infraestructura</a>
-            <a href="proteccion.html" class="block py-2 text-slate-700">Protección</a>
-            <a href="nosotros.html" class="block py-2 text-slate-700">Nosotros</a>
-            <a href="casosexito.html" class="text-slate-700 hover:text-blue-600 transition">Casos de Exito</a>
-            <a href="formulario.html" class="block py-2 text-blue-600 font-black">Diagnóstico Gratis</a>
+        <div id="mobile-menu" class="hidden bg-white p-6 space-y-4 text-center font-bold uppercase text-xs border-t border-slate-100">
+            <a href="index.html" class="block py-2">Inicio</a>
+            <a href="nosotros.html" class="block py-2">Nosotros</a>
+            <a href="contacto.html" class="block py-2 text-blue-600 font-black">Diagnóstico Gratis</a>
         </div>
     </header>
 
     <main>
-        <section id="inicio" class="relative min-h-screen flex items-center pt-20 px-6 overflow-hidden">
+        <section id="inicio" class="relative min-h-screen flex items-center pt-20 px-6">
             <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
                 <div data-aos="fade-right">
-                    <span class="inline-block text-[11px] font-extrabold mb-6 uppercase tracking-[0.4em] text-blue-600">
-                        Tecnología e innovación, Sabemos cómo.
-                    </span>
+                    <span class="inline-block text-[11px] font-extrabold mb-6 uppercase tracking-[0.4em] text-blue-600">Tecnología e innovación, Sabemos cómo.</span>
                     <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[1.1] mb-8 text-slate-900 tracking-tight">
-                        Socio estratégico de <br>
-                        <span class="text-gradient">tu crecimiento.</span>
+                        Socio estratégico de <br> <span class="text-gradient">tu crecimiento.</span>
                     </h1>
                     <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-xl leading-relaxed">
                         Más de 15 años proveyendo soluciones integrales y escalables para atender las necesidades tecnológicas críticas de la República Dominicana.
                     </p>
-                    <a href="formulario.html" class="btn-pill px-10 py-5 text-white font-bold inline-block uppercase tracking-widest text-sm">
-                        Solicitar Diagnóstico
-                    </a>
+                    <a href="contacto.html" class="btn-pill px-10 py-5 text-white font-bold inline-block uppercase text-sm">Solicitar Diagnóstico</a>
                 </div>
                 <div class="hidden lg:block" data-aos="fade-left">
                     <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80" alt="Consultoría IT" class="rounded-[40px] shadow-2xl">
@@ -149,118 +118,57 @@
             </div>
         </section>
 
-        <section class="py-24 px-6 bg-[#F8FAFC]" id="infraestructura">
+        <div class="logos-slider border-y border-slate-100">
+            <p class="text-center text-[10px] uppercase tracking-[0.4em] mb-8 text-slate-400 font-bold">Partners Tecnológicos Certificados</p>
+            <div class="logos-slide-track">
+                <img src="Partner1.png" alt="Partner 1">
+                <img src="partner2.png" alt="Partner 2">
+                <img src="parnert3.png" alt="Partner 3">
+                <img src="partner4.png" alt="Partner 4">
+                <img src="Partner1.png" alt="Partner 1">
+                <img src="partner2.png" alt="Partner 2">
+                <img src="parnert3.png" alt="Partner 3">
+                <img src="partner4.png" alt="Partner 4">
+            </div>
+        </div>
+
+        <section class="py-24 px-6 bg-[#F8FAFC]" id="servicios">
             <div class="container mx-auto">
                 <div class="text-center mb-16" data-aos="fade-up">
                     <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Ingeniería que impulsa negocios</h2>
                     <div class="w-20 h-1.5 rounded-full bg-blue-600 mx-auto"></div>
                 </div>
-
                 <div class="grid md:grid-cols-3 gap-8">
-                    <article class="card-service p-10" data-aos="fade-up">
-                        <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-600">
-                            <i class="fas fa-server text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-4">Infraestructura</h3>
-                        <p class="text-slate-600 mb-8 text-sm leading-relaxed">Arquitectura TI moderna, escalable y segura que genera ventajas competitivas reales.</p>
-                        <a href="#" class="text-xs font-black tracking-widest uppercase text-blue-600 hover:text-blue-800 transition">Ver más →</a>
+                    <article class="card-custom p-10" data-aos="fade-up">
+                        <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-600"><i class="fas fa-server text-2xl"></i></div>
+                        <h3 class="text-xl font-bold mb-4">Infraestructura</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8">Arquitectura TI moderna, escalable y segura que genera ventajas competitivas reales.</p>
+                        <a href="infraestructura.html" class="text-xs font-black uppercase text-blue-600 hover:text-blue-800 transition">Ver más →</a>
                     </article>
-
-                    <article id="proteccion" class="card-service p-10 border-blue-100" data-aos="fade-up" data-aos-delay="100">
-                        <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-600">
-                            <i class="fas fa-shield-alt text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-4">Protección</h3>
-                        <p class="text-slate-600 mb-8 text-sm leading-relaxed">Ciberseguridad avanzada para blindar su información contra amenazas globales.</p>
-                        <a href="#" class="text-xs font-black tracking-widest uppercase text-blue-600 hover:text-blue-800 transition">Ver más →</a>
+                    <article class="card-custom p-10" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-600"><i class="fas fa-shield-alt text-2xl"></i></div>
+                        <h3 class="text-xl font-bold mb-4">Protección</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8">Ciberseguridad avanzada para blindar su información contra amenazas globales.</p>
+                        <a href="proteccion.html" class="text-xs font-black uppercase text-blue-600 hover:text-blue-800 transition">Ver más →</a>
                     </article>
-
-                    <article id="soporte" class="card-service p-10" data-aos="fade-up" data-aos-delay="200">
-                        <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-600">
-                            <i class="fas fa-headset text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-4">Soporte & Gestión</h3>
-                        <p class="text-slate-600 mb-8 text-sm leading-relaxed">Especialistas en mantener entornos críticos rindiendo a su máximo nivel técnico.</p>
-                        <a href="#" class="text-xs font-black tracking-widest uppercase text-blue-600 hover:text-blue-800 transition">Ver más →</a>
+                    <article class="card-custom p-10" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-600"><i class="fas fa-headset text-2xl"></i></div>
+                        <h3 class="text-xl font-bold mb-4">Soporte & Gestión</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8">Especialistas en mantener entornos críticos rindiendo a su máximo nivel técnico.</p>
+                        <a href="soporte.html" class="text-xs font-black uppercase text-blue-600 hover:text-blue-800 transition">Ver más →</a>
                     </article>
                 </div>
             </div>
         </section>
-<section id="casos" class="py-24 px-6 bg-slate-50">
-    <div class="container mx-auto">
-        <div class="text-center mb-16" data-aos="fade-up">
-            <span class="text-blue-600 font-extrabold text-[11px] uppercase tracking-[0.4em] mb-4 block">Resultados Comprobados</span>
-            <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">Casos de Éxito</h2>
-            <p class="text-slate-500 max-w-2xl mx-auto">Nuestra trayectoria se define por la continuidad operativa de nuestros aliados.</p>
-            <div class="w-16 h-1 bg-blue-600 mx-auto mt-6 rounded-full"></div>
-        </div>
 
-        <div class="grid md:grid-cols-2 gap-10">
-            <article class="bg-white p-10 rounded-[40px] shadow-sm border border-slate-100 hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
-                        <i class="fas fa-bank text-xl"></i>
-                    </div>
-                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Sector Financiero • Santo Domingo</span>
-                </div>
-                <h3 class="text-2xl font-bold text-slate-900 mb-4">Migración Crítica de Centro de Datos</h3>
-                <p class="text-slate-600 text-sm leading-relaxed mb-8">
-                    Implementamos una arquitectura de alta disponibilidad para una entidad financiera nacional, logrando una migración exitosa de servidores críticos sin interrupciones en el servicio al cliente, garantizando seguridad bancaria 24/7.
-                </p>
-                <div class="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase tracking-tighter">
-                    <i class="fas fa-chart-line"></i> 100% Uptime durante migración
-                </div>
-            </article>
-
-            <article class="bg-white p-10 rounded-[40px] shadow-sm border border-slate-100 hover:shadow-xl transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
-                        <i class="fas fa-shopping-cart text-xl"></i>
-                    </div>
-                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Sector Retail • RD</span>
-                </div>
-                <h3 class="text-2xl font-bold text-slate-900 mb-4">Blindaje de Ciberseguridad Sincronizada</h3>
-                <p class="text-slate-600 text-sm leading-relaxed mb-8">
-                    Desplegamos un sistema de Seguridad Sincronizada Sophos para una cadena de retail con múltiples sucursales, eliminando amenazas de ransomware y centralizando la gestión de logs de eventos para cumplimiento normativo.
-                </p>
-                <div class="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase tracking-tighter">
-                    <i class="fas fa-shield-alt"></i> Reducción de ataques en un 95%
-                </div>
-            </article>
-        </div>
-
-        <div class="mt-20 text-center" data-aos="zoom-in">
-            <h4 class="text-2xl font-bold text-slate-900 mb-6">¿Su empresa será nuestro próximo caso de éxito?</h4>
-            <a href="contacto.html" class="btn-pill px-10 py-4 text-white font-bold inline-block text-sm">Iniciar mi diagnóstico sin costo</a>
-        </div>
-    </div>
-</section>
         <section id="nosotros" class="py-24 px-6 bg-white">
             <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
                 <div data-aos="fade-right">
                     <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-10 leading-tight">Socio Estratégico de <br><span class="text-gradient">tu Crecimiento.</span></h2>
                     <div class="space-y-8">
-                        <div class="flex gap-6">
-                            <div class="w-1.5 h-auto rounded-full bg-blue-600"></div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 uppercase text-sm tracking-widest mb-1">Confianza</h4>
-                                <p class="text-slate-600 text-sm">Transparencia absoluta en cada proceso técnico.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="w-1.5 h-auto rounded-full bg-blue-600"></div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 uppercase text-sm tracking-widest mb-1">Responsabilidad</h4>
-                                <p class="text-slate-600 text-sm">Compromiso total con la continuidad de su negocio.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="w-1.5 h-auto rounded-full bg-blue-600"></div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 uppercase text-sm tracking-widest mb-1">Compromiso</h4>
-                                <p class="text-slate-600 text-sm">Excelencia proactiva para evitar interrupciones.</p>
-                            </div>
-                        </div>
+                        <div class="flex gap-6"><div class="w-1.5 h-auto rounded-full bg-blue-600"></div><div><h4 class="font-bold text-slate-900 uppercase text-sm tracking-widest mb-1">Confianza</h4><p class="text-slate-600 text-sm">Transparencia absoluta en cada proceso técnico.</p></div></div>
+                        <div class="flex gap-6"><div class="w-1.5 h-auto rounded-full bg-blue-600"></div><div><h4 class="font-bold text-slate-900 uppercase text-sm tracking-widest mb-1">Responsabilidad</h4><p class="text-slate-600 text-sm">Compromiso total con la continuidad de su negocio.</p></div></div>
+                        <div class="flex gap-6"><div class="w-1.5 h-auto rounded-full bg-blue-600"></div><div><h4 class="font-bold text-slate-900 uppercase text-sm tracking-widest mb-1">Compromiso</h4><p class="text-slate-600 text-sm">Excelencia proactiva para evitar interrupciones.</p></div></div>
                     </div>
                 </div>
                 <div class="relative" data-aos="zoom-in">
@@ -268,11 +176,35 @@
                 </div>
             </div>
         </section>
+
+        <section id="casos" class="py-24 px-6 bg-[#F8FAFC]">
+            <div class="container mx-auto">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900">Casos de Éxito</h2>
+                    <p class="text-slate-500 mt-4">Resultados tangibles para empresas líderes.</p>
+                    <div class="w-16 h-1 bg-blue-600 mx-auto mt-6 rounded-full"></div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <article class="card-custom p-10 bg-white" data-aos="fade-up">
+                        <span class="text-blue-600 text-[10px] font-bold tracking-widest uppercase">Sector Servicios</span>
+                        <h4 class="text-2xl font-bold text-slate-900 mt-4 mb-4">Optimización de Data Center</h4>
+                        <p class="text-slate-600 text-sm mb-6">Reducción del 40% en tiempos de caída mediante arquitectura híbrida.</p>
+                        <a href="casosexito.html" class="text-xs font-bold border-b-2 border-blue-600">Leer más</a>
+                    </article>
+                    <article class="card-custom p-10 bg-white" data-aos="fade-up" data-aos-delay="100">
+                        <span class="text-blue-600 text-[10px] font-bold tracking-widest uppercase">Sector Industrial</span>
+                        <h4 class="text-2xl font-bold text-slate-900 mt-4 mb-4">Blindaje de Ciberseguridad</h4>
+                        <p class="text-slate-600 text-sm mb-6">Implementación de SOC y respuesta proactiva ante Ransomware.</p>
+                        <a href="casosexito.html" class="text-xs font-bold border-b-2 border-blue-600">Leer más</a>
+                    </article>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="py-16 bg-slate-900 text-white text-center px-6">
         <div class="container mx-auto">
-            <img src="logo gestion it.jpeg" alt="Gestión IT" class="h-10 mx-auto mb-10 brightness-0 invert">
+            <img src="logo gestion it.jpeg" alt="Gestión IT" class="h-10 mx-auto mb-10 brightness-0 invert opacity-70">
             <address class="not-italic text-slate-400 text-xs md:text-sm space-y-2 uppercase tracking-[0.2em] mb-10">
                 <p>Calle Dr. Jacinto Ignacio Mañón #25, Santo Domingo, RD.</p>
                 <p>809 332 1705 | info@gestionit.com.do</p>
@@ -284,13 +216,9 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
-        
-        // Menu Móvil
         const btn = document.getElementById('mobile-btn');
         const menu = document.getElementById('mobile-menu');
         btn.addEventListener('click', () => menu.classList.toggle('hidden'));
     </script>
-</body>
-</html>
 </body>
 </html>
