@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infraestructura | Gestión IT - Soluciones de Hardware y Software</title>
+    <meta name="description" content="Infraestructura de TI moderna y escalable. Alianzas estratégicas con 3CX y ManageEngine para optimizar su empresa.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        
+        :root {
+            --navy: #002D5A; 
+            --cyan: #00A4E4;
+            --section-bg: #F8FAFC;
+        }
+
+        body { font-family: 'Plus Jakarta Sans', sans-serif; color: #1E293B; }
+
+        .btn-brand {
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--cyan) 100%);
+            color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0, 45, 90, 0.15);
+        }
+        .btn-brand:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0, 164, 228, 0.3); }
+
+        .btn-outline {
+            border-radius: 50px; border: 2px solid var(--navy);
+            color: var(--navy); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover { background: var(--navy); color: white; }
+
+        .feature-card {
+            background: #FFFFFF; border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 32px; transition: all 0.4s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+        }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-white">
+
+    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="h-10">
+                <img src="logo gestion it.jpeg" alt="Gestión IT Logo" class="h-full w-auto object-contain">
+            </a>
+            <a href="index.html#servicios" class="text-xs font-bold uppercase tracking-widest text-slate-600 hover:text-blue-600 transition">
+                <i class="fas fa-arrow-left mr-2"></i> Volver
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="pt-32 pb-20 px-6 bg-slate-50">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center" data-aos="fade-up">
+                    <span class="text-blue-600 font-extrabold text-[11px] uppercase tracking-[0.4em] mb-4 block">Soluciones de Clase Mundial</span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6">Infraestructura de TI</h1>
+                    <p class="text-xl text-slate-500 font-medium">Agilidad, interconectividad, alcance y rendimiento.</p>
+                    <div class="w-20 h-1.5 bg-blue-600 mx-auto mt-8 rounded-full"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-6">
+            <div class="container mx-auto max-w-4xl text-center">
+                <p class="text-lg text-slate-600 leading-relaxed mb-10" data-aos="fade-up">
+                    Hemos establecido alianzas estratégicas con los proveedores de hardware y software globales más importantes. 
+                    Estas alianzas, combinadas con nuestro conocimiento especializado, nos permiten ofrecer una amplia gama de soluciones adaptadas a sus necesidades.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up">
+                    <a href="contacto.html" class="btn-brand px-10 py-4 text-sm">Agendar Consultoría</a>
+                    <a href="tel:8093321705" class="btn-outline px-10 py-4 text-sm">Hablar con un Experto</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 bg-slate-50">
+            <div class="container mx-auto max-w-6xl grid md:grid-cols-2 gap-12">
+                
+                <article class="feature-card p-10 md:p-14" data-aos="fade-right">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">3CX</div>
+                        <h2 class="text-2xl font-bold text-slate-900">Comunicaciones Unificadas</h2>
+                    </div>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        Una solución completa que incluye conferencia web, softphones y clientes para smartphone. 
+                        3CX es una Central Telefónica IP de estándares abiertos basada en software que funciona con los teléfonos IP y troncales SIP más conocidos.
+                    </p>
+                    <ul class="space-y-3 mb-10 text-slate-500 text-sm">
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Menor precio sin limitaciones tradicionales.</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Basada en estándares abiertos.</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Conferencia web y movilidad incluida.</li>
+                    </ul>
+                    <a href="contacto.html" class="btn-brand px-8 py-3 text-xs inline-block">Cotizar Sistema 3CX</a>
+                </article>
+
+                <article class="feature-card p-10 md:p-14" data-aos="fade-left">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 text-xl font-bold">ME</div>
+                        <h2 class="text-2xl font-bold text-slate-900">Gestión Integral de TI</h2>
+                    </div>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        Ofrecemos el paquete de gestión de TI más completo de la industria. 
+                        Contamos con más de 120 productos y herramientas para gestionar todas sus operaciones, desde servidores hasta Active Directory y seguridad.
+                    </p>
+                    <ul class="space-y-3 mb-10 text-slate-500 text-sm">
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i> Gestión de servidores, redes y aplicaciones.</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i> Control de Active Directory y seguridad.</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i> Administración de desktops y móviles.</li>
+                    </ul>
+                    <a href="contacto.html" class="btn-brand px-8 py-3 text-xs inline-block">Explorar Productos ME</a>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="py-24 px-6 text-center">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-6" data-aos="fade-up">¿Listo para modernizar su infraestructura?</h2>
+                <p class="text-slate-500 mb-10" data-aos="fade-up">Nuestro equipo de ingeniería está listo para diseñar la arquitectura que su negocio necesita.</p>
+                <a href="contacto.html" class="btn-brand px-12 py-5 text-sm inline-block shadow-2xl" data-aos="zoom-in">
+                    Iniciar Diagnóstico de Infraestructura
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 bg-slate-900 text-white text-center">
+        <div class="container mx-auto px-6">
+            <p class="text-xs opacity-50 uppercase tracking-[0.2em]">© 2026 Gestión IT. Santo Domingo, República Dominicana.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>
