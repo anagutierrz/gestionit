@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infraestructura | Gestión IT - Soluciones de Hardware y Software</title>
-    <meta name="description" content="Infraestructura de TI moderna y escalable. Alianzas estratégicas con 3CX y ManageEngine para optimizar su empresa.">
+    
+    <title>Infraestructura de TI | Gestión IT - Soluciones Escalables en RD</title>
+    <meta name="description" content="Sistemas de comunicaciones unificadas 3CX y gestión de TI con ManageEngine. Más de 15 años de experiencia en infraestructura de TI en República Dominicana.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -16,130 +17,149 @@
         :root {
             --navy: #002D5A; 
             --cyan: #00A4E4;
-            --section-bg: #F8FAFC;
+            --text-main: #1E293B;
         }
 
-        body { font-family: 'Plus Jakarta Sans', sans-serif; color: #1E293B; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); background-color: #FFFFFF; }
 
-        .btn-brand {
+        /* Botón WhatsApp Flotante */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: #25d366; color: #FFF;
+            border-radius: 50px; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; z-index: 1000;
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* HEADER AJUSTADO (MISMO DEL INICIO) */
+        .glass-nav { 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(15px); 
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+        }
+
+        .btn-pill {
             border-radius: 50px;
             background: linear-gradient(135deg, var(--navy) 0%, var(--cyan) 100%);
-            color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-            transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0, 45, 90, 0.15);
-        }
-        .btn-brand:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0, 164, 228, 0.3); }
-
-        .btn-outline {
-            border-radius: 50px; border: 2px solid var(--navy);
-            color: var(--navy); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
             transition: all 0.3s ease;
+            color: white;
+            box-shadow: 0 8px 15px rgba(0, 45, 90, 0.2);
         }
-        .btn-outline:hover { background: var(--navy); color: white; }
+        .btn-pill:hover { transform: translateY(-2px); box-shadow: 0 12px 20px rgba(0, 164, 228, 0.3); }
 
-        .feature-card {
-            background: #FFFFFF; border: 1px solid rgba(0, 0, 0, 0.05);
-            border-radius: 32px; transition: all 0.4s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
-        }
-        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .image-container { border-radius: 40px; overflow: hidden; height: 450px; }
+        .image-container img { transition: transform 0.6s ease; width: 100%; height: 100%; object-fit: cover; }
+        .image-container:hover img { transform: scale(1.05); }
     </style>
 </head>
-<body class="bg-white">
+<body>
 
-    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 py-4">
+    <a href="https://wa.me/18093321705" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header class="fixed w-full z-50 glass-nav py-4">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="h-10">
-                <img src="logo gestion it.jpeg" alt="Gestión IT Logo" class="h-full w-auto object-contain">
-            </a>
-            <a href="index.html#servicios" class="text-xs font-bold uppercase tracking-widest text-slate-600 hover:text-blue-600 transition">
-                <i class="fas fa-arrow-left mr-2"></i> Volver
-            </a>
+            <div class="flex items-center">
+                <img src="logo gestion it.jpeg" alt="Gestión IT Logo" class="h-10 md:h-12 w-auto object-contain">
+            </div>
+            
+            <nav class="hidden lg:flex space-x-8 items-center font-bold text-[11px] uppercase tracking-widest">
+                <a href="index.html" class="text-slate-700 hover:text-blue-600 transition">Inicio</a>
+                <a href="infraestructura.html" class="text-blue-600">Infraestructura</a>
+                <a href="index.html#proteccion" class="text-slate-700 hover:text-blue-600 transition">Proteccion</a>
+                <a href="index.html#nosotros" class="text-slate-700 hover:text-blue-600 transition">Nosotros</a>
+                <a href="index.html#casos" class="text-slate-700 hover:text-blue-600 transition">Casos</a>
+                <a href="contacto.html" class="btn-pill px-6 py-2.5 text-white shadow-md">Diagnostico</a>
+            </nav>
+
+            <button class="lg:hidden text-slate-800" id="mobile-btn">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <div id="mobile-menu" class="hidden lg:hidden bg-white p-6 space-y-4 text-center font-bold uppercase text-xs tracking-widest border-t border-slate-100 shadow-xl">
+            <a href="index.html" class="block py-2 text-slate-700">Inicio</a>
+            <a href="infraestructura.html" class="block py-2 text-blue-600">Infraestructura</a>
+            <a href="contacto.html" class="block py-2 text-blue-600">Diagnostico</a>
         </div>
     </header>
 
     <main>
-        <section class="pt-32 pb-20 px-6 bg-slate-50">
-            <div class="container mx-auto max-w-6xl">
-                <div class="text-center" data-aos="fade-up">
-                    <span class="text-blue-600 font-extrabold text-[11px] uppercase tracking-[0.4em] mb-4 block">Soluciones de Clase Mundial</span>
-                    <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6">Infraestructura de TI</h1>
-                    <p class="text-xl text-slate-500 font-medium">Agilidad, interconectividad, alcance y rendimiento.</p>
-                    <div class="w-20 h-1.5 bg-blue-600 mx-auto mt-8 rounded-full"></div>
-                </div>
+        <section class="pt-44 pb-20 px-6 bg-slate-50">
+            <div class="container mx-auto text-center max-w-4xl" data-aos="fade-up">
+                <span class="text-blue-600 font-extrabold text-[11px] uppercase tracking-[0.4em] mb-4 block">Capacidades Técnicas</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 leading-tight">Infraestructura</h1>
+                <p class="text-xl text-slate-500 font-medium leading-relaxed italic">Agilidad, interconectividad, alcance y rendimiento.</p>
+                <div class="w-20 h-1.5 bg-blue-600 mx-auto mt-8 rounded-full"></div>
             </div>
         </section>
 
-        <section class="py-20 px-6">
-            <div class="container mx-auto max-w-4xl text-center">
-                <p class="text-lg text-slate-600 leading-relaxed mb-10" data-aos="fade-up">
+        <section class="py-20 px-6 bg-white">
+            <div class="container mx-auto max-w-5xl text-center" data-aos="fade-up">
+                <p class="text-lg text-slate-600 leading-relaxed mb-10">
                     Hemos establecido alianzas estratégicas con los proveedores de hardware y software globales más importantes. 
-                    Estas alianzas, combinadas con nuestro conocimiento especializado, nos permiten ofrecer una amplia gama de soluciones adaptadas a sus necesidades.
+                    Estas alianzas, combinadas con nuestro conocimiento especializado, nos permiten ofrecer una amplia gama de soluciones para sus necesidades.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up">
-                    <a href="contacto.html" class="btn-brand px-10 py-4 text-sm">Agendar Consultoría</a>
-                    <a href="tel:8093321705" class="btn-outline px-10 py-4 text-sm">Hablar con un Experto</a>
-                </div>
+                <a href="contacto.html" class="btn-pill px-10 py-4 text-sm inline-block">Hablar con un consultor</a>
             </div>
         </section>
 
         <section class="py-24 px-6 bg-slate-50">
-            <div class="container mx-auto max-w-6xl grid md:grid-cols-2 gap-12">
-                
-                <article class="feature-card p-10 md:p-14" data-aos="fade-right">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">3CX</div>
-                        <h2 class="text-2xl font-bold text-slate-900">Comunicaciones Unificadas</h2>
-                    </div>
-                    <p class="text-slate-600 mb-6 leading-relaxed">
+            <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Comunicaciones Unificadas 3CX</h2>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
                         Una solución completa que incluye conferencia web, softphones y clientes para smartphone. 
-                        3CX es una Central Telefónica IP de estándares abiertos basada en software que funciona con los teléfonos IP y troncales SIP más conocidos.
+                        Obtenga mayor rendimiento sin las limitaciones de una central telefónica del ‘viejo estilo’. 
+                        Funciona con los teléfonos IP, troncales SIP y Gateways más conocidos.
                     </p>
-                    <ul class="space-y-3 mb-10 text-slate-500 text-sm">
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Menor precio sin limitaciones tradicionales.</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Basada en estándares abiertos.</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Conferencia web y movilidad incluida.</li>
-                    </ul>
-                    <a href="contacto.html" class="btn-brand px-8 py-3 text-xs inline-block">Cotizar Sistema 3CX</a>
-                </article>
-
-                <article class="feature-card p-10 md:p-14" data-aos="fade-left">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 text-xl font-bold">ME</div>
-                        <h2 class="text-2xl font-bold text-slate-900">Gestión Integral de TI</h2>
-                    </div>
-                    <p class="text-slate-600 mb-6 leading-relaxed">
-                        Ofrecemos el paquete de gestión de TI más completo de la industria. 
-                        Contamos con más de 120 productos y herramientas para gestionar todas sus operaciones, desde servidores hasta Active Directory y seguridad.
-                    </p>
-                    <ul class="space-y-3 mb-10 text-slate-500 text-sm">
-                        <li><i class="fas fa-check text-orange-500 mr-2"></i> Gestión de servidores, redes y aplicaciones.</li>
-                        <li><i class="fas fa-check text-orange-500 mr-2"></i> Control de Active Directory y seguridad.</li>
-                        <li><i class="fas fa-check text-orange-500 mr-2"></i> Administración de desktops y móviles.</li>
-                    </ul>
-                    <a href="contacto.html" class="btn-brand px-8 py-3 text-xs inline-block">Explorar Productos ME</a>
-                </article>
-
+                    <a href="contacto.html" class="btn-pill px-10 py-4 text-sm inline-block shadow-lg">Solicitar Propuesta 3CX</a>
+                </div>
+                <div class="image-container shadow-2xl" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80" alt="Sistemas de Comunicación">
+                </div>
             </div>
         </section>
 
-        <section class="py-24 px-6 text-center">
-            <div class="container mx-auto max-w-4xl">
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-6" data-aos="fade-up">¿Listo para modernizar su infraestructura?</h2>
-                <p class="text-slate-500 mb-10" data-aos="fade-up">Nuestro equipo de ingeniería está listo para diseñar la arquitectura que su negocio necesita.</p>
-                <a href="contacto.html" class="btn-brand px-12 py-5 text-sm inline-block shadow-2xl" data-aos="zoom-in">
-                    Iniciar Diagnóstico de Infraestructura
-                </a>
+        <section class="py-24 px-6 bg-white">
+            <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                <div class="image-container shadow-2xl order-2 lg:order-1" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80" alt="Gestión de TI">
+                </div>
+                <div class="order-1 lg:order-2" data-aos="fade-left">
+                    <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Gestión de TI con ManageEngine</h2>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        El paquete de software de gestión de TI más completo de la industria, con más de 120 productos. 
+                        Gestione todas sus operaciones, incluyendo servidores, redes, aplicaciones, mesa de servicio y dispositivos móviles.
+                    </p>
+                    <a href="contacto.html" class="btn-pill px-10 py-4 text-sm inline-block shadow-lg">Ver Soluciones ManageEngine</a>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="py-12 bg-slate-900 text-white text-center">
-        <div class="container mx-auto px-6">
-            <p class="text-xs opacity-50 uppercase tracking-[0.2em]">© 2026 Gestión IT. Santo Domingo, República Dominicana.</p>
+    <footer class="py-16 bg-slate-900 text-white text-center px-6">
+        <div class="container mx-auto">
+            <img src="logo gestion it.jpeg" alt="Gestión IT" class="h-10 mx-auto mb-8 brightness-0 invert opacity-60">
+            <p class="text-[10px] uppercase tracking-[0.4em] opacity-40 italic">Tecnología e innovación, Sabemos cómo.</p>
+            <p class="mt-4 text-[9px] opacity-30">© 2026 Gestión IT. Santo Domingo, RD.</p>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000, once: true });</script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        const btn = document.getElementById('mobile-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    </script>
 </body>
 </html>
