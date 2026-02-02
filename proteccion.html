@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Protección y Ciberseguridad | Gestión IT - Seguridad Sincronizada en RD</title>
+    <meta name="description" content="Blindamos su empresa con Seguridad Sincronizada. Expertos en Sophos Firewall, ADAudit Plus y Password Manager Pro en República Dominicana.">
+    <meta name="keywords" content="Ciberseguridad RD, Sophos Firewall República Dominicana, ADAudit Plus, Password Manager Pro, Seguridad TI Santo Domingo">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        
+        :root {
+            --navy: #002D5A; 
+            --cyan: #00A4E4;
+            --text-main: #1E293B;
+        }
+
+        body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); background-color: #FFFFFF; }
+
+        /* Botón WhatsApp Flotante */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: #25d366; color: #FFF;
+            border-radius: 50px; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; z-index: 1000;
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .glass-nav { 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(15px); 
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+        }
+
+        .btn-pill {
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--cyan) 100%);
+            transition: all 0.3s ease;
+            color: white;
+            box-shadow: 0 8px 15px rgba(0, 45, 90, 0.2);
+        }
+        .btn-pill:hover { transform: translateY(-2px); box-shadow: 0 12px 20px rgba(0, 164, 228, 0.3); }
+
+        .feature-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 30px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+        }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); border-color: var(--cyan); }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/18093321705" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header class="fixed w-full z-50 glass-nav py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="logo gestion it.jpeg" alt="Gestión IT Logo" class="h-10 md:h-12 w-auto object-contain">
+            </div>
+            <nav class="hidden lg:flex space-x-8 items-center font-bold text-[11px] uppercase tracking-widest">
+                <a href="index.html" class="text-slate-700 hover:text-blue-600 transition">Inicio</a>
+                <a href="infraestructura.html" class="text-slate-700 hover:text-blue-600 transition">Infraestructura</a>
+                <a href="proteccion.html" class="text-blue-600">Protección</a>
+                <a href="index.html#nosotros" class="text-slate-700 hover:text-blue-600 transition">Nosotros</a>
+                <a href="index.html#casos" class="text-slate-700 hover:text-blue-600 transition">Casos</a>
+                <a href="contacto.html" class="btn-pill px-6 py-2.5 text-white">Diagnóstico</a>
+            </nav>
+            <button class="lg:hidden text-slate-800" id="mobile-btn">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white p-6 space-y-4 text-center font-bold uppercase text-xs tracking-widest border-t border-slate-100">
+            <a href="index.html" class="block py-2 text-slate-700">Inicio</a>
+            <a href="proteccion.html" class="block py-2 text-blue-600">Protección</a>
+            <a href="contacto.html" class="block py-2 text-blue-600">Diagnóstico</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="pt-44 pb-20 px-6 bg-slate-50">
+            <div class="container mx-auto text-center max-w-4xl" data-aos="fade-up">
+                <span class="text-blue-600 font-extrabold text-[11px] uppercase tracking-[0.4em] mb-4 block">Defensa Inteligente</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 leading-tight">Protección</h1>
+                <p class="text-xl text-slate-500 font-medium italic mb-4">Los hackers coordinan sus ataques. Es tiempo de coordinar su seguridad.</p>
+                <div class="w-20 h-1.5 bg-blue-600 mx-auto mt-8 rounded-full"></div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 bg-white">
+            <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Un nuevo enfoque a la seguridad TI</h2>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        El rápido crecimiento de ataques complejos está dejando atrás la capacidad de protección de muchas organizaciones. 
+                        La <strong>Seguridad Sincronizada</strong> es un sistema excepcional que permite a sus defensas estar tan coordinadas como los ataques contra los que protegen.
+                    </p>
+                    <p class="text-slate-600 mb-10 leading-relaxed">
+                        Combinamos una plataforma intuitiva con productos galardonados que actúan juntos activamente para bloquear amenazas avanzadas.
+                    </p>
+                    <a href="contacto.html" class="btn-pill px-10 py-4 text-sm inline-block">Consultar Seguridad Sincronizada</a>
+                </div>
+                <div class="rounded-[40px] overflow-hidden shadow-2xl" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80" alt="Ciberseguridad Avanzada" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 bg-slate-50">
+            <div class="container mx-auto">
+                <div class="flex flex-col lg:flex-row gap-16 items-center">
+                    <div class="lg:w-1/2 order-2 lg:order-1" data-aos="zoom-in">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80" alt="Sophos Firewall" class="rounded-[40px] shadow-xl">
+                    </div>
+                    <div class="lg:w-1/2 order-1 lg:order-2" data-aos="fade-left">
+                        <h3 class="text-blue-600 font-bold uppercase text-xs tracking-widest mb-4">Protección y Rendimiento</h3>
+                        <h2 class="text-4xl font-extrabold text-slate-900 mb-6">Sophos Firewall: Arquitectura Xstream</h2>
+                        <p class="text-slate-600 mb-8">
+                            Proteja su red de las amenazas más recientes mientras acelera su tráfico importante de SaaS, SD-WAN y aplicaciones en la nube.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                            <div class="flex items-center gap-3"><i class="fas fa-search text-blue-500"></i> <span class="text-sm font-bold">Detecte Riesgos Ocultos</span></div>
+                            <div class="flex items-center gap-3"><i class="fas fa-shield-virus text-blue-500"></i> <span class="text-sm font-bold">Detenga Amenazas</span></div>
+                            <div class="flex items-center gap-3"><i class="fas fa-unplug text-blue-500"></i> <span class="text-sm font-bold">Aísle Sistemas Infectados</span></div>
+                        </div>
+                        <a href="contacto.html" class="btn-pill px-10 py-4 text-sm inline-block">Ver Ficha Técnica Sophos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 bg-white">
+            <div class="container mx-auto grid lg:grid-cols-2 gap-12">
+                <div class="feature-card p-12" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold mb-6">ADAudit Plus</h3>
+                    <p class="text-slate-500 text-sm mb-8">Audite cambios y supervise inicios de sesión de usuarios privilegiados en su red Windows de forma automática.</p>
+                    <ul class="space-y-3 text-sm font-semibold text-slate-700">
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Supervise inicios de sesión</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Solucione cuentas bloqueadas</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Audite cambios en tiempo real</li>
+                    </ul>
+                </div>
+                <div class="feature-card p-12" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-2xl font-bold mb-6">EventLog Analyzer</h3>
+                    <p class="text-slate-500 text-sm mb-8">Software para la gestión de logs de eventos y cumplimiento de normas de TI para sistemas SIEM.</p>
+                    <div class="bg-slate-50 p-6 rounded-2xl">
+                        <p class="text-blue-600 font-black text-xs uppercase tracking-widest italic">Libere el verdadero valor de sus logs</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 bg-slate-900 text-white rounded-[60px] mx-6 mb-24 overflow-hidden relative">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[100px]"></div>
+            <div class="container mx-auto relative z-10 text-center">
+                <h2 class="text-4xl font-extrabold mb-6">Password Manager Pro</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto mb-12">
+                    Seguridad de contraseñas de TI para más de 300,000 administradores. Gestione millones de contraseñas privilegiadas diariamente.
+                </p>
+                <div class="grid md:grid-cols-3 gap-8 text-left mb-16">
+                    <div class="p-6 border border-white/10 rounded-3xl">
+                        <h4 class="font-bold text-cyan-400 mb-3">Gestión Centralizada</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">Elimine la fatiga de contraseñas mediante un medio seguro y centralizado de acceso.</p>
+                    </div>
+                    <div class="p-6 border border-white/10 rounded-3xl">
+                        <h4 class="font-bold text-cyan-400 mb-3">Automatización</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">Automatice cambios de contraseñas frecuentes en sistemas críticos para mejorar la productividad.</p>
+                    </div>
+                    <div class="p-6 border border-white/10 rounded-3xl">
+                        <h4 class="font-bold text-cyan-400 mb-3">Alertas Real-Time</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">Workflows de aprobación y alertas inmediatas para garantizar la integridad regulatoria (HIPAA, PCI).</p>
+                    </div>
+                </div>
+                <a href="contacto.html" class="btn-pill px-12 py-5 text-sm inline-block shadow-2xl">Implementar Password Manager Pro</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-16 bg-white text-center border-t border-slate-100">
+        <div class="container mx-auto px-6">
+            <img src="logo gestion it.jpeg" alt="Gestión IT" class="h-10 mx-auto mb-10 opacity-60">
+            <address class="not-italic text-slate-400 text-[10px] uppercase tracking-[0.3em] space-y-2 mb-8">
+                <p>Santo Domingo, República Dominicana</p>
+                <p>809.332.1705 | info@gestionit.com.do</p>
+            </address>
+            <p class="text-[9px] text-slate-300">© 2026 Gestión IT. Tecnología e innovación, Sabemos cómo.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        const btn = document.getElementById('mobile-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    </script>
+</body>
+</html>
