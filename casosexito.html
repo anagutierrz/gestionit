@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Casos de Éxito | Gestión IT - Testimonios de Liderazgo Tecnológico</title>
+    <meta name="description" content="Descubra cómo Gestión IT ha impulsado la ciberseguridad y eficiencia de empresas líderes como Centro Cuesta Nacional y EGE Haina en República Dominicana.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        
+        :root {
+            --navy: #002D5A; 
+            --cyan: #00A4E4;
+            --text-main: #1E293B;
+        }
+
+        body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); background-color: #FFFFFF; }
+
+        /* Botón WhatsApp Flotante */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: #25d366; color: #FFF;
+            border-radius: 50px; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; z-index: 1000;
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .glass-nav { 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(15px); 
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+        }
+
+        .btn-pill {
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--cyan) 100%);
+            transition: all 0.3s ease;
+            color: white;
+            box-shadow: 0 8px 15px rgba(0, 45, 90, 0.2);
+        }
+        .btn-pill:hover { transform: translateY(-2px); box-shadow: 0 12px 20px rgba(0, 164, 228, 0.3); }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/18093321705" class="whatsapp-float" target="_blank" aria-label="Contacto por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header class="fixed w-full z-50 glass-nav py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="logo gestion it.jpeg" alt="Gestión IT Logo" class="h-10 md:h-12 w-auto object-contain">
+            </div>
+            <nav class="hidden lg:flex space-x-8 items-center font-bold text-[11px] uppercase tracking-widest text-slate-700">
+                <a href="index.html" class="hover:text-blue-600 transition">Inicio</a>
+                <a href="infraestructura.html" class="hover:text-blue-600 transition">Infraestructura</a>
+                <a href="proteccion.html" class="hover:text-blue-600 transition">Protección</a>
+                <a href="nosotros.html" class="hover:text-blue-600 transition">Nosotros</a>
+                <a href="casosexito.html" class="text-blue-600">Casos</a>
+                <a href="contacto.html" class="btn-pill px-6 py-2.5 text-white">Diagnóstico</a>
+            </nav>
+            <button class="lg:hidden text-slate-800" id="mobile-btn">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white p-6 space-y-4 text-center font-bold uppercase text-xs tracking-widest border-t border-slate-100">
+            <a href="index.html" class="block py-2 text-slate-700">Inicio</a>
+            <a href="casosexito.html" class="block py-2 text-blue-600">Casos</a>
+            <a href="contacto.html" class="block py-2 text-blue-600">Diagnóstico</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="pt-44 pb-20 px-6 bg-slate-50">
+            <div class="container mx-auto text-center max-w-4xl" data-aos="fade-up">
+                <span class="text-blue-600 font-extrabold text-[11px] uppercase tracking-[0.4em] mb-4 block">Resultados Tangibles</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 leading-tight">Casos de Éxito</h1>
+                <p class="text-xl text-slate-500 font-medium leading-relaxed italic">La voz de nuestros aliados comerciales sobre nuestra gestión técnica.</p>
+                <div class="w-20 h-1.5 bg-blue-600 mx-auto mt-8 rounded-full"></div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 bg-white border-b border-slate-100">
+            <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                <div class="video-container" data-aos="fade-right">
+                    <iframe src="https://www.youtube.com/embed/ct0z3AjRkjQ" title="Centro Cuesta Nacional | Gestión IT" allowfullscreen></iframe>
+                </div>
+                <div data-aos="fade-left">
+                    <h3 class="text-blue-600 font-bold uppercase text-xs tracking-widest mb-4">Retail Líder en RD</h3>
+                    <h2 class="text-4xl font-extrabold text-slate-900 mb-6">Centro Cuesta Nacional (CCN)</h2>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        Gestión de vulnerabilidades y visibilidad 360° de activos mediante <strong>Endpoint Central</strong>. Carlos Durán, Gerente de Seguridad de Sistemas, destaca la transición satisfactoria hacia el ecosistema de ManageEngine impulsado por Gestión IT.
+                    </p>
+                    <ul class="space-y-3 text-sm font-semibold text-slate-700 mb-10">
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Visibilidad de laptops, tablets y móviles</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Gestión proactiva de parches y vulnerabilidades</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> MDM para equipos fuera de oficina</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 bg-slate-50 border-b border-slate-100">
+            <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1" data-aos="fade-right">
+                    <h3 class="text-blue-600 font-bold uppercase text-xs tracking-widest mb-4">Infraestructura Crítica</h3>
+                    <h2 class="text-4xl font-extrabold text-slate-900 mb-6">EGE Haina: Gestión de Accesos Privilegiados</h2>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        Administración de accesos de terceros y proveedores mediante <strong>PAM360</strong>. Haron Ramos (SISO) resalta la capacidad de monitoreo y regulación de accesos en tiempo real para proteger infraestructuras críticas de energía.
+                    </p>
+                    <ul class="space-y-3 text-sm font-semibold text-slate-700 mb-10">
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Monitoreo de accesos de proveedores</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Bitácoras para auditorías internas y externas</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Integración con Active Directory y Azure</li>
+                    </ul>
+                </div>
+                <div class="video-container order-1 lg:order-2" data-aos="fade-left">
+                    <iframe src="https://www.youtube.com/embed/q2v7TaqIDTY" title="EGE Haina | PAM360 | Gestión IT" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 bg-white">
+            <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                <div class="video-container" data-aos="fade-right">
+                    <iframe src="https://www.youtube.com/embed/jiFeFaWSW_A" title="EGE Haina | Endpoint Central | Gestión IT" allowfullscreen></iframe>
+                </div>
+                <div data-aos="fade-left">
+                    <h3 class="text-blue-600 font-bold uppercase text-xs tracking-widest mb-4">Eficiencia Operativa</h3>
+                    <h2 class="text-4xl font-extrabold text-slate-900 mb-6">Automatización de Dispositivos</h2>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        Implementación de <strong>Endpoint Central</strong> para la automatización de tareas técnicas y soporte remoto. Dariel Rodríguez destaca la facilidad de uso y la resolución automática de problemas para usuarios en la zona este.
+                    </p>
+                    <ul class="space-y-3 text-sm font-semibold text-slate-700 mb-10">
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Automatización de tareas de soporte</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Reducción de sobrehoras en gestión técnica</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Soporte de mano del partner Gestión IT</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 text-center bg-slate-900 text-white rounded-[60px] mx-6 mb-24 overflow-hidden relative">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[100px]"></div>
+            <div class="container mx-auto relative z-10" data-aos="zoom-in">
+                <h2 class="text-4xl font-extrabold mb-6">¿Desea ser nuestro próximo Caso de Éxito?</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto mb-12 italic">"Siempre está ahí en los momentos críticos cuando lo necesitamos" - EGE Haina</p>
+                <a href="contacto.html" class="btn-pill px-12 py-5 text-sm inline-block shadow-2xl uppercase tracking-widest font-bold">
+                    Iniciar mi Proyecto Hoy
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-16 bg-white text-center border-t border-slate-100">
+        <div class="container mx-auto px-6">
+            <img src="logo gestion it.jpeg" alt="Gestión IT" class="h-10 mx-auto mb-10 opacity-60">
+            <p class="text-[9px] text-slate-300 uppercase tracking-widest">© 2026 Gestión IT. Tecnología e innovación, Sabemos cómo.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        const btn = document.getElementById('mobile-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    </script>
+</body>
+</html>
