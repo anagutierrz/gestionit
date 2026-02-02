@@ -3,47 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión IT | Ciberseguridad, Soporte MSP e Infraestructura en RD</title>
-    <meta name="description" content="Expertos en servicios gestionados de TI, ciberseguridad avanzada y soluciones de infraestructura para empresas en República Dominicana.">
+    <title>Gestión IT | Soluciones Corporativas de TI en RD</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        .float-anim { animation: float 6s ease-in-out infinite; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
         .text-gradient { background: linear-gradient(to right, #60a5fa, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .card-hover:hover { border-color: rgba(37, 99, 235, 0.5); transform: translateY(-5px); }
-        .whatsapp-pulse { animation: pulse-green 2s infinite; }
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-        }
+        .btn-pill { border-radius: 50px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .card-service { border-radius: 32px; transition: all 0.4s ease; }
+        .card-service:hover { border-color: #2563eb; transform: translateY(-10px); background: rgba(255,255,255,0.05); }
     </style>
 </head>
-<body class="bg-[#020617] text-slate-200 antialiased font-sans">
+<body class="bg-[#020617] text-slate-200 antialiased">
 
-    <a href="https://wa.me/18093321705" target="_blank" class="fixed bottom-8 right-8 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl z-[100] hover:scale-110 transition-transform duration-300 whatsapp-pulse">
-        <i class="fab fa-whatsapp text-3xl"></i>
+    <a href="https://wa.me/18093321705" target="_blank" class="fixed bottom-8 right-8 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl z-[100] hover:scale-110 transition-transform duration-300">
+        <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
     <nav class="fixed w-full z-50 glass py-4">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-tighter text-white">
+            <div class="text-xl font-extrabold tracking-tighter text-white">
                 GESTIÓN<span class="text-blue-500">IT</span>
             </div>
-            <div class="hidden md:flex space-x-8 items-center font-medium">
+            <div class="hidden lg:flex space-x-7 items-center font-semibold text-[13px] uppercase tracking-wider">
                 <a href="#inicio" class="hover:text-blue-400 transition">Inicio</a>
-                <a href="#servicios" class="hover:text-blue-400 transition">Servicios</a>
-                <a href="#nosotros-resumen" class="hover:text-blue-400 transition">Nosotros</a>
-                <a href="#metodologia" class="hover:text-blue-400 transition">Metodología</a>
-                <a href="#contacto" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition shadow-lg shadow-blue-500/20">
+                <a href="#infraestructura" class="hover:text-blue-400 transition">Infraestructura</a>
+                <a href="#proteccion" class="hover:text-blue-400 transition">Protección</a>
+                <a href="#nosotros" class="hover:text-blue-400 transition">Nosotros</a>
+                <a href="#soporte" class="hover:text-blue-400 transition">Soporte</a>
+                <a href="#casos" class="hover:text-blue-400 transition">Casos de Éxito</a>
+                <a href="contacto.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 btn-pill transition shadow-lg shadow-blue-500/20">
                     Diagnóstico Gratis
                 </a>
             </div>
@@ -52,172 +46,158 @@
 
     <section id="inicio" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
         <div class="absolute top-40 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[150px]"></div>
-        <div class="container mx-auto px-6 relative z-10">
+        <div class="container mx-auto px-6 relative z-10 text-center md:text-left">
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <span class="inline-block px-4 py-1 rounded-full bg-blue-500/10 text-blue-400 text-sm font-bold mb-6 border border-blue-500/20 uppercase tracking-widest">
-                        Soluciones IT en República Dominicana
+                <div data-aos="fade-up">
+                    <span class="inline-block px-4 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-bold mb-6 border border-blue-500/20 uppercase tracking-widest">
+                        Ingeniería Tecnológica de Vanguardia
                     </span>
-                    <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-6 text-white">
-                        Tu tecnología no debe ser un costo, <br>
-                        <span class="text-gradient">sino tu mayor ventaja.</span>
+                    <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-6 text-white tracking-tight">
+                        Más de 15 años <br>
+                        <span class="text-gradient">creando resiliencia digital.</span>
                     </h1>
                     <p class="text-lg text-slate-400 mb-8 max-w-lg leading-relaxed">
-                        Blindamos tu infraestructura y optimizamos tus operaciones con soporte proactivo 24/7 y ciberseguridad de clase mundial.
+                        No somos solo un proveedor; somos el aliado estratégico que garantiza la continuidad y el crecimiento de su organización.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#contacto" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-center transition transform hover:scale-105 shadow-xl shadow-blue-600/20">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="contacto.html" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 btn-pill font-bold text-center transition shadow-xl shadow-blue-600/20">
                             Solicitar Diagnóstico
-                        </a>
-                        <a href="#servicios" class="glass hover:bg-white/10 text-white px-8 py-4 rounded-xl font-bold text-center transition">
-                            Nuestras Soluciones
                         </a>
                     </div>
                 </div>
-                <div class="hidden md:block float-anim" data-aos="fade-left">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2092/2092663.png" alt="Seguridad IT" class="w-full max-w-md mx-auto opacity-90 drop-shadow-[0_0_50px_rgba(37,99,235,0.3)]">
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-[#030a1f]/50 border-y border-white/5">
+        <div class="container mx-auto px-6">
+            <p class="text-center text-slate-500 text-[10px] uppercase tracking-[0.4em] mb-12 font-bold">Certificaciones y Alianzas Estratégicas</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 items-center opacity-60 grayscale hover:grayscale-0 transition duration-500">
+                <div class="flex flex-col items-center">
+                    <span class="font-black text-xl italic">GOLD PARTNER</span>
+                    <p class="text-[9px] font-bold">MICROSOFT SOLUTIONS</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="font-black text-xl italic">FORTINET</span>
+                    <p class="text-[9px] font-bold">CERTIFIED EXPERTISE</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="font-black text-xl italic">AWS</span>
+                    <p class="text-[9px] font-bold">CLOUD ARCHITECTS</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="font-black text-xl italic">SOPHOS</span>
+                    <p class="text-[9px] font-bold">SECURITY SPECIALISTS</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-12 border-y border-white/5 bg-[#030a1f]/50">
-        <div class="container mx-auto px-6">
-            <p class="text-center text-slate-500 text-xs uppercase tracking-[0.3em] mb-10 font-bold">Aliados Tecnológicos Globales</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition duration-500">
-                <span class="text-2xl font-black text-white italic">FORTINET</span>
-                <span class="text-2xl font-black text-white italic">MICROSOFT</span>
-                <span class="text-2xl font-black text-white italic">AWS</span>
-                <span class="text-2xl font-black text-white italic">SOPHOS</span>
-                <span class="text-2xl font-black text-white italic">ZOHO</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="servicios" class="py-24 bg-[#020617]">
+    <section class="py-24 bg-[#020617]">
         <div class="container mx-auto px-6 text-center mb-16">
             <h2 class="text-3xl md:text-5xl font-bold text-white mb-4" data-aos="fade-up">Ingeniería que impulsa negocios</h2>
-            <div class="w-24 h-1 bg-blue-600 mx-auto" data-aos="zoom-in"></div>
+            <div class="w-20 h-1 bg-blue-600 mx-auto" data-aos="zoom-in"></div>
         </div>
 
         <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8">
-            <div class="glass p-8 rounded-3xl card-hover transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
-                <div class="w-14 h-14 bg-blue-600/20 rounded-xl flex items-center justify-center mb-6 text-blue-400">
-                    <i class="fas fa-user-shield text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-4">Ciberseguridad 360°</h3>
-                <p class="text-slate-400 mb-6 text-sm">Protección avanzada contra Ransomware, Firewalls de nueva generación y auditorías de seguridad.</p>
+            <div id="infraestructura" class="glass p-10 card-service" data-aos="fade-up">
+                <div class="text-blue-500 mb-6 text-3xl"><i class="fas fa-server"></i></div>
+                <h3 class="text-xl font-bold text-white mb-4">Infraestructura</h3>
+                <p class="text-slate-400 mb-8 text-sm leading-relaxed">Cree ventajas competitivas gracias a una infraestructura de TI moderna, escalable y segura.</p>
+                <a href="servicios/infraestructura.html" class="text-blue-400 font-bold text-sm hover:text-white transition">VER MÁS <i class="fas fa-chevron-right ml-2 text-[10px]"></i></a>
             </div>
 
-            <div class="glass p-8 rounded-3xl border-blue-600/40 scale-105 shadow-2xl shadow-blue-600/10" data-aos="fade-up">
-                <div class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 text-white">
-                    <i class="fas fa-headset text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-4 text-blue-400">Soporte MSP</h3>
-                <p class="text-slate-200 mb-6 text-sm font-medium">Gestión IT delegada. Monitoreo proactivo 24/7 que resuelve problemas antes de que afecten tu operación.</p>
+            <div id="proteccion" class="glass p-10 card-service" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-blue-500 mb-6 text-3xl"><i class="fas fa-shield-halved"></i></div>
+                <h3 class="text-xl font-bold text-white mb-4">Protección</h3>
+                <p class="text-slate-400 mb-8 text-sm leading-relaxed">Protección dentro y fuera del perímetro, blindando su información contra amenazas globales.</p>
+                <a href="servicios/proteccion.html" class="text-blue-400 font-bold text-sm hover:text-white transition">VER MÁS <i class="fas fa-chevron-right ml-2 text-[10px]"></i></a>
             </div>
 
-            <div class="glass p-8 rounded-3xl card-hover transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
-                <div class="w-14 h-14 bg-blue-600/20 rounded-xl flex items-center justify-center mb-6 text-blue-400">
-                    <i class="fas fa-network-wired text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-4">Redes & Cloud</h3>
-                <p class="text-slate-400 mb-6 text-sm">Diseño de infraestructura híbrida, migración a la nube y conectividad WiFi corporativa de alta densidad.</p>
+            <div id="soporte" class="glass p-10 card-service" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-blue-500 mb-6 text-3xl"><i class="fas fa-microchip"></i></div>
+                <h3 class="text-xl font-bold text-white mb-4">Soporte & Gestión</h3>
+                <p class="text-slate-400 mb-8 text-sm leading-relaxed">Equipos técnicos especialistas en mantener entornos críticos de TI rindiendo a su máximo nivel.</p>
+                <a href="servicios/soporte.html" class="text-blue-400 font-bold text-sm hover:text-white transition">VER MÁS <i class="fas fa-chevron-right ml-2 text-[10px]"></i></a>
             </div>
         </div>
     </section>
 
-    <section id="nosotros-resumen" class="py-24 bg-[#030a1f] overflow-hidden">
+    <section id="nosotros" class="py-24 bg-[#030a1f]">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-16">
-                <div class="md:w-1/2 relative" data-aos="fade-right">
-                    <div class="relative z-10 border-2 border-white/5 p-4 rounded-[2.5rem] glass">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80" alt="Equipo Gestión IT" class="rounded-[2rem] grayscale hover:grayscale-0 transition duration-700 shadow-2xl">
-                    </div>
-                    <div class="absolute -bottom-6 -right-6 bg-blue-600 p-6 rounded-2xl shadow-xl z-20" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="text-3xl font-black text-white">+10</div>
-                        <div class="text-[10px] uppercase tracking-tighter text-blue-100 font-bold">Años liderando <br>el sector IT</div>
-                    </div>
-                </div>
-                <div class="md:w-1/2" data-aos="fade-left">
-                    <span class="text-blue-500 font-bold uppercase tracking-widest text-sm">Nuestra Esencia</span>
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">Socio estratégico de <span class="text-gradient">tu crecimiento.</span></h2>
-                    <p class="text-slate-400 text-lg mb-8 leading-relaxed">Entendemos que el éxito de nuestros clientes es nuestro propio éxito. Combinamos talento de altos estándares con herramientas de vanguardia para que tu negocio nunca se detenga.</p>
-                    <a href="nosotros.html" class="inline-flex items-center text-white font-bold group">
-                        <span class="border-b-2 border-blue-600 pb-1 group-hover:text-blue-400 transition text-lg">Conoce nuestra historia y al equipo</span>
-                        <i class="fas fa-arrow-right ms-3 text-blue-600 group-hover:translate-x-2 transition-transform"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="metodologia" class="py-24 bg-[#020617]">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Ingeniería con Propósito</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">Nuestro proceso de 4 pasos garantiza resultados medibles.</p>
-            </div>
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="relative p-6 group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-6xl font-black text-blue-600/20 absolute -top-4 -left-2 group-hover:text-blue-600 transition">01</div>
-                    <h4 class="text-xl font-bold text-white mb-3 mt-4">Diagnóstico</h4>
-                    <p class="text-slate-500 text-sm text-left">Evaluamos vulnerabilidades y cuellos de botella en tu infraestructura actual.</p>
-                </div>
-                <div class="relative p-6 group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-6xl font-black text-blue-600/20 absolute -top-4 -left-2 group-hover:text-blue-600 transition">02</div>
-                    <h4 class="text-xl font-bold text-white mb-3 mt-4">Estrategia</h4>
-                    <p class="text-slate-500 text-sm text-left">Diseñamos una hoja de ruta técnica alineada con tus objetivos de negocio.</p>
-                </div>
-                <div class="relative p-6 group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-6xl font-black text-blue-600/20 absolute -top-4 -left-2 group-hover:text-blue-600 transition">03</div>
-                    <h4 class="text-xl font-bold text-white mb-3 mt-4">Ejecución</h4>
-                    <p class="text-slate-500 text-sm text-left">Implementación profesional con mínima interrupción de tus servicios.</p>
-                </div>
-                <div class="relative p-6 group" data-aos="fade-up" data-aos-delay="400">
-                    <div class="text-6xl font-black text-blue-600/20 absolute -top-4 -left-2 group-hover:text-blue-600 transition">04</div>
-                    <h4 class="text-xl font-bold text-white mb-3 mt-4">Gestión</h4>
-                    <p class="text-slate-500 text-sm text-left">Monitoreo constante y mejora continua de tu blindaje digital.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto" class="py-24 bg-[#020617]">
-        <div class="container mx-auto px-6">
-            <div class="glass max-w-5xl mx-auto rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row shadow-2xl border-white/5">
-                <div class="md:w-2/5 bg-blue-600 p-12 text-white flex flex-col justify-between">
-                    <div>
-                        <h2 class="text-4xl font-bold mb-6 italic">¿Hablamos hoy?</h2>
-                        <p class="opacity-90 text-lg leading-relaxed mb-8">Obtén una auditoría de seguridad inicial sin costo.</p>
-                    </div>
-                    <div class="space-y-4">
-                        <p><i class="fas fa-phone-alt mr-3"></i> 809 332 1705</p>
-                        <p><i class="fas fa-envelope mr-3"></i> info@gestionit.com.do</p>
-                    </div>
-                </div>
-                <div class="md:w-3/5 p-12 bg-[#0f172a]">
-                    <form action="#" class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <input type="text" placeholder="Nombre" class="w-full bg-[#1e293b] border border-white/5 rounded-xl px-4 py-4 text-white focus:ring-2 focus:ring-blue-500 outline-none">
-                            <input type="text" placeholder="Empresa" class="w-full bg-[#1e293b] border border-white/5 rounded-xl px-4 py-4 text-white focus:ring-2 focus:ring-blue-500 outline-none">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <span class="text-blue-500 font-bold uppercase tracking-widest text-xs">Nuestra Esencia</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mt-4 mb-8">Socio Estratégico de <span class="text-gradient">tu Crecimiento.</span></h2>
+                    
+                    <div class="grid grid-cols-1 gap-6">
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 text-blue-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="text-white font-bold">Confianza</h4>
+                                <p class="text-slate-400 text-sm">Construimos relaciones sólidas basadas en la transparencia operativa.</p>
+                            </div>
                         </div>
-                        <select class="w-full bg-[#1e293b] border border-white/5 rounded-xl px-4 py-4 text-white focus:ring-2 focus:ring-blue-500 outline-none appearance-none">
-                            <option>Ciberseguridad</option>
-                            <option>Soporte MSP</option>
-                            <option>Infraestructura</option>
-                        </select>
-                        <textarea rows="3" placeholder="Mensaje" class="w-full bg-[#1e293b] border border-white/5 rounded-xl px-4 py-4 text-white focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-widest py-5 rounded-xl transition shadow-xl shadow-blue-600/40">Solicitar Diagnóstico <i class="fas fa-paper-plane ms-2"></i></button>
-                    </form>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 text-blue-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="text-white font-bold">Responsabilidad</h4>
+                                <p class="text-slate-400 text-sm">Asumimos el compromiso técnico de su infraestructura como propio.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 text-blue-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="text-white font-bold">Compromiso</h4>
+                                <p class="text-slate-400 text-sm">Dedicación total para superar los objetivos de disponibilidad y seguridad.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 relative" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80" alt="Consultoría IT" class="rounded-[2rem] shadow-2xl opacity-80">
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 bg-[#020617] border-t border-white/5 text-center text-slate-500 text-sm">
-        <p class="mb-2">Calle Dr. Jacinto Ignacio Mañón #25, Santo Domingo, RD.</p>
-        <p>© 2026 Gestión IT. Elevando el estándar tecnológico.</p>
+    <section id="casos" class="py-24 bg-[#020617]">
+        <div class="container mx-auto px-6 text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Casos de Éxito</h2>
+            <p class="text-slate-400">Transformaciones reales que generaron valor.</p>
+        </div>
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-10">
+            <div class="glass overflow-hidden rounded-[2rem] group" data-aos="fade-up">
+                <div class="p-10">
+                    <span class="text-blue-500 font-bold text-xs uppercase tracking-tighter">Sector Financiero</span>
+                    <h4 class="text-2xl font-bold text-white mt-2 mb-4">Migración Cloud & Ciberseguridad</h4>
+                    <p class="text-slate-400 text-sm mb-6">Optimizamos la infraestructura crítica de una entidad bancaria logrando un 99.9% de uptime y blindaje total ante intrusiones.</p>
+                    <a href="#" class="text-white font-bold text-sm border-b border-blue-600">Leer Caso Completo</a>
+                </div>
+            </div>
+            <div class="glass overflow-hidden rounded-[2rem] group" data-aos="fade-up" data-aos-delay="100">
+                <div class="p-10">
+                    <span class="text-blue-500 font-bold text-xs uppercase tracking-tighter">Sector Retail</span>
+                    <h4 class="text-2xl font-bold text-white mt-2 mb-4">Soporte MSP y Redes WiFi</h4>
+                    <p class="text-slate-400 text-sm mb-6">Implementamos gestión centralizada de TI para más de 15 sucursales, reduciendo los tiempos de respuesta técnica en un 60%.</p>
+                    <a href="#" class="text-white font-bold text-sm border-b border-blue-600">Leer Caso Completo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 bg-[#030a1f] border-t border-white/5">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-white mb-8">¿Listo para elevar el estándar de su TI?</h2>
+            <a href="contacto.html" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 btn-pill font-bold inline-block transition shadow-xl shadow-blue-600/20 mb-16">
+                Solicitar Diagnóstico Ahora
+            </a>
+            <div class="text-slate-500 text-sm">
+                <p class="mb-2">Calle Dr. Jacinto Ignacio Mañón #25, Ensanche Paraíso, Santo Domingo, RD.</p>
+                <p>809 332 1705 | info@gestionit.com.do</p>
+                <p class="mt-8 opacity-50">© 2026 Gestión IT. Conectando Clientes y Compañeros.</p>
+            </div>
+        </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
