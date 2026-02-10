@@ -7,6 +7,13 @@
     <title>Nosotros | Gestión IT - 15 años de Innovación Tecnológica en RD</title>
     <meta name="description" content="Conozca al equipo de Gestión IT. Más de 15 años de experiencia técnica en el mercado dominicano impulsando el crecimiento empresarial.">
     
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,12 +24,62 @@
         :root {
             --navy: #002D5A; 
             --cyan: #00A4E4;
+            --bg-main: #FFFFFF;
             --text-main: #1E293B;
+            --card-bg: #FFFFFF;
+            --border-color: rgba(0, 0, 0, 0.05);
+            --section-alt: #F8FAFC;
         }
 
-        body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); background-color: #FFFFFF; }
+        [data-theme='dark'] {
+            --bg-main: #000000;
+            --text-main: #FFFFFF;
+            --card-bg: #0A0C10;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --section-alt: #050505;
+        }
 
-        /* Botón WhatsApp Flotante */
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg-main); 
+            color: var(--text-main); 
+            overflow-x: hidden; 
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .glass-nav { 
+            background: rgba(var(--bg-main), 0.85); 
+            backdrop-filter: blur(15px); 
+            border-bottom: 1px solid var(--border-color); 
+            z-index: 100;
+        }
+        
+        .btn-pill {
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--cyan) 100%);
+            transition: 0.4s ease;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0, 164, 228, 0.2);
+        }
+
+        .theme-toggle {
+            background: rgba(0, 164, 228, 0.15);
+            border: 1px solid var(--border-color);
+            width: 42px; height: 42px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; color: var(--cyan);
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        .team-card:hover { transform: translateY(-10px); border-color: var(--cyan); }
+
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
             background-color: #25d366; color: #FFF;
@@ -30,133 +87,111 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 30px; z-index: 1000;
             box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
-            animation: pulse-green 2s infinite;
-        }
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+            animation: pulse-whatsapp 2s infinite;
         }
 
-        .glass-nav { 
-            background: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(10px); 
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+        @keyframes pulse-whatsapp {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
-        .btn-pill {
-            border-radius: 50px;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--cyan) 100%);
-            transition: all 0.3s ease;
-            color: white;
-            box-shadow: 0 8px 15px rgba(0, 45, 90, 0.2);
-        }
-        .btn-pill:hover { transform: translateY(-2px); box-shadow: 0 12px 20px rgba(0, 164, 228, 0.3); }
-
-        .team-card {
-            background: #F8FAFC;
-            border-radius: 30px;
-            padding: 40px;
-            text-align: center;
-            border: 1px solid rgba(0,0,0,0.03);
-            transition: all 0.3s ease;
-        }
-        .team-card:hover { transform: translateY(-10px); border-color: var(--cyan); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .bg-alt { background-color: var(--section-alt); }
     </style>
 </head>
-<body>
+<body data-theme="dark">
 
     <a href="https://wa.me/18093321705" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
-<header class="fixed w-full z-50 glass-nav py-4">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="logo gestion it.jpeg" alt="Gestión IT Logo" class="h-10 md:h-12 w-auto object-contain">
-            </div>
-            
-            <nav class="hidden lg:flex space-x-8 items-center font-bold text-[11px] uppercase tracking-widest">
-                <a href="index.html" class="text-slate-700 hover:text-blue-600 transition">Inicio</a>
-                <a href="infraestructura.html" class="text-slate-700 hover:text-blue-600 transition">Infraestructura</a>
-                <a href="proteccion.html" class="text-slate-700 hover:text-blue-600 transition">Protección</a>
-                <a href="nosotros.html" class="text-slate-700 hover:text-blue-600 transition">Nosotros</a>
-                <a href="casosexito.html" class="text-slate-700 hover:text-blue-600 transition">Casos de Exito</a>
-                <a href="formulario.html" class="btn-pill px-6 py-2.5 text-white">Diagnóstico Gratis</a>
-            </nav>
 
-            <button class="lg:hidden text-slate-800" id="mobile-btn">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+    <header class="fixed w-full py-4 glass-nav">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center font-extrabold text-xl md:text-2xl tracking-tighter">
+                <span>Gestion</span><span style="color:var(--cyan)">IT</span>
+            </a>
+            
+            <div class="flex items-center gap-4 md:gap-8">
+                <nav class="hidden lg:flex space-x-8 items-center font-bold text-[10px] uppercase tracking-[0.2em]">
+                    <a href="index.html">Inicio</a>
+                    <a href="infraestructura.html">Infraestructura</a>
+                    <a href="proteccion.html">Protección</a>
+                    <a href="nosotros.html" class="text-cyan-400">Nosotros</a>
+                    <a href="casosexito.html">Casos</a>
+                    <a href="contacto.html" class="btn-pill px-6 py-2.5 text-white text-[10px]">Diagnóstico Gratis</a>
+                </nav>
+
+                <button class="theme-toggle" id="theme-btn">
+                    <i class="fas fa-sun" id="theme-icon"></i>
+                </button>
+
+                <button class="lg:hidden text-2xl" id="mobile-btn"><i class="fas fa-bars"></i></button>
+            </div>
         </div>
-        
-        <div id="mobile-menu" class="hidden lg:hidden bg-white p-6 space-y-4 text-center font-bold uppercase text-xs tracking-widest border-t border-slate-100">
-            <a href="index.html" class="block py-2 text-slate-700">Inicio</a>
-            <a href="infraestructura.html" class="block py-2 text-slate-700">Infraestructura</a>
-            <a href="proteccion.html" class="block py-2 text-slate-700">Protección</a>
-            <a href="nosotros.html" class="block py-2 text-slate-700">Nosotros</a>
-            <a href="casosexito.html" class="text-slate-700 hover:text-blue-600 transition">Casos de Exito</a>
-            <a href="formulario.html" class="block py-2 text-blue-600 font-black">Diagnóstico Gratis</a>
+        <div id="mobile-menu" class="hidden lg:hidden bg-black/95 absolute w-full left-0 top-full p-8 text-center space-y-6 font-bold uppercase text-xs tracking-widest border-b border-white/10">
+            <a href="index.html" class="block">Inicio</a>
+            <a href="nosotros.html" class="block text-cyan-400">Nosotros</a>
+            <a href="contacto.html" class="block text-cyan-400">Diagnóstico Gratis</a>
         </div>
     </header>
 
     <main>
-        <section class="pt-44 pb-24 px-6 bg-slate-50">
+        <section class="pt-44 pb-24 px-6 bg-alt">
             <div class="container mx-auto text-center max-w-4xl" data-aos="fade-up">
-                <span class="text-blue-600 font-extrabold text-[11px] uppercase tracking-[0.4em] mb-4 block">Más de 15 años de Experiencia</span>
-                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 leading-tight">Innovación con Propósito Humano</h1>
-                <p class="text-xl text-slate-500 font-medium leading-relaxed italic">Contamos con un talento humano de altos estándares y tecnologías de vanguardia.</p>
-                <div class="w-20 h-1.5 bg-blue-600 mx-auto mt-8 rounded-full"></div>
+                <span class="text-cyan-500 font-extrabold text-[11px] uppercase tracking-[0.4em] mb-4 block">Más de 15 años de Experiencia</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight">Innovación con Propósito Humano</h1>
+                <p class="text-xl opacity-60 font-medium leading-relaxed italic">Contamos con un talento humano de altos estándares y tecnologías de vanguardia.</p>
+                <div class="w-20 h-1.5 bg-cyan-500 mx-auto mt-8 rounded-full"></div>
             </div>
         </section>
 
-        <section class="py-24 px-6 bg-white">
+        <section class="py-24 px-6">
             <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
                 <div data-aos="fade-right">
-                    <h2 class="text-3xl font-extrabold text-slate-900 mb-6 italic">Un equipo profesional y proactivo</h2>
-                    <p class="text-slate-600 mb-6 leading-relaxed">
+                    <h2 class="text-3xl font-extrabold mb-6 italic">Un equipo profesional y proactivo</h2>
+                    <p class="opacity-70 mb-6 leading-relaxed">
                         Más que una empresa, somos un equipo de profesionales emprendedores con vasta experiencia en el mundo de la Tecnología y las Comunicaciones. 
                     </p>
-                    <p class="text-slate-600 mb-8 leading-relaxed">
+                    <p class="opacity-70 mb-8 leading-relaxed">
                         Nuestro compromiso es entregar servicios y soluciones que impulsen la competitividad de nuestros aliados y faciliten el crecimiento rentable de sus negocios. 
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                        <div class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> <span class="text-sm font-bold">Confianza absoluta</span></div>
-                        <div class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> <span class="text-sm font-bold">Responsabilidad técnica</span></div>
-                        <div class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> <span class="text-sm font-bold">Compromiso real</span></div>
-                        <div class="flex items-center gap-3"><i class="fas fa-check text-blue-500"></i> <span class="text-sm font-bold">Vasta experiencia</span></div>
+                        <div class="flex items-center gap-3"><i class="fas fa-check text-cyan-500"></i> <span class="text-sm font-bold uppercase tracking-tight">Confianza absoluta</span></div>
+                        <div class="flex items-center gap-3"><i class="fas fa-check text-cyan-500"></i> <span class="text-sm font-bold uppercase tracking-tight">Responsabilidad técnica</span></div>
+                        <div class="flex items-center gap-3"><i class="fas fa-check text-cyan-500"></i> <span class="text-sm font-bold uppercase tracking-tight">Compromiso real</span></div>
+                        <div class="flex items-center gap-3"><i class="fas fa-check text-cyan-500"></i> <span class="text-sm font-bold uppercase tracking-tight">Vasta experiencia</span></div>
                     </div>
                 </div>
-                <div class="rounded-[40px] overflow-hidden shadow-2xl h-[450px]" data-aos="fade-left">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80" alt="Gestión IT Talento Humano" class="w-full h-full object-cover">
+                <div class="rounded-[40px] overflow-hidden shadow-2xl h-[450px] border border-white/5" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80" alt="Gestión IT Talento Humano" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700">
                 </div>
             </div>
         </section>
 
-        <section class="py-24 px-6 bg-slate-50">
+        <section class="py-24 px-6 bg-alt">
             <div class="container mx-auto">
                 <div class="text-center mb-16" data-aos="fade-up">
-                    <span class="text-blue-600 font-bold uppercase tracking-widest text-[10px]">Liderazgo</span>
-                    <h2 class="text-4xl font-extrabold text-slate-900 mt-2">Nuestro Equipo Directivo</h2>
-                    <div class="w-16 h-1 bg-blue-600 mx-auto mt-6 rounded-full"></div>
+                    <span class="text-cyan-600 font-bold uppercase tracking-widest text-[10px]">Liderazgo</span>
+                    <h2 class="text-4xl font-extrabold mt-2 uppercase tracking-tighter">Nuestro Equipo Directivo</h2>
+                    <div class="w-16 h-1 bg-cyan-600 mx-auto mt-6 rounded-full"></div>
                 </div>
                 
-                <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto text-center">
                     <div class="team-card" data-aos="fade-up">
-                        <div class="w-24 h-24 bg-blue-100 rounded-full mx-auto mb-6 flex items-center justify-center text-blue-600 text-3xl">
+                        <div class="w-24 h-24 bg-cyan-500/10 rounded-full mx-auto mb-6 flex items-center justify-center text-cyan-600 text-3xl">
                             <i class="fas fa-user-tie"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">Paul Meléndez</h3>
-                        <p class="text-blue-600 text-sm font-bold uppercase tracking-widest mt-1">Director Operaciones</p>
-                        <p class="text-slate-500 text-xs mt-4 leading-relaxed italic">Liderando la arquitectura técnica y la excelencia operativa de cada proyecto.</p>
+                        <h3 class="text-xl font-bold">Paul Meléndez</h3>
+                        <p class="text-cyan-600 text-sm font-bold uppercase tracking-widest mt-1">Director Operaciones</p>
+                        <p class="opacity-50 text-xs mt-4 leading-relaxed italic">Liderando la arquitectura técnica y la excelencia operativa de cada proyecto.</p>
                     </div>
                     
                     <div class="team-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="w-24 h-24 bg-blue-100 rounded-full mx-auto mb-6 flex items-center justify-center text-blue-600 text-3xl">
+                        <div class="w-24 h-24 bg-cyan-500/10 rounded-full mx-auto mb-6 flex items-center justify-center text-cyan-600 text-3xl">
                             <i class="fas fa-user-tie"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">Anouk Meléndez</h3>
-                        <p class="text-blue-600 text-sm font-bold uppercase tracking-widest mt-1">Directora Comercial</p>
-                        <p class="text-slate-500 text-xs mt-4 leading-relaxed italic">Construyendo relaciones sólidas y alianzas estratégicas con nuestros aliados comerciales.</p>
+                        <h3 class="text-xl font-bold">Anouk Meléndez</h3>
+                        <p class="text-cyan-600 text-sm font-bold uppercase tracking-widest mt-1">Directora Comercial</p>
+                        <p class="opacity-50 text-xs mt-4 leading-relaxed italic">Construyendo relaciones sólidas y alianzas estratégicas con nuestros aliados comerciales.</p>
                     </div>
                 </div>
             </div>
@@ -164,32 +199,57 @@
 
         <section class="py-24 px-6 text-center">
             <div class="container mx-auto max-w-4xl" data-aos="zoom-in">
-                <h2 class="text-4xl font-extrabold mb-6">¿Preparado para que su negocio crezca?</h2>
-                <p class="text-slate-500 mb-10">Nuestro equipo está listo para integrar las mejores soluciones tecnológicas en su organización.</p>
-                <a href="contacto.html" class="btn-pill px-12 py-5 text-sm inline-block shadow-2xl">
+                <h2 class="text-4xl font-extrabold mb-6 uppercase tracking-tighter">¿Preparado para que su negocio crezca?</h2>
+                <p class="opacity-60 mb-10">Nuestro equipo está listo para integrar las mejores soluciones tecnológicas en su organización.</p>
+                <a href="contacto.html" class="btn-pill px-12 py-5 text-xs font-bold uppercase tracking-widest inline-block shadow-2xl">
                     Iniciar Consultoría Técnica
                 </a>
             </div>
         </section>
     </main>
 
-    <footer class="py-16 bg-white text-center border-t border-slate-100">
-        <div class="container mx-auto px-6">
-            <img src="logo gestion it.jpeg" alt="Gestión IT" class="h-10 mx-auto mb-10 opacity-60">
-            <address class="not-italic text-slate-400 text-[10px] uppercase tracking-[0.3em] space-y-2 mb-8">
+    <footer class="py-16 text-center px-6 border-t border-white/5 bg-alt">
+        <div class="container mx-auto">
+            <div class="font-extrabold text-2xl mb-8 tracking-tighter">Gestion<span style="color:var(--cyan)">IT</span></div>
+            <address class="not-italic opacity-40 text-[10px] uppercase tracking-[0.3em] space-y-2 mb-8">
                 <p>Santo Domingo, República Dominicana</p>
                 <p>809.332.1705 | info@gestionit.com.do</p>
             </address>
-            <p class="text-[9px] text-slate-300">© 2026 Gestión IT. Tecnología e innovación, Sabemos cómo.</p>
+            <p class="text-[9px] opacity-30 uppercase tracking-widest">© 2026 Gestión IT. Sabemos cómo.</p>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
-        const btn = document.getElementById('mobile-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        
+        // --- LÓGICA DE TEMA PERSISTENTE ---
+        const themeBtn = document.getElementById('theme-btn');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        updateIcon(savedTheme);
+
+        themeBtn.onclick = () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        };
+
+        const mobileBtn = document.getElementById('mobile-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(mobileBtn) mobileBtn.onclick = () => mobileMenu.classList.toggle('hidden');
     </script>
 </body>
 </html>
