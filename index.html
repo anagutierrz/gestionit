@@ -7,6 +7,13 @@
     <title>Gestión IT | Tecnología e Innovación, Sabemos cómo.</title>
     <meta name="description" content="Expertos en Ciberseguridad, Infraestructura y Soporte MSP en República Dominicana. Más de 15 años brindando soluciones de TI de alto nivel.">
     
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,7 +28,6 @@
             --text-main: #1E293B;
             --card-bg: #FFFFFF;
             --border-color: rgba(0, 0, 0, 0.05);
-            --footer-bg: #0F172A;
         }
 
         [data-theme='dark'] {
@@ -29,7 +35,6 @@
             --text-main: #FFFFFF;
             --card-bg: #0A0C10;
             --border-color: rgba(255, 255, 255, 0.1);
-            --footer-bg: #050505;
         }
 
         body { 
@@ -40,7 +45,6 @@
             transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* Fondo de Globo Dinámico */
         .world-bg-container {
             position: absolute;
             top: 50%; left: 50%;
@@ -51,7 +55,6 @@
             opacity: 0.5;
         }
 
-        /* Navegación Glass */
         .glass-nav { 
             background: rgba(var(--bg-main), 0.85); 
             backdrop-filter: blur(15px); 
@@ -72,21 +75,22 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* Slider de Partners */
-        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .partners-banner { overflow: hidden; padding: 40px 0; background: transparent; white-space: nowrap; position: relative; z-index: 20; border-top: 1px solid var(--border-color); }
-        .partners-track { display: inline-flex; animation: slide 25s linear infinite; width: max-content; }
-        .partner-logo { width: 250px; display: flex; justify-content: center; align-items: center; filter: grayscale(1); opacity: 0.4; }
+        /* Banner Partners Animado */
+        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(calc(-250px * 4)); } }
+        .partners-banner { overflow: hidden; padding: 40px 0; background: transparent; position: relative; z-index: 20; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .partners-track { display: flex; width: calc(250px * 8); animation: scroll 30s linear infinite; }
+        .partner-logo { width: 250px; display: flex; justify-content: center; align-items: center; filter: grayscale(1) brightness(0) invert(1); opacity: 0.4; transition: 0.3s; }
+        .partner-logo:hover { opacity: 0.9; filter: none; }
 
         .card-custom {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             transition: 0.4s ease;
         }
+        .card-custom:hover { border-color: var(--cyan); transform: translateY(-8px); }
 
-        /* Botón de Cambio de Tema */
         .theme-toggle {
-            background: rgba(var(--cyan), 0.1);
+            background: rgba(0, 164, 228, 0.15);
             border: 1px solid var(--border-color);
             width: 45px; height: 45px;
             border-radius: 12px;
@@ -108,7 +112,7 @@
 </head>
 <body data-theme="dark">
 
-    <a href="https://wa.me/18093321705" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <a href="https://wa.me/18093321705" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -120,26 +124,25 @@
             
             <div class="flex items-center gap-6">
                 <nav class="hidden lg:flex space-x-8 items-center font-bold text-[10px] uppercase tracking-[0.2em]">
-                    <a href="#inicio" class="hover:text-cyan-400 transition">Inicio</a>
-                    <a href="infraestructura.html" class="hover:text-cyan-400 transition">Infraestructura</a>
-                    <a href="proteccion.html" class="hover:text-cyan-400 transition">Protección</a>
-                    <a href="#nosotros" class="hover:text-cyan-400 transition">Nosotros</a>
-                    <a href="#casos" class="hover:text-cyan-400 transition">Casos</a>
-                    <a href="contacto.html" class="btn-pill px-7 py-3 text-white">Diagnóstico Gratis</a>
+                    <a href="#inicio">Inicio</a>
+                    <a href="infraestructura.html">Infraestructura</a>
+                    <a href="proteccion.html">Protección</a>
+                    <a href="#nosotros">Nosotros</a>
+                    <a href="#casos">Casos</a>
+                    <a href="contacto.html" class="btn-pill px-7 py-3">Diagnóstico Gratis</a>
                 </nav>
 
-                <button class="theme-toggle" id="theme-btn" aria-label="Cambiar Tema">
+                <button class="theme-toggle" id="theme-btn">
                     <i class="fas fa-sun" id="theme-icon"></i>
                 </button>
 
                 <button class="lg:hidden text-2xl" id="mobile-btn"><i class="fas fa-bars"></i></button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden bg-black/95 absolute w-full left-0 top-full p-8 text-center space-y-6 font-bold uppercase text-xs tracking-widest border-b border-white/10">
-            <a href="#inicio" class="block py-2">Inicio</a>
-            <a href="infraestructura.html" class="block py-2">Infraestructura</a>
-            <a href="proteccion.html" class="block py-2">Protección</a>
-            <a href="contacto.html" class="block py-2 text-cyan-400">Diagnóstico Gratis</a>
+        <div id="mobile-menu" class="hidden lg:hidden bg-black/95 absolute w-full left-0 top-full p-8 text-center space-y-6 font-bold uppercase text-xs tracking-widest">
+            <a href="#inicio" class="block">Inicio</a>
+            <a href="infraestructura.html" class="block">Infraestructura</a>
+            <a href="contacto.html" class="block text-cyan-400">Diagnóstico Gratis</a>
         </div>
     </header>
 
@@ -157,100 +160,91 @@
                     <p class="text-base md:text-xl opacity-80 mb-10 max-w-xl leading-relaxed">
                         Más de 15 años proveyendo soluciones integrales y escalables para atender las necesidades tecnológicas críticas de la República Dominicana.
                     </p>
-                    <a href="contacto.html" class="btn-pill px-10 py-5 text-center text-white font-bold uppercase text-xs tracking-widest">Solicitar Diagnóstico</a>
+                    <a href="contacto.html" class="btn-pill px-10 py-5 font-bold uppercase text-xs tracking-widest inline-block">Solicitar Diagnóstico</a>
                 </div>
                 <div class="hidden lg:block relative" data-aos="fade-left">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80" alt="Soporte IT" class="rounded-[50px] border border-white/5 shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80" alt="Consultoría IT" class="rounded-[50px] border border-white/5 shadow-2xl">
                 </div>
             </div>
         </section>
 
-        <div class="partners-banner">
-            <p class="text-center text-[10px] uppercase tracking-[0.4em] mb-8 text-slate-500 font-bold">Partners Tecnológicos Certificados</p>
+        <section class="partners-banner">
+            <p class="text-center text-[10px] uppercase tracking-[0.4em] mb-10 opacity-50 font-bold">Partners Tecnológicos Certificados</p>
             <div class="partners-track">
-                <img src="Partner1.png" class="partner-logo"> <img src="partner2.png" class="partner-logo">
-                <img src="parnert3.png" class="partner-logo"> <img src="partner4.png" class="partner-logo">
-                <img src="Partner1.png" class="partner-logo"> <img src="partner2.png" class="partner-logo">
+                <div class="partner-logo"><img src="Partner1.png" alt="P1"></div>
+                <div class="partner-logo"><img src="partner2.png" alt="P2"></div>
+                <div class="partner-logo"><img src="parnert3.png" alt="P3"></div>
+                <div class="partner-logo"><img src="partner4.png" alt="P4"></div>
+                <div class="partner-logo"><img src="Partner1.png" alt="P1"></div>
+                <div class="partner-logo"><img src="partner2.png" alt="P2"></div>
+                <div class="partner-logo"><img src="parnert3.png" alt="P3"></div>
+                <div class="partner-logo"><img src="partner4.png" alt="P4"></div>
             </div>
-        </div>
+        </section>
 
         <section id="servicios" class="py-24 px-6 relative z-10">
-            <div class="container mx-auto">
-                <div class="text-center mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-5xl font-extrabold mb-4 uppercase tracking-tighter">Ingeniería que impulsa negocios</h2>
-                    <div class="w-20 h-1 bg-cyan-500 mx-auto"></div>
-                </div>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <article class="card-custom p-10 rounded-3xl" data-aos="fade-up">
-                        <i class="fas fa-server text-cyan-400 text-3xl mb-6"></i>
-                        <h3 class="text-xl font-bold mb-4">Infraestructura</h3>
-                        <p class="opacity-70 text-sm leading-relaxed mb-8">Arquitectura TI moderna, escalable y segura que genera ventajas competitivas reales.</p>
-                        <a href="infraestructura.html" class="text-xs font-black uppercase text-cyan-400 transition">Ver más →</a>
-                    </article>
-                    <article class="card-custom p-10 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
-                        <i class="fas fa-shield-alt text-cyan-400 text-3xl mb-6"></i>
-                        <h3 class="text-xl font-bold mb-4">Protección</h3>
-                        <p class="opacity-70 text-sm leading-relaxed mb-8">Ciberseguridad avanzada para blindar su información contra amenazas globales.</p>
-                        <a href="proteccion.html" class="text-xs font-black uppercase text-cyan-400 transition">Ver más →</a>
-                    </article>
-                    <article class="card-custom p-10 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
-                        <i class="fas fa-headset text-cyan-400 text-3xl mb-6"></i>
-                        <h3 class="text-xl font-bold mb-4">Soporte & Gestión</h3>
-                        <p class="opacity-70 text-sm leading-relaxed mb-8">Especialistas en mantener entornos críticos rindiendo a su máximo nivel técnico.</p>
-                        <a href="soporte.html" class="text-xs font-black uppercase text-cyan-400 transition">Ver más →</a>
-                    </article>
-                </div>
+            <div class="container mx-auto grid md:grid-cols-3 gap-8">
+                <article class="card-custom p-10 rounded-3xl" data-aos="fade-up">
+                    <i class="fas fa-server text-cyan-400 text-3xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4">Infraestructura</h3>
+                    <p class="opacity-70 text-sm leading-relaxed mb-8">Arquitectura TI moderna, escalable y segura que genera ventajas competitivas reales.</p>
+                </article>
+                <article class="card-custom p-10 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-shield-alt text-cyan-400 text-3xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4">Protección</h3>
+                    <p class="opacity-70 text-sm leading-relaxed mb-8">Ciberseguridad avanzada para blindar su información contra amenazas globales.</p>
+                </article>
+                <article class="card-custom p-10 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-headset text-cyan-400 text-3xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4">Soporte & Gestión</h3>
+                    <p class="opacity-70 text-sm leading-relaxed mb-8">Especialistas en mantener entornos críticos rindiendo a su máximo nivel técnico.</p>
+                </article>
             </div>
         </section>
 
         <section id="nosotros" class="py-24 px-6">
             <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
                 <div data-aos="fade-right">
-                    <h2 class="text-4xl md:text-5xl font-extrabold mb-10 leading-tight">Socio Estratégico de <br><span class="text-gradient">tu Crecimiento.</span></h2>
-                    <div class="space-y-8">
-                        <div class="flex gap-6"><div class="w-1.5 h-auto rounded-full bg-cyan-500"></div><div><h4 class="font-bold uppercase text-xs tracking-widest mb-1">Confianza</h4><p class="opacity-70 text-sm">Transparencia absoluta en cada proceso técnico.</p></div></div>
-                        <div class="flex gap-6"><div class="w-1.5 h-auto rounded-full bg-cyan-500"></div><div><h4 class="font-bold uppercase text-xs tracking-widest mb-1">Responsabilidad</h4><p class="opacity-70 text-sm">Compromiso total con la continuidad de su negocio.</p></div></div>
-                        <div class="flex gap-6"><div class="w-1.5 h-auto rounded-full bg-cyan-500"></div><div><h4 class="font-bold uppercase text-xs tracking-widest mb-1">Compromiso</h4><p class="opacity-70 text-sm">Excelencia proactiva para evitar interrupciones.</p></div></div>
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-10">Socio Estratégico de <br><span class="text-gradient">tu Crecimiento.</span></h2>
+                    <div class="space-y-6 opacity-80">
+                        <p><strong>Confianza:</strong> Transparencia absoluta en cada proceso técnico.</p>
+                        <p><strong>Responsabilidad:</strong> Compromiso total con su negocio.</p>
+                        <p><strong>Excelencia:</strong> Gestión proactiva para evitar interrupciones.</p>
                     </div>
                 </div>
-                <div class="relative" data-aos="zoom-in">
-                    <img src="https://images.unsplash.com/photo-1573163281530-5be9c294833e?auto=format&fit=crop&q=80" alt="Equipo Gestión IT" class="rounded-[40px] shadow-xl">
+                <div class="relative" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1573163281530-5be9c294833e?auto=format&fit=crop&q=80" alt="Equipo RD" class="rounded-[40px] shadow-xl">
                 </div>
             </div>
         </section>
 
-        <section id="casos" class="py-24 px-6">
+        <section id="casos" class="py-24 px-6 bg-opacity-10" style="background: rgba(0,164,228,0.03)">
             <div class="container mx-auto">
-                <div class="text-center mb-16" data-aos="fade-up">
-                    <h2 class="text-4xl md:text-5xl font-extrabold uppercase tracking-tighter">Casos de Éxito</h2>
-                    <p class="opacity-60 mt-4">Resultados tangibles para empresas líderes.</p>
-                </div>
-                <div class="grid md:grid-cols-2 gap-10">
-                    <article class="card-custom p-10" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-center mb-16 uppercase tracking-tighter">Casos de Éxito</h2>
+                <div class="grid md:grid-cols-2 gap-10 text-left">
+                    <article class="card-custom p-10">
                         <span class="text-cyan-400 text-[10px] font-bold tracking-widest uppercase">Sector Servicios</span>
                         <h4 class="text-2xl font-bold mt-4 mb-4">Optimización de Data Center</h4>
-                        <p class="opacity-70 text-sm mb-6">Reducción del 40% en tiempos de caída mediante arquitectura híbrida.</p>
-                        <a href="casosexito.html" class="text-xs font-bold border-b-2 border-cyan-600">Leer más</a>
+                        <p class="opacity-70 text-sm">Reducción del 40% en tiempos de caída mediante arquitectura híbrida.</p>
                     </article>
-                    <article class="card-custom p-10" data-aos="fade-up" data-aos-delay="100">
+                    <article class="card-custom p-10">
                         <span class="text-cyan-400 text-[10px] font-bold tracking-widest uppercase">Sector Industrial</span>
                         <h4 class="text-2xl font-bold mt-4 mb-4">Blindaje de Ciberseguridad</h4>
-                        <p class="opacity-70 text-sm mb-6">Implementación de SOC y respuesta proactiva ante Ransomware.</p>
-                        <a href="casosexito.html" class="text-xs font-bold border-b-2 border-cyan-600">Leer más</a>
+                        <p class="opacity-70 text-sm">Implementación de SOC y respuesta proactiva ante Ransomware.</p>
                     </article>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="py-16 text-center px-6 border-t border-white/5" style="background: var(--footer-bg);">
+    <footer class="py-16 text-center px-6 border-t border-white/5">
         <div class="container mx-auto">
-            <div class="font-extrabold text-2xl mb-10 tracking-tighter">Gestion<span style="color:var(--cyan)">IT</span></div>
-            <address class="not-italic opacity-50 text-xs md:text-sm space-y-2 uppercase tracking-[0.2em] mb-12">
-                <p>Calle Dr. Jacinto Ignacio Mañón #25, Santo Domingo, RD.</p>
+            <div class="font-extrabold text-2xl mb-8 tracking-tighter">Gestion<span style="color:var(--cyan)">IT</span></div>
+            <address class="not-italic opacity-50 text-xs md:text-sm space-y-2 uppercase tracking-[0.2em] mb-8">
+                <p>Santo Domingo, República Dominicana</p>
                 <p>809 332 1705 | info@gestionit.com.do</p>
             </address>
-            <p class="opacity-30 text-[9px] uppercase tracking-widest">© 2026 Gestión IT. Tecnología e innovación, Sabemos cómo.</p>
+            <p class="opacity-20 text-[9px] uppercase tracking-widest">© 2026 Gestión IT. Sabemos cómo.</p>
         </div>
     </footer>
 
@@ -258,21 +252,33 @@
     <script>
         AOS.init({ duration: 1000, once: true });
         
-        // PERSISTENCIA DE TEMA
+        // --- LÓGICA DE TEMA PERSISTENTE MEJORADA ---
         const themeBtn = document.getElementById('theme-btn');
         const themeIcon = document.getElementById('theme-icon');
-        const body = document.body;
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        
-        function applyTheme(theme) {
-            body.setAttribute('data-theme', theme);
-            themeIcon.classList.replace(theme === 'dark' ? 'fa-sun' : 'fa-moon', theme === 'dark' ? 'fa-moon' : 'fa-sun');
-            localStorage.setItem('theme', theme);
-        }
-        applyTheme(currentTheme);
-        themeBtn.onclick = () => applyTheme(body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        const html = document.documentElement;
 
-        // GLOBO TERRÁQUEO
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+
+        // Aplicar el tema guardado inmediatamente al cargar el JS
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        updateIcon(savedTheme);
+
+        themeBtn.onclick = () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        };
+
+        // Globo Terráqueo
         const canvas = document.getElementById('globe-canvas');
         const ctx = canvas.getContext('2d');
         let points = [];
@@ -301,7 +307,7 @@
                 const y2 = p.y * scale + centerY;
                 if (z1 > -50) {
                     ctx.beginPath();
-                    ctx.arc(x2, y2, 1.2 * scale, 0, Math.PI * 2);
+                    ctx.arc(x2, y2, 1.3 * scale, 0, Math.PI * 2);
                     ctx.fillStyle = `rgba(0, 164, 228, ${0.45 * scale})`;
                     ctx.fill();
                 }
@@ -310,10 +316,8 @@
         }
         initGlobe(); draw();
         window.onresize = initGlobe;
-        
-        const mobileBtn = document.getElementById('mobile-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileBtn.onclick = () => mobileMenu.classList.toggle('hidden');
+
+        document.getElementById('mobile-btn').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
     </script>
 </body>
 </html>
