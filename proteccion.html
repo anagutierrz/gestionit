@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Protección y Ciberseguridad | Gestión IT - Seguridad Sincronizada en RD</title>
-    <meta name="description" content="Blindamos su empresa con Seguridad Sincronizada. Expertos en Sophos Firewall, ADAudit Plus y Password Manager Pro en República Dominicana.">
-    <meta name="keywords" content="Ciberseguridad RD, Sophos Firewall República Dominicana, ADAudit Plus, Password Manager Pro, Seguridad TI Santo Domingo">
+    <title>Protección y Ciberseguridad | Gestión IT - Blindaje Empresarial RD</title>
+    <meta name="description" content="Protección perimetral, seguridad de datos y consultoría en ciberseguridad en República Dominicana. Más de 15 años protegiendo activos críticos.">
     
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,12 +24,52 @@
         :root {
             --navy: #002D5A; 
             --cyan: #00A4E4;
+            --bg-main: #FFFFFF;
             --text-main: #1E293B;
+            --card-bg: #FFFFFF;
+            --border-color: rgba(0, 0, 0, 0.05);
+            --section-alt: #F8FAFC;
         }
 
-        body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); background-color: #FFFFFF; }
+        [data-theme='dark'] {
+            --bg-main: #000000;
+            --text-main: #FFFFFF;
+            --card-bg: #0A0C10;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --section-alt: #050505;
+        }
 
-        /* Botón WhatsApp Flotante */
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg-main); 
+            color: var(--text-main); 
+            overflow-x: hidden; 
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .glass-nav { 
+            background: rgba(var(--bg-main), 0.85); 
+            backdrop-filter: blur(15px); 
+            border-bottom: 1px solid var(--border-color); 
+            z-index: 100;
+        }
+        
+        .btn-pill {
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--cyan) 100%);
+            transition: 0.4s ease;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0, 164, 228, 0.2);
+        }
+
+        .theme-toggle {
+            background: rgba(0, 164, 228, 0.15);
+            border: 1px solid var(--border-color);
+            width: 42px; height: 42px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; color: var(--cyan);
+        }
+
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
             background-color: #25d366; color: #FFF;
@@ -31,191 +77,151 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 30px; z-index: 1000;
             box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
-            animation: pulse-green 2s infinite;
-        }
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+            animation: pulse-whatsapp 2s infinite;
         }
 
-        .glass-nav { 
-            background: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(15px); 
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+        @keyframes pulse-whatsapp {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
-        .btn-pill {
-            border-radius: 50px;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--cyan) 100%);
-            transition: all 0.3s ease;
-            color: white;
-            box-shadow: 0 8px 15px rgba(0, 45, 90, 0.2);
-        }
-        .btn-pill:hover { transform: translateY(-2px); box-shadow: 0 12px 20px rgba(0, 164, 228, 0.3); }
+        .image-container { border-radius: 40px; overflow: hidden; height: 450px; border: 1px solid var(--border-color); }
+        .image-container img { transition: transform 0.6s ease; width: 100%; height: 100%; object-fit: cover; }
+        .image-container:hover img { transform: scale(1.05); }
 
-        .feature-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            border-radius: 30px;
-            transition: all 0.4s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
-        }
-        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); border-color: var(--cyan); }
+        .bg-alt { background-color: var(--section-alt); }
     </style>
 </head>
-<body>
+<body data-theme="dark">
 
-    <a href="https://wa.me/18093321705" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/18093321705" class="whatsapp-float" target="_blank" title="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-   <header class="fixed w-full z-50 glass-nav py-4">
+    <header class="fixed w-full py-4 glass-nav">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="logo gestion it.jpeg" alt="Gestión IT Logo" class="h-10 md:h-12 w-auto object-contain">
-            </div>
+            <a href="index.html" class="flex items-center font-extrabold text-xl md:text-2xl tracking-tighter">
+                <span>Gestion</span><span style="color:var(--cyan)">IT</span>
+            </a>
             
-            <nav class="hidden lg:flex space-x-8 items-center font-bold text-[11px] uppercase tracking-widest">
-                <a href="index.html" class="text-slate-700 hover:text-blue-600 transition">Inicio</a>
-                <a href="infraestructura.html" class="text-slate-700 hover:text-blue-600 transition">Infraestructura</a>
-                <a href="proteccion.html" class="text-slate-700 hover:text-blue-600 transition">Protección</a>
-                <a href="nosotros.html" class="text-slate-700 hover:text-blue-600 transition">Nosotros</a>
-                <a href="casosexito.html" class="text-slate-700 hover:text-blue-600 transition">Casos de Exito</a>
-                <a href="formulario.html" class="btn-pill px-6 py-2.5 text-white">Diagnóstico Gratis</a>
-            </nav>
+            <div class="flex items-center gap-4 md:gap-8">
+                <nav class="hidden lg:flex space-x-8 items-center font-bold text-[10px] uppercase tracking-[0.2em]">
+                    <a href="index.html">Inicio</a>
+                    <a href="infraestructura.html">Infraestructura</a>
+                    <a href="proteccion.html" class="text-cyan-400">Protección</a>
+                    <a href="nosotros.html">Nosotros</a>
+                    <a href="casosexito.html">Casos</a>
+                    <a href="contacto.html" class="btn-pill px-6 py-2.5 text-white text-[10px]">Diagnóstico Gratis</a>
+                </nav>
 
-            <button class="lg:hidden text-slate-800" id="mobile-btn">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+                <button class="theme-toggle" id="theme-btn">
+                    <i class="fas fa-sun" id="theme-icon"></i>
+                </button>
+
+                <button class="lg:hidden text-2xl" id="mobile-btn"><i class="fas fa-bars"></i></button>
+            </div>
         </div>
-        
-        <div id="mobile-menu" class="hidden lg:hidden bg-white p-6 space-y-4 text-center font-bold uppercase text-xs tracking-widest border-t border-slate-100">
-            <a href="index.html" class="block py-2 text-slate-700">Inicio</a>
-            <a href="infraestructura.html" class="block py-2 text-slate-700">Infraestructura</a>
-            <a href="proteccion.html" class="block py-2 text-slate-700">Protección</a>
-            <a href="nosotros.html" class="block py-2 text-slate-700">Nosotros</a>
-            <a href="casosexito.html" class="text-slate-700 hover:text-blue-600 transition">Casos de Exito</a>
-            <a href="formulario.html" class="block py-2 text-blue-600 font-black">Diagnóstico Gratis</a>
+        <div id="mobile-menu" class="hidden lg:hidden bg-black/95 absolute w-full left-0 top-full p-8 text-center space-y-6 font-bold uppercase text-xs tracking-widest border-b border-white/10">
+            <a href="index.html" class="block">Inicio</a>
+            <a href="infraestructura.html" class="block">Infraestructura</a>
+            <a href="proteccion.html" class="block text-cyan-400">Protección</a>
+            <a href="contacto.html" class="block text-cyan-400">Diagnóstico Gratis</a>
         </div>
     </header>
 
     <main>
-        <section class="pt-44 pb-20 px-6 bg-slate-50">
+        <section class="pt-44 pb-20 px-6 bg-alt">
             <div class="container mx-auto text-center max-w-4xl" data-aos="fade-up">
-                <span class="text-blue-600 font-extrabold text-[11px] uppercase tracking-[0.4em] mb-4 block">Defensa Inteligente</span>
-                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 leading-tight">Protección</h1>
-                <p class="text-xl text-slate-500 font-medium italic mb-4">Los hackers coordinan sus ataques. Es tiempo de coordinar su seguridad.</p>
-                <div class="w-20 h-1.5 bg-blue-600 mx-auto mt-8 rounded-full"></div>
+                <span class="text-cyan-500 font-extrabold text-[11px] uppercase tracking-[0.4em] mb-4 block text-center">Seguridad Avanzada</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight">Protección</h1>
+                <p class="text-xl opacity-60 font-medium leading-relaxed italic">Blindaje total contra amenazas globales para la continuidad de su negocio.</p>
+                <div class="w-20 h-1.5 bg-cyan-500 mx-auto mt-8 rounded-full"></div>
             </div>
         </section>
 
-        <section class="py-24 px-6 bg-white">
+        <section class="py-20 px-6">
+            <div class="container mx-auto max-w-5xl text-center" data-aos="fade-up">
+                <p class="text-lg opacity-80 leading-relaxed mb-10">
+                    En GestiónIT implementamos estrategias de defensa multicapa. Combinamos tecnología de punta con monitoreo constante para neutralizar ransomware, phishing y ataques dirigidos antes de que afecten su operatividad.
+                </p>
+                <a href="contacto.html" class="btn-pill px-10 py-4 text-xs font-bold uppercase tracking-widest inline-block">Consultar Plan de Blindaje</a>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 bg-alt">
             <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
                 <div data-aos="fade-right">
-                    <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Un nuevo enfoque a la seguridad TI</h2>
-                    <p class="text-slate-600 mb-8 leading-relaxed">
-                        El rápido crecimiento de ataques complejos está dejando atrás la capacidad de protección de muchas organizaciones. 
-                        La <strong>Seguridad Sincronizada</strong> es un sistema excepcional que permite a sus defensas estar tan coordinadas como los ataques contra los que protegen.
+                    <h2 class="text-3xl font-extrabold mb-6">Seguridad Perimetral y SOC</h2>
+                    <p class="opacity-70 mb-8 leading-relaxed text-justify">
+                        Implementamos Firewalls de próxima generación (NGFW) y centros de operaciones de seguridad (SOC) que vigilan su red 24/7. Nuestra solución no solo detecta, sino que responde de forma automatizada ante comportamientos anómalos en el tráfico de datos.
                     </p>
-                    <p class="text-slate-600 mb-10 leading-relaxed">
-                        Combinamos una plataforma intuitiva con productos galardonados que actúan juntos activamente para bloquear amenazas avanzadas.
-                    </p>
-                    <a href="contacto.html" class="btn-pill px-10 py-4 text-sm inline-block">Consultar Seguridad Sincronizada</a>
-                </div>
-                <div class="rounded-[40px] overflow-hidden shadow-2xl" data-aos="fade-left">
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80" alt="Ciberseguridad Avanzada" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </section>
-
-        <section class="py-24 px-6 bg-slate-50">
-            <div class="container mx-auto">
-                <div class="flex flex-col lg:flex-row gap-16 items-center">
-                    <div class="lg:w-1/2 order-2 lg:order-1" data-aos="zoom-in">
-                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80" alt="Sophos Firewall" class="rounded-[40px] shadow-xl">
-                    </div>
-                    <div class="lg:w-1/2 order-1 lg:order-2" data-aos="fade-left">
-                        <h3 class="text-blue-600 font-bold uppercase text-xs tracking-widest mb-4">Protección y Rendimiento</h3>
-                        <h2 class="text-4xl font-extrabold text-slate-900 mb-6">Sophos Firewall: Arquitectura Xstream</h2>
-                        <p class="text-slate-600 mb-8">
-                            Proteja su red de las amenazas más recientes mientras acelera su tráfico importante de SaaS, SD-WAN y aplicaciones en la nube.
-                        </p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-                            <div class="flex items-center gap-3"><i class="fas fa-search text-blue-500"></i> <span class="text-sm font-bold">Detecte Riesgos Ocultos</span></div>
-                            <div class="flex items-center gap-3"><i class="fas fa-shield-virus text-blue-500"></i> <span class="text-sm font-bold">Detenga Amenazas</span></div>
-                            <div class="flex items-center gap-3"><i class="fas fa-unplug text-blue-500"></i> <span class="text-sm font-bold">Aísle Sistemas Infectados</span></div>
-                        </div>
-                        <a href="contacto.html" class="btn-pill px-10 py-4 text-sm inline-block">Ver Ficha Técnica Sophos</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-24 px-6 bg-white">
-            <div class="container mx-auto grid lg:grid-cols-2 gap-12">
-                <div class="feature-card p-12" data-aos="fade-up">
-                    <h3 class="text-2xl font-bold mb-6">ADAudit Plus</h3>
-                    <p class="text-slate-500 text-sm mb-8">Audite cambios y supervise inicios de sesión de usuarios privilegiados en su red Windows de forma automática.</p>
-                    <ul class="space-y-3 text-sm font-semibold text-slate-700">
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Supervise inicios de sesión</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Solucione cuentas bloqueadas</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Audite cambios en tiempo real</li>
+                    <ul class="space-y-4 mb-8 text-sm opacity-80">
+                        <li><i class="fas fa-check text-cyan-400 mr-2"></i> Prevención de Intrusiones (IPS)</li>
+                        <li><i class="fas fa-check text-cyan-400 mr-2"></i> Filtrado de Contenido Avanzado</li>
+                        <li><i class="fas fa-check text-cyan-400 mr-2"></i> VPNs Encriptadas de Alta Velocidad</li>
                     </ul>
                 </div>
-                <div class="feature-card p-12" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-2xl font-bold mb-6">EventLog Analyzer</h3>
-                    <p class="text-slate-500 text-sm mb-8">Software para la gestión de logs de eventos y cumplimiento de normas de TI para sistemas SIEM.</p>
-                    <div class="bg-slate-50 p-6 rounded-2xl">
-                        <p class="text-blue-600 font-black text-xs uppercase tracking-widest italic">Libere el verdadero valor de sus logs</p>
-                    </div>
+                <div class="image-container shadow-2xl" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80" alt="Ciberseguridad">
                 </div>
             </div>
         </section>
 
-        <section class="py-24 px-6 bg-slate-900 text-white rounded-[60px] mx-6 mb-24 overflow-hidden relative">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[100px]"></div>
-            <div class="container mx-auto relative z-10 text-center">
-                <h2 class="text-4xl font-extrabold mb-6">Password Manager Pro</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto mb-12">
-                    Seguridad de contraseñas de TI para más de 300,000 administradores. Gestione millones de contraseñas privilegiadas diariamente.
-                </p>
-                <div class="grid md:grid-cols-3 gap-8 text-left mb-16">
-                    <div class="p-6 border border-white/10 rounded-3xl">
-                        <h4 class="font-bold text-cyan-400 mb-3">Gestión Centralizada</h4>
-                        <p class="text-xs text-slate-400 leading-relaxed">Elimine la fatiga de contraseñas mediante un medio seguro y centralizado de acceso.</p>
-                    </div>
-                    <div class="p-6 border border-white/10 rounded-3xl">
-                        <h4 class="font-bold text-cyan-400 mb-3">Automatización</h4>
-                        <p class="text-xs text-slate-400 leading-relaxed">Automatice cambios de contraseñas frecuentes en sistemas críticos para mejorar la productividad.</p>
-                    </div>
-                    <div class="p-6 border border-white/10 rounded-3xl">
-                        <h4 class="font-bold text-cyan-400 mb-3">Alertas Real-Time</h4>
-                        <p class="text-xs text-slate-400 leading-relaxed">Workflows de aprobación y alertas inmediatas para garantizar la integridad regulatoria (HIPAA, PCI).</p>
-                    </div>
+        <section class="py-24 px-6">
+            <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                <div class="image-container shadow-2xl order-2 lg:order-1" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80" alt="Backup de Datos">
                 </div>
-                <a href="contacto.html" class="btn-pill px-12 py-5 text-sm inline-block shadow-2xl">Implementar Password Manager Pro</a>
+                <div class="order-1 lg:order-2" data-aos="fade-left">
+                    <h2 class="text-3xl font-extrabold mb-6">Protección de Datos y Backup</h2>
+                    <p class="opacity-70 mb-8 leading-relaxed text-justify">
+                        La última línea de defensa es su copia de seguridad. Diseñamos planes de recuperación ante desastres (DRP) que garantizan que su información esté disponible incluso en los escenarios más críticos. Cumplimos con estándares internacionales de encriptación de datos en reposo y en tránsito.
+                    </p>
+                    <a href="contacto.html" class="btn-pill px-10 py-4 text-xs font-bold uppercase tracking-widest inline-block">Ver Soluciones de Respaldo</a>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="py-16 bg-white text-center border-t border-slate-100">
-        <div class="container mx-auto px-6">
-            <img src="logo gestion it.jpeg" alt="Gestión IT" class="h-10 mx-auto mb-10 opacity-60">
-            <address class="not-italic text-slate-400 text-[10px] uppercase tracking-[0.3em] space-y-2 mb-8">
-                <p>Santo Domingo, República Dominicana</p>
-                <p>809.332.1705 | info@gestionit.com.do</p>
-            </address>
-            <p class="text-[9px] text-slate-300">© 2026 Gestión IT. Tecnología e innovación, Sabemos cómo.</p>
+    <footer class="py-16 text-center px-6 border-t border-white/5 bg-alt">
+        <div class="container mx-auto text-center">
+            <div class="font-extrabold text-2xl mb-8 tracking-tighter">Gestion<span style="color:var(--cyan)">IT</span></div>
+            <p class="text-[10px] uppercase tracking-[0.4em] opacity-40 italic mb-4">Tecnología e innovación, Sabemos cómo.</p>
+            <p class="text-[9px] opacity-30 uppercase tracking-widest">© 2026 Gestión IT. República Dominicana.</p>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
-        const btn = document.getElementById('mobile-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        
+        // --- LÓGICA DE TEMA PERSISTENTE UNIFICADA ---
+        const themeBtn = document.getElementById('theme-btn');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        updateIcon(savedTheme);
+
+        themeBtn.onclick = () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        };
+
+        const mobileBtn = document.getElementById('mobile-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(mobileBtn) mobileBtn.onclick = () => mobileMenu.classList.toggle('hidden');
     </script>
 </body>
 </html>
