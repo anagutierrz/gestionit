@@ -1,109 +1,40 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Gestión IT | Tecnología e Innovación, Sabemos cómo.</title>
-    <meta name="description" content="Expertos en Ciberseguridad, Infraestructura y Soporte MSP en República Dominicana. Más de 15 años brindando soluciones de TI de alto nivel.">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+<header class="fixed w-full py-4 glass-nav">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+        <a href="index.html" class="flex items-center">
+            <img src="logogestionit.png" alt="Gestión IT Logo" class="h-10 md:h-12 w-auto object-contain transition-all duration-500 logo-img">
+        </a>
         
-        :root {
-            --navy: #002D5A; 
-            --cyan: #00A4E4;
-            --bg-main: #FFFFFF;
-            --text-main: #1E293B;
-            --card-bg: #FFFFFF;
-            --border-color: rgba(0, 0, 0, 0.05);
-        }
+        <div class="flex items-center gap-8">
+            <nav class="hidden lg:flex space-x-8 items-center font-bold text-[10px] uppercase tracking-[0.2em]">
+                <a href="#inicio" class="hover:text-cyan-400 transition">Inicio</a>
+                <a href="infraestructura.html" class="hover:text-cyan-400 transition">Infraestructura</a>
+                <a href="proteccion.html" class="hover:text-cyan-400 transition">Protección</a>
+                <a href="#nosotros" class="hover:text-cyan-400 transition">Nosotros</a>
+                <a href="#casos" class="hover:text-cyan-400 transition">Casos</a>
+                <a href="contacto.html" class="btn-pill px-7 py-3 text-white">Diagnóstico Gratis</a>
+            </nav>
 
-        [data-theme='dark'] {
-            --bg-main: #000000;
-            --text-main: #FFFFFF;
-            --card-bg: #0A0C10;
-            --border-color: rgba(255, 255, 255, 0.08);
-        }
+            <button class="theme-toggle" id="theme-btn" aria-label="Cambiar Tema">
+                <i class="fas fa-sun" id="theme-icon"></i>
+            </button>
 
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--bg-main); 
-            color: var(--text-main); 
-            overflow-x: hidden; 
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
+            <button class="lg:hidden text-2xl" id="mobile-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </div>
+</header>
 
-        /* Globo Terráqueo Dinámico */
-        .world-bg-container {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100vw; height: 100vh;
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0.5;
-        }
-
-        /* Navegación Glass */
-        .glass-nav { 
-            background: rgba(var(--bg-main), 0.85); 
-            backdrop-filter: blur(15px); 
-            border-bottom: 1px solid var(--border-color); 
-            z-index: 100;
-        }
-        
-        .btn-pill {
-            border-radius: 50px;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--cyan) 100%);
-            transition: 0.4s ease;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0, 164, 228, 0.2);
-        }
-
-        .text-gradient {
-            background: linear-gradient(to right, var(--text-main), var(--cyan));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-
-        /* Slider de Partners */
-        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .logos-slider { overflow: hidden; padding: 40px 0; background: transparent; white-space: nowrap; position: relative; z-index: 20; border-top: 1px solid var(--border-color); }
-        .logos-slide-track { display: inline-flex; animation: slide 25s linear infinite; width: max-content; }
-        .logos-slide-track img { height: 50px; margin: 0 40px; opacity: 0.5; filter: grayscale(100%) brightness(0) invert(1); transition: 0.3s; }
-
-        .card-custom {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            transition: 0.4s ease;
-        }
-
-        /* Botón de Cambio de Tema Corregido */
-        .theme-toggle {
-            background: rgba(var(--cyan), 0.1);
-            border: 1px solid var(--border-color);
-            width: 45px; height: 45px;
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer;
-            transition: 0.3s;
-            color: var(--cyan);
-        }
-
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background-color: #25d366; color: #FFF;
-            border-radius: 50px; width: 60px; height: 60px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 30px; z-index: 1000;
-            box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
-        }
-    </style>
-</head>
+<style>
+    /* Estilo adicional para asegurar visibilidad del logo en modo oscuro */
+    [data-theme='dark'] .logo-img {
+        filter: brightness(0) invert(1); /* Convierte el logo a blanco si es necesario, o ajusta el brillo */
+        opacity: 0.9;
+    }
+    
+    /* Si tu logo ya tiene color y solo quieres que resalte */
+    /* [data-theme='dark'] .logo-img { filter: drop-shadow(0 0 5px rgba(255,255,255,0.2)); } */
+</style>
 <body data-theme="dark">
 
     <a href="https://wa.me/18093321705" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
