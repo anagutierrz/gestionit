@@ -102,6 +102,12 @@
             font-size: 30px; z-index: 1000;
             box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
         }
+/* Esto asegura que el logo resalte en el fondo negro */
+[data-theme='dark'] .logo-img {
+    filter: brightness(0) invert(1); 
+    opacity: 0.9;
+}
+        
     </style>
 </head>
 <body data-theme="dark">
