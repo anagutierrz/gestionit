@@ -6,7 +6,12 @@
     
     <title>Gestión IT | Liderazgo técnico, resultados que trascienden.</title>
     <meta name="description" content="Expertos en Ciberseguridad, Infraestructura y Soporte MSP en República Dominicana. Más de 15 años brindando soluciones de TI de alto nivel.">
-    
+    <script>
+    (function() {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+</script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -244,36 +249,38 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
+   <script>
+    const themeBtn = document.getElementById('theme-btn');
+    const themeIcon = document.getElementById('theme-icon');
+    const mainLogo = document.getElementById('main-logo');
+    const html = document.documentElement;
+
+    function applyTheme(theme) {
+        html.setAttribute('data-theme', theme);
         
-        const themeBtn = document.getElementById('theme-btn');
-        const themeIcon = document.getElementById('theme-icon');
-        const mainLogo = document.getElementById('main-logo');
-        const body = document.body;
-
-        // Función unificada para aplicar el tema y cambiar el logo
-        function applyTheme(theme) {
-            body.setAttribute('data-theme', theme);
-            if (theme === 'dark') {
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-                mainLogo.src = 'logogestionitblanco.png'; // Cambia a logo blanco
-            } else {
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-                mainLogo.src = 'logogestionit.png'; // Cambia a logo original (negro)
-            }
-            localStorage.setItem('theme', theme);
+        // Actualiza el ícono y la imagen del logo
+        if (theme === 'dark') {
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+            if(mainLogo) mainLogo.src = 'logogestionitblanco.png';
+        } else {
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+            if(mainLogo) mainLogo.src = 'logogestionit.png';
         }
+        
+        // Guarda la elección para las demás páginas
+        localStorage.setItem('theme', theme);
+    }
 
-        // Carga inicial basada en localStorage
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        applyTheme(savedTheme);
+    // Leer la preferencia al cargar la página
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    applyTheme(savedTheme);
 
-        themeBtn.onclick = () => {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            applyTheme(newTheme);
-        };
+    themeBtn.onclick = () => {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+    };
+</script>
 
         // GLOBO TERRÁQUEO
         const canvas = document.getElementById('globe-canvas');
