@@ -38,7 +38,6 @@
             transition: background-color 0.5s ease, color 0.5s ease;
         }
 
-        /* Globo Terráqueo Dinámico */
         .world-bg-container {
             position: absolute;
             top: 50%; left: 50%;
@@ -49,7 +48,6 @@
             opacity: 0.5;
         }
 
-        /* Navegación Glass */
         .glass-nav { 
             background: rgba(var(--bg-main), 0.85); 
             backdrop-filter: blur(15px); 
@@ -70,11 +68,14 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* Slider de Partners */
         @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         .logos-slider { overflow: hidden; padding: 40px 0; background: transparent; white-space: nowrap; position: relative; z-index: 20; border-top: 1px solid var(--border-color); }
         .logos-slide-track { display: inline-flex; animation: slide 25s linear infinite; width: max-content; }
-        .logos-slide-track img { height: 50px; margin: 0 40px; opacity: 0.5; filter: grayscale(100%) brightness(0) invert(1); transition: 0.3s; }
+        
+        /* AJUSTE PARTNERS: Visibilidad en fondo blanco y negro */
+        .logos-slide-track img { height: 50px; margin: 0 40px; transition: 0.3s; }
+        [data-theme='dark'] .logos-slide-track img { filter: grayscale(100%) brightness(0) invert(1); opacity: 0.6; }
+        [data-theme='light'] .logos-slide-track img { filter: grayscale(100%) brightness(0.2); opacity: 0.5; }
 
         .card-custom {
             background: var(--card-bg);
@@ -82,7 +83,6 @@
             transition: 0.4s ease;
         }
 
-        /* Botón de Cambio de Tema Corregido */
         .theme-toggle {
             background: rgba(var(--cyan), 0.1);
             border: 1px solid var(--border-color);
@@ -102,12 +102,6 @@
             font-size: 30px; z-index: 1000;
             box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
         }
-/* Esto asegura que el logo resalte en el fondo negro */
-[data-theme='dark'] .logo-img {
-    filter: brightness(0) invert(1); 
-    opacity: 0.9;
-}
-        
     </style>
 </head>
 <body data-theme="dark">
@@ -119,8 +113,8 @@
     <header class="fixed w-full py-4 glass-nav">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <a href="index.html" class="flex items-center">
-    <img src="logogestionit.png" alt="Gestión IT Logo" class="h-10 md:h-12 w-auto object-contain transition-all duration-500 logo-img">
-</a>
+                <img id="main-logo" src="logogestionitblanco.png" alt="Gestión IT Logo" class="h-10 md:h-12 w-auto object-contain transition-all duration-500">
+            </a>
             <div class="flex items-center gap-8">
                 <nav class="hidden lg:flex space-x-8 items-center font-bold text-[10px] uppercase tracking-[0.2em]">
                     <a href="#inicio" class="hover:text-cyan-400 transition">Inicio</a>
@@ -128,7 +122,7 @@
                     <a href="proteccion.html" class="hover:text-cyan-400 transition">Protección</a>
                     <a href="#nosotros" class="hover:text-cyan-400 transition">Nosotros</a>
                     <a href="#casos" class="hover:text-cyan-400 transition">Casos</a>
-                    <a href="contacto.html" class="btn-pill px-7 py-3 text-white">Habla con nosotros</a>
+                    <a href="contacto.html" class="btn-pill px-7 py-3 text-white text-[10px] uppercase font-bold tracking-widest">Habla con nosotros</a>
                 </nav>
 
                 <button class="theme-toggle" id="theme-btn" aria-label="Cambiar Tema">
@@ -154,7 +148,7 @@
                     <p class="text-base md:text-xl opacity-80 mb-10 max-w-xl leading-relaxed">
                         Más de 15 años proveyendo soluciones integrales y escalables para atender las necesidades tecnológicas críticas de la República Dominicana.
                     </p>
-                    <a href="contacto.html" class="btn-pill px-10 py-5 text-center text-white font-bold uppercase text-xs tracking-widest">Habla con nosotros</a>
+                    <a href="contacto.html" class="btn-pill px-10 py-5 text-center text-white font-bold uppercase text-xs tracking-widest inline-block">Habla con nosotros</a>
                 </div>
                 <div class="hidden lg:block relative" data-aos="fade-left">
                     <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80" alt="Consultoría IT" class="rounded-[50px] border border-white/5 shadow-2xl">
@@ -165,10 +159,10 @@
         <div class="logos-slider border-y border-white/5">
             <p class="text-center text-[10px] uppercase tracking-[0.4em] mb-8 text-slate-500 font-bold">Partners Tecnológicos Certificados</p>
             <div class="logos-slide-track">
-                <img src="partner1.png" alt="Partner 1"> <img src="partner2.png" alt="Partner 1">
-                <img src="parnert2.png" alt="Partner 3"> <img src="partner4.png" alt="Partner 2">
-                <img src="Partner3.png" alt="Partner 1"> <img src="partner2.png" alt="Partner 3">
-                <img src="parnert4.png" alt="Partner 3"> <img src="partner4.png" alt="Partner 4">
+                <img src="partner1.png" alt="P1"> <img src="partner2.png" alt="P2">
+                <img src="parnert2.png" alt="P3"> <img src="partner4.png" alt="P4">
+                <img src="Partner3.png" alt="P5"> <img src="partner2.png" alt="P6">
+                <img src="parnert4.png" alt="P7"> <img src="partner4.png" alt="P8">
             </div>
         </div>
 
@@ -245,7 +239,7 @@
                 <p>Calle Dr. Jacinto Ignacio Mañón #25, Santo Domingo, RD.</p>
                 <p>809 332 1705 | info@gestionit.com.do</p>
             </address>
-            <p class="opacity-30 text-[9px] uppercase tracking-widest">© 2026 Gestión IT. Tecnología e innovación, Sabemos cómo.</p>
+            <p class="opacity-30 text-[9px] uppercase tracking-widest">© 2026 Gestión IT. Liderazgo técnico, resultados que trascienden.</p>
         </div>
     </footer>
 
@@ -253,18 +247,32 @@
     <script>
         AOS.init({ duration: 1000, once: true });
         
-        // SWITCH DE TEMA
         const themeBtn = document.getElementById('theme-btn');
         const themeIcon = document.getElementById('theme-icon');
+        const mainLogo = document.getElementById('main-logo');
         const body = document.body;
-        themeBtn.onclick = () => {
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.setAttribute('data-theme', 'light');
+
+        // Función unificada para aplicar el tema y cambiar el logo
+        function applyTheme(theme) {
+            body.setAttribute('data-theme', theme);
+            if (theme === 'dark') {
                 themeIcon.classList.replace('fa-sun', 'fa-moon');
+                mainLogo.src = 'logogestionitblanco.png'; // Cambia a logo blanco
             } else {
-                body.setAttribute('data-theme', 'dark');
                 themeIcon.classList.replace('fa-moon', 'fa-sun');
+                mainLogo.src = 'logogestionit.png'; // Cambia a logo original (negro)
             }
+            localStorage.setItem('theme', theme);
+        }
+
+        // Carga inicial basada en localStorage
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+
+        themeBtn.onclick = () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(newTheme);
         };
 
         // GLOBO TERRÁQUEO
