@@ -270,7 +270,8 @@
             localStorage.setItem('theme', theme);
         }
 
-        applyTheme(localStorage.getItem('theme') || 'dark');
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
 
         themeBtn.onclick = () => {
             const currentTheme = html.getAttribute('data-theme');
@@ -278,7 +279,6 @@
             applyTheme(newTheme);
         };
 
-        // GLOBO TERRÁQUEO DENTRO DE SCRIPT
         const canvas = document.getElementById('globe-canvas');
         const ctx = canvas.getContext('2d');
         let points = [];
@@ -316,184 +316,7 @@
         }
         initGlobe(); draw();
         window.onresize = initGlobe;
-
-        document.getElementById('mobile-btn').onclick = () => document.querySelector('nav').classList.toggle('hidden');
-    </script>
-</body>
-</html>
-
-        .world-bg-container {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 100vw; height: 100vh; z-index: 1; pointer-events: none; opacity: 0.5;
-        }
-
-        .glass-nav { 
-            background: rgba(var(--bg-main), 0.85); backdrop-filter: blur(15px); 
-            border-bottom: 1px solid var(--border-color); z-index: 100;
-        }
         
-        .btn-pill {
-            border-radius: 50px; background: linear-gradient(135deg, var(--navy) 0%, var(--cyan) 100%);
-            transition: 0.4s ease; color: white; box-shadow: 0 10px 20px rgba(0, 164, 228, 0.2);
-        }
-
-        .text-gradient { background: linear-gradient(to right, var(--text-main), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .logos-slider { overflow: hidden; padding: 40px 0; background: transparent; position: relative; z-index: 20; border-top: 1px solid var(--border-color); }
-        .logos-slide-track { display: inline-flex; animation: slide 25s linear infinite; width: max-content; }
-        
-        .logos-slide-track img { height: 50px; margin: 0 40px; transition: 0.3s; }
-        [data-theme='dark'] .logos-slide-track img { filter: grayscale(100%) brightness(0) invert(1); opacity: 0.6; }
-        [data-theme='light'] .logos-slide-track img { filter: grayscale(100%) brightness(0); opacity: 0.7; }
-
-        .card-custom { background: var(--card-bg); border: 1px solid var(--border-color); transition: 0.4s ease; }
-
-        .theme-toggle {
-            background: rgba(var(--cyan), 0.1); border: 1px solid var(--border-color);
-            width: 45px; height: 45px; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: 0.3s; color: var(--cyan);
-        }
-
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background-color: #25d366; color: #FFF;
-            border-radius: 50px; width: 60px; height: 60px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 30px; z-index: 1000; box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
-        }
-    </style>
-</head>
-<body data-theme="dark">
-
-    <a href="https://wa.me/18093321705" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-    <header class="fixed w-full py-4 glass-nav">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center">
-                <img id="main-logo" src="logogestionitblanco.png" alt="Logo" class="h-10 md:h-12 w-auto object-contain">
-            </a>
-            <div class="flex items-center gap-8">
-                <nav class="hidden lg:flex space-x-8 items-center font-bold text-[10px] uppercase tracking-[0.2em]">
-                    <a href="#inicio">Inicio</a>
-                    <a href="infraestructura.html">Infraestructura</a>
-                    <a href="proteccion.html">Protección</a>
-                    <a href="#nosotros">Nosotros</a>
-                    <a href="#casos">Casos</a>
-                    <a href="contacto.html" class="btn-pill px-7 py-3 text-white uppercase font-bold tracking-widest text-[10px]">Habla con nosotros</a>
-                </nav>
-                <button class="theme-toggle" id="theme-btn"><i class="fas fa-sun" id="theme-icon"></i></button>
-                <button class="lg:hidden text-2xl" id="mobile-btn"><i class="fas fa-bars"></i></button>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <section id="inicio" class="relative min-h-screen flex items-center pt-32 pb-20 px-6 lg:px-0 overflow-hidden">
-            <div class="world-bg-container"><canvas id="globe-canvas"></canvas></div>
-            <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
-                <div data-aos="fade-right">
-                    <span class="inline-block text-[11px] font-bold mb-6 uppercase tracking-[0.4em] text-cyan-500">Tecnología e innovación, Sabemos cómo.</span>
-                    <h1 class="text-4xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-8 tracking-tight">Socio estratégico de <br> <span class="text-gradient">tu crecimiento.</span></h1>
-                    <p class="text-base md:text-xl opacity-80 mb-10 max-w-xl leading-relaxed">Más de 15 años proveyendo soluciones integrales y escalables para atender las necesidades tecnológicas críticas de la República Dominicana.</p>
-                    <a href="contacto.html" class="btn-pill px-10 py-5 text-center text-white font-bold uppercase text-xs tracking-widest inline-block">Habla con nosotros</a>
-                </div>
-                <div class="hidden lg:block relative" data-aos="fade-left">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80" alt="Consultoría IT" class="rounded-[50px] border border-white/5 shadow-2xl">
-                </div>
-            </div>
-        </section>
-
-        <div class="logos-slider border-y border-white/5">
-            <div class="logos-slide-track">
-                <img src="partner1.png" alt="P1"> <img src="partner2.png" alt="P2">
-                <img src="parnert2.png" alt="P3"> <img src="partner4.png" alt="P4">
-                <img src="Partner3.png" alt="P5"> <img src="partner2.png" alt="P6">
-                <img src="parnert4.png" alt="P7"> <img src="partner4.png" alt="P8">
-            </div>
-        </div>
-
-        </main>
-
-    <footer class="py-16 text-center px-6 border-t border-white/5">
-        <div class="container mx-auto">
-            <div class="font-extrabold text-2xl mb-10 tracking-tighter">Gestion<span style="color:var(--cyan)">IT</span></div>
-            <address class="not-italic opacity-50 text-xs md:text-sm space-y-2 uppercase tracking-[0.2em] mb-12">
-                <p>Calle Dr. Jacinto Ignacio Mañón #25, Santo Domingo, RD.</p>
-                <p>809 332 1705 | info@gestionit.com.do</p>
-            </address>
-            <p class="opacity-30 text-[9px] uppercase tracking-widest">© 2026 Gestión IT. Liderazgo técnico, resultados que trascienden.</p>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
-        
-        const themeBtn = document.getElementById('theme-btn');
-        const themeIcon = document.getElementById('theme-icon');
-        const mainLogo = document.getElementById('main-logo');
-        const html = document.documentElement;
-
-        function applyTheme(theme) {
-            html.setAttribute('data-theme', theme);
-            if (theme === 'dark') {
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-                if(mainLogo) mainLogo.src = 'logogestionitblanco.png';
-            } else {
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-                if(mainLogo) mainLogo.src = 'logogestionit.png';
-            }
-            localStorage.setItem('theme', theme);
-        }
-
-        applyTheme(localStorage.getItem('theme') || 'dark');
-
-        themeBtn.onclick = () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            applyTheme(newTheme);
-        };
-
-        // GLOBO TERRÁQUEO CORREGIDO (DENTRO DE SCRIPT)
-        const canvas = document.getElementById('globe-canvas');
-        const ctx = canvas.getContext('2d');
-        let points = [];
-        function initGlobe() {
-            const size = window.innerWidth < 768 ? 600 : 950;
-            canvas.width = size; canvas.height = size;
-            const radius = size / 2.7;
-            points = [];
-            for (let i = 0; i < 480; i++) {
-                const theta = Math.random() * 2 * Math.PI;
-                const phi = Math.acos((Math.random() * 2) - 1);
-                points.push({ x: radius * Math.sin(phi) * Math.cos(theta), y: radius * Math.sin(phi) * Math.sin(theta), z: radius * Math.cos(phi) });
-            }
-        }
-        let angle = 0;
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            angle += 0.0015;
-            points.forEach(p => {
-                const x1 = p.x * Math.cos(angle) - p.z * Math.sin(angle);
-                const z1 = p.z * Math.cos(angle) + p.x * Math.sin(angle);
-                const scale = 500 / (500 - z1);
-                const x2 = x1 * scale + centerX;
-                const y2 = p.y * scale + centerY;
-                if (z1 > -50) {
-                    ctx.beginPath();
-                    ctx.arc(x2, y2, 1.3 * scale, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(0, 164, 228, ${0.45 * scale})`;
-                    ctx.fill();
-                }
-            });
-            requestAnimationFrame(draw);
-        }
-        initGlobe(); draw();
-        window.onresize = initGlobe;
         document.getElementById('mobile-btn').onclick = () => document.querySelector('nav').classList.toggle('hidden');
     </script>
 </body>
