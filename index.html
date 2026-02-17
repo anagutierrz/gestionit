@@ -6,12 +6,14 @@
     
     <title>Gestión IT | Liderazgo técnico, resultados que trascienden.</title>
     <meta name="description" content="Expertos en Ciberseguridad, Infraestructura y Soporte MSP en República Dominicana. Más de 15 años brindando soluciones de TI de alto nivel.">
+    
     <script>
-    (function() {
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-    })();
-</script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -77,10 +79,9 @@
         .logos-slider { overflow: hidden; padding: 40px 0; background: transparent; white-space: nowrap; position: relative; z-index: 20; border-top: 1px solid var(--border-color); }
         .logos-slide-track { display: inline-flex; animation: slide 25s linear infinite; width: max-content; }
         
-        /* AJUSTE PARTNERS: Visibilidad en fondo blanco y negro */
         .logos-slide-track img { height: 50px; margin: 0 40px; transition: 0.3s; }
         [data-theme='dark'] .logos-slide-track img { filter: grayscale(100%) brightness(0) invert(1); opacity: 0.6; }
-        [data-theme='light'] .logos-slide-track img { filter: grayscale(100%) brightness(0.2); opacity: 0.5; }
+        [data-theme='light'] .logos-slide-track img { filter: grayscale(100%) brightness(0); opacity: 0.7; }
 
         .card-custom {
             background: var(--card-bg);
@@ -249,40 +250,36 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-   <script>
-    const themeBtn = document.getElementById('theme-btn');
-    const themeIcon = document.getElementById('theme-icon');
-    const mainLogo = document.getElementById('main-logo');
-    const html = document.documentElement;
-
-    function applyTheme(theme) {
-        html.setAttribute('data-theme', theme);
+    <script>
+        AOS.init({ duration: 1000, once: true });
         
-        // Actualiza el ícono y la imagen del logo
-        if (theme === 'dark') {
-            themeIcon.classList.replace('fa-sun', 'fa-moon');
-            if(mainLogo) mainLogo.src = 'logogestionitblanco.png';
-        } else {
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-            if(mainLogo) mainLogo.src = 'logogestionit.png';
+        const themeBtn = document.getElementById('theme-btn');
+        const themeIcon = document.getElementById('theme-icon');
+        const mainLogo = document.getElementById('main-logo');
+        const html = document.documentElement;
+
+        function applyTheme(theme) {
+            html.setAttribute('data-theme', theme);
+            if (theme === 'dark') {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                if(mainLogo) mainLogo.src = 'logogestionitblanco.png';
+            } else {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                if(mainLogo) mainLogo.src = 'logogestionit.png';
+            }
+            localStorage.setItem('theme', theme);
         }
-        
-        // Guarda la elección para las demás páginas
-        localStorage.setItem('theme', theme);
-    }
 
-    // Leer la preferencia al cargar la página
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    applyTheme(savedTheme);
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
 
-    themeBtn.onclick = () => {
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        applyTheme(newTheme);
-    };
-</script>
+        themeBtn.onclick = () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(newTheme);
+        };
 
-        // GLOBO TERRÁQUEO
+        // GLOBO TERRÁQUEO CORREGIDO (DENTRO DEL SCRIPT)
         const canvas = document.getElementById('globe-canvas');
         const ctx = canvas.getContext('2d');
         let points = [];
@@ -320,6 +317,9 @@
         }
         initGlobe(); draw();
         window.onresize = initGlobe;
+        
+        // Menu móvil
+        document.getElementById('mobile-btn').onclick = () => document.querySelector('nav').classList.toggle('hidden');
     </script>
 </body>
 </html>
