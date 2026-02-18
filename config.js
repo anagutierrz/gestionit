@@ -1,41 +1,48 @@
-// config.js - Configuración Central de GestiónIT
+// config.js - Gestión IT Centralizada
 document.addEventListener('DOMContentLoaded', () => {
     const themeBtn = document.getElementById('theme-btn');
     const themeIcon = document.getElementById('theme-icon');
     const mainLogo = document.getElementById('main-logo');
     const html = document.documentElement;
 
-    // 1. Lógica de Temas y Logos
+    // 1. FUNCIÓN MAESTRA DE TEMA
     function applyTheme(theme) {
         html.setAttribute('data-theme', theme);
-        if (theme === 'dark') {
-            if (themeIcon) themeIcon.className = 'fas fa-moon';
-            if (mainLogo) mainLogo.src = 'logogestionitblanco.png';
-        } else {
-            if (themeIcon) themeIcon.className = 'fas fa-sun';
-            if (mainLogo) mainLogo.src = 'logogestionit.png';
+        
+        // Intercambio de Logos
+        if (mainLogo) {
+            mainLogo.src = (theme === 'dark') ? 'logogestionitblanco.png' : 'logogestionit.png';
         }
+
+        // Cambio de Ícono del Botón
+        if (themeIcon) {
+            themeIcon.className = (theme === 'dark') ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // Persistencia
         localStorage.setItem('theme', theme);
     }
 
-    // Carga inicial
+    // Carga inicial sincronizada con la memoria del navegador
     const savedTheme = localStorage.getItem('theme') || 'dark';
     applyTheme(savedTheme);
 
-    // Evento del botón
+    // Evento del Botón (si existe en la página actual)
     if (themeBtn) {
         themeBtn.onclick = () => {
             const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            const newTheme = (currentTheme === 'dark') ? 'light' : 'dark';
             applyTheme(newTheme);
         };
     }
 
-    // 2. Lógica del Globo Terráqueo (Si existe el canvas en la página)
+    // 2. LÓGICA DEL GLOBO TERRÁQUEO (Solo se activa si existe el canvas)
     const canvas = document.getElementById('globe-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let points = [];
+        let angle = 0;
+
         function initGlobe() {
             const size = window.innerWidth < 768 ? 600 : 950;
             canvas.width = size; canvas.height = size;
@@ -44,14 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let i = 0; i < 480; i++) {
                 const theta = Math.random() * 2 * Math.PI;
                 const phi = Math.acos((Math.random() * 2) - 1);
-                points.push({ 
-                    x: radius * Math.sin(phi) * Math.cos(theta), 
-                    y: radius * Math.sin(phi) * Math.sin(theta), 
-                    z: radius * Math.cos(phi) 
+                points.push({
+                    x: radius * Math.sin(phi) * Math.cos(theta),
+                    y: radius * Math.sin(phi) * Math.sin(theta),
+                    z: radius * Math.cos(phi)
                 });
             }
         }
-        let angle = 0;
+
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             const centerX = canvas.width / 2;
@@ -72,14 +79,18 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             requestAnimationFrame(draw);
         }
-        initGlobe(); draw();
+
+        initGlobe();
+        draw();
         window.onresize = initGlobe;
     }
 
-    // 3. Menú Móvil Universal
+    // 3. MENÚ MÓVIL (Universal)
     const mobileBtn = document.getElementById('mobile-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileBtn && mobileMenu) {
-        mobileBtn.onclick = () => mobileMenu.classList.toggle('hidden');
+    if (mobileBtn) {
+        mobileBtn.onclick = () => {
+            const nav = document.querySelector('nav');
+            if (nav) nav.classList.toggle('hidden');
+        };
     }
 });
