@@ -66,7 +66,7 @@
         .card-custom { background: var(--card-bg); border: 1px solid var(--border-color); transition: 0.4s ease; }
 
         .theme-toggle {
-            background: rgba(0, 164, 228, 0.1); border: 1px solid var(--border-color);
+            background: rgba(var(--cyan), 0.1); border: 1px solid var(--border-color);
             width: 45px; height: 45px; border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; transition: 0.3s; color: var(--cyan);
@@ -83,20 +83,20 @@
 </head>
 <body data-theme="dark">
 
-    <a href="https://wa.me/18093321705" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/18093321705" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
     <header class="fixed w-full py-4 glass-nav">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <a href="index.html" class="flex items-center">
-                <img id="main-logo" src="logogestionitblanco.png" alt="Gestión IT Logo" class="h-10 md:h-12 w-auto object-contain transition-all duration-500">
+                <img id="main-logo" src="logogestionitblanco.png" alt="Logo" class="h-10 md:h-12 w-auto object-contain transition-all duration-500">
             </a>
             <div class="flex items-center gap-8">
                 <nav class="hidden lg:flex space-x-8 items-center font-bold text-[10px] uppercase tracking-[0.2em]">
-                    <a href="#inicio" class="hover:text-cyan-400 transition">Inicio</a>
-                    <a href="infraestructura.html" class="hover:text-cyan-400 transition">Infraestructura</a>
-                    <a href="proteccion.html" class="hover:text-cyan-400 transition">Protección</a>
-                    <a href="nosotros.html" class="hover:text-cyan-400 transition">Nosotros</a>
-                    <a href="casosexito.html" class="hover:text-cyan-400 transition">Casos</a>
+                    <a href="#inicio">Inicio</a>
+                    <a href="infraestructura.html">Infraestructura</a>
+                    <a href="proteccion.html">Protección</a>
+                    <a href="#nosotros">Nosotros</a>
+                    <a href="#casos">Casos</a>
                     <a href="contacto.html" class="btn-pill px-7 py-3 text-white uppercase font-bold tracking-widest text-[10px]">Habla con nosotros</a>
                 </nav>
                 <button class="theme-toggle" id="theme-btn"><i class="fas fa-sun" id="theme-icon"></i></button>
@@ -104,8 +104,7 @@
             </div>
         </div>
         <div id="mobile-menu" class="hidden lg:hidden bg-black/95 p-8 text-center space-y-6 font-bold uppercase text-xs">
-            <a href="#inicio" class="block text-white">Inicio</a>
-            <a href="nosotros.html" class="block text-white">Nosotros</a>
+            <a href="#inicio" class="block">Inicio</a>
             <a href="contacto.html" class="block text-cyan-400">Habla con nosotros</a>
         </div>
     </header>
@@ -117,11 +116,11 @@
                 <div data-aos="fade-right">
                     <span class="inline-block text-[11px] font-bold mb-6 uppercase tracking-[0.4em] text-cyan-500">Tecnología e innovación, Sabemos cómo.</span>
                     <h1 class="text-4xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-8 tracking-tight">Socio estratégico de <br> <span class="text-gradient">tu crecimiento.</span></h1>
-                    <p class="text-base md:text-xl opacity-80 mb-10 max-w-xl leading-relaxed">Más de 15 años proveyendo soluciones integrales y escalables para atender las necesidades tecnológicas críticas de la República Dominicana.</p>
+                    <p class="text-base md:text-xl opacity-80 mb-10 max-w-xl leading-relaxed">Más de 15 años proveyendo soluciones integrales y escalables en República Dominicana.</p>
                     <a href="contacto.html" class="btn-pill px-10 py-5 text-center text-white font-bold uppercase text-xs tracking-widest inline-block">Habla con nosotros</a>
                 </div>
                 <div class="hidden lg:block relative" data-aos="fade-left">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80" alt="Consultoría IT" class="rounded-[50px] border border-white/5 shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80" alt="Consultoría" class="rounded-[50px] border border-white/5 shadow-2xl">
                 </div>
             </div>
         </section>
@@ -136,34 +135,41 @@
         </div>
 
         <section id="servicios" class="py-24 px-6 relative z-10">
-            <div class="container mx-auto grid md:grid-cols-3 gap-8 text-left">
-                <article class="card-custom p-10 rounded-3xl" data-aos="fade-up">
-                    <i class="fas fa-server text-cyan-400 text-3xl mb-6"></i>
-                    <h3 class="text-xl font-bold mb-4">Infraestructura</h3>
-                    <p class="opacity-70 text-sm leading-relaxed mb-8">Arquitectura TI moderna, escalable y segura que genera ventajas competitivas reales.</p>
-                    <a href="infraestructura.html" class="text-xs font-black uppercase text-cyan-400 transition">Ver más →</a>
-                </article>
-                <article class="card-custom p-10 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-shield-alt text-cyan-400 text-3xl mb-6"></i>
-                    <h3 class="text-xl font-bold mb-4">Protección</h3>
-                    <p class="opacity-70 text-sm leading-relaxed mb-8">Ciberseguridad avanzada para blindar su información contra amenazas globales.</p>
-                    <a href="proteccion.html" class="text-xs font-black uppercase text-cyan-400 transition">Ver más →</a>
-                </article>
-                <article class="card-custom p-10 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-headset text-cyan-400 text-3xl mb-6"></i>
-                    <h3 class="text-xl font-bold mb-4">Soporte & Gestión</h3>
-                    <p class="opacity-70 text-sm leading-relaxed mb-8">Especialistas en mantener entornos críticos rindiendo a su máximo nivel técnico.</p>
-                </article>
+            <div class="container mx-auto">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-5xl font-extrabold mb-4 uppercase tracking-tighter">Ingeniería que impulsa negocios</h2>
+                    <div class="w-20 h-1 bg-cyan-500 mx-auto"></div>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 text-left">
+                    <article class="card-custom p-10 rounded-3xl" data-aos="fade-up">
+                        <i class="fas fa-server text-cyan-400 text-3xl mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4">Infraestructura</h3>
+                        <p class="opacity-70 text-sm leading-relaxed mb-8">Arquitectura TI moderna, escalable y segura que genera ventajas competitivas reales.</p>
+                        <a href="infraestructura.html" class="text-xs font-black uppercase text-cyan-400 transition">Ver más →</a>
+                    </article>
+                    <article class="card-custom p-10 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-shield-alt text-cyan-400 text-3xl mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4">Protección</h3>
+                        <p class="opacity-70 text-sm leading-relaxed mb-8">Ciberseguridad avanzada para blindar su información contra amenazas globales.</p>
+                        <a href="proteccion.html" class="text-xs font-black uppercase text-cyan-400 transition">Ver más →</a>
+                    </article>
+                    <article class="card-custom p-10 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-headset text-cyan-400 text-3xl mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4">Soporte & Gestión</h3>
+                        <p class="opacity-70 text-sm leading-relaxed mb-8">Especialistas en mantener entornos críticos rindiendo a su máximo nivel técnico.</p>
+                    </article>
+                </div>
             </div>
         </section>
 
-        <section id="nosotros-prev" class="py-24 px-6">
+        <section id="nosotros" class="py-24 px-6">
             <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
                 <div data-aos="fade-right">
                     <h2 class="text-4xl md:text-5xl font-extrabold mb-10 leading-tight">Socio Estratégico de <br><span class="text-gradient">tu Crecimiento.</span></h2>
                     <div class="space-y-8">
                         <div class="flex gap-6"><div class="w-1.5 h-auto rounded-full bg-cyan-500"></div><div><h4 class="font-bold uppercase text-xs tracking-widest mb-1 text-cyan-400">Confianza</h4><p class="opacity-70 text-sm">Transparencia absoluta en cada proceso técnico.</p></div></div>
                         <div class="flex gap-6"><div class="w-1.5 h-auto rounded-full bg-cyan-500"></div><div><h4 class="font-bold uppercase text-xs tracking-widest mb-1 text-cyan-400">Responsabilidad</h4><p class="opacity-70 text-sm">Compromiso total con la continuidad de su negocio.</p></div></div>
+                        <div class="flex gap-6"><div class="w-1.5 h-auto rounded-full bg-cyan-500"></div><div><h4 class="font-bold uppercase text-xs tracking-widest mb-1 text-cyan-400">Compromiso</h4><p class="opacity-70 text-sm">Excelencia proactiva para evitar interrupciones.</p></div></div>
                     </div>
                 </div>
                 <div class="relative" data-aos="zoom-in">
@@ -205,6 +211,69 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="config.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        const themeBtn = document.getElementById('theme-btn');
+        const themeIcon = document.getElementById('theme-icon');
+        const mainLogo = document.getElementById('main-logo');
+        const html = document.documentElement;
+
+        function applyTheme(theme) {
+            html.setAttribute('data-theme', theme);
+            if (theme === 'dark') {
+                themeIcon.className = 'fas fa-sun';
+                if(mainLogo) mainLogo.src = 'logogestionitblanco.png';
+            } else {
+                themeIcon.className = 'fas fa-moon';
+                if(mainLogo) mainLogo.src = 'logogestionit.png';
+            }
+            localStorage.setItem('theme', theme);
+        }
+
+        applyTheme(localStorage.getItem('theme') || 'dark');
+
+        themeBtn.onclick = () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(newTheme);
+        };
+
+        const canvas = document.getElementById('globe-canvas');
+        const ctx = canvas.getContext('2d');
+        let points = [];
+        function initGlobe() {
+            const size = window.innerWidth < 768 ? 600 : 950;
+            canvas.width = size; canvas.height = size;
+            const radius = size / 2.7;
+            points = [];
+            for (let i = 0; i < 480; i++) {
+                const theta = Math.random() * 2 * Math.PI;
+                const phi = Math.acos((Math.random() * 2) - 1);
+                points.push({ x: radius * Math.sin(phi) * Math.cos(theta), y: radius * Math.sin(phi) * Math.sin(theta), z: radius * Math.cos(phi) });
+            }
+        }
+        let angle = 0;
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const centerX = canvas.width / 2; const centerY = canvas.height / 2;
+            angle += 0.0015;
+            points.forEach(p => {
+                const x1 = p.x * Math.cos(angle) - p.z * Math.sin(angle);
+                const z1 = p.z * Math.cos(angle) + p.x * Math.sin(angle);
+                const scale = 500 / (500 - z1);
+                const x2 = x1 * scale + centerX; const y2 = p.y * scale + centerY;
+                if (z1 > -50) {
+                    ctx.beginPath(); ctx.arc(x2, y2, 1.3 * scale, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(0, 164, 228, ${0.45 * scale})`; ctx.fill();
+                }
+            });
+            requestAnimationFrame(draw);
+        }
+        initGlobe(); draw();
+        window.onresize = initGlobe;
+        document.getElementById('mobile-btn').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
+    </script>
 </body>
+</html>
 </html>
