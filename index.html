@@ -55,7 +55,7 @@
 
         .text-gradient { background: linear-gradient(to right, var(--text-main), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        .card-custom { background: var(--card-bg); border: 1px solid var(--border-color); transition: 0.4s ease; }
+        .card-custom { background: var(--card-bg); border: 1px solid var(--border-color); transition: 0.4s ease; overflow: hidden; }
         .card-custom:hover { border-color: var(--cyan); transform: translateY(-5px); }
 
         .theme-toggle {
@@ -67,11 +67,15 @@
 
         .list-item { position: relative; padding-left: 2rem; margin-bottom: 0.75rem; font-weight: 600; font-size: 0.9rem; }
         .list-item::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; color: var(--cyan); }
+
+        .image-reveal { border-radius: 40px; overflow: hidden; border: 1px solid var(--border-color); }
+        .image-reveal img { transition: transform 0.8s ease; }
+        .image-reveal:hover img { transform: scale(1.05); }
     </style>
 </head>
 <body data-theme="dark">
 
-   <header class="fixed w-full py-4 glass-nav">
+    <header class="fixed w-full py-4 glass-nav">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <a href="index.html" class="flex items-center">
                 <img id="main-logo" src="logogestionitblanco.png" alt="Logo" class="h-10 md:h-12 w-auto object-contain transition-all duration-500">
@@ -111,7 +115,13 @@
                     <p class="text-base md:text-xl opacity-80 mb-10 max-w-xl leading-relaxed">
                         Aseguramos la continuidad, eficiencia y evolución constante de su negocio a través de un modelo integral de ingeniería.
                     </p>
-                    <a href="contacto.html" class="btn-pill px-10 py-5 text-center text-white font-bold uppercase text-xs tracking-widest inline-block">Habla con nosotros</a>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="contacto.html" class="btn-pill px-10 py-5 text-center text-white font-bold uppercase text-xs tracking-widest inline-block">Habla con nosotros</a>
+                        <div class="flex items-center gap-4 px-6 border-l border-white/10">
+                            <span class="text-3xl font-extrabold text-cyan-500">+15</span>
+                            <span class="text-[10px] uppercase font-bold tracking-widest opacity-50">Años de <br>Experiencia</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -124,7 +134,7 @@
                         <p class="text-lg opacity-70 mb-10 leading-relaxed">
                             En Gestión IT no solo implementamos tecnología. Diseñamos un modelo integral donde infraestructura, seguridad y operación trabajan alineadas con los objetivos del negocio. Actuamos como un socio tecnológico, no como un proveedor puntual.
                         </p>
-                        <div class="grid md:grid-cols-1 gap-2">
+                        <div class="grid md:grid-cols-1 gap-2 mb-8">
                             <div class="list-item">Arquitectura tecnológica sólida y escalable</div>
                             <div class="list-item">Seguridad integrada desde el diseño</div>
                             <div class="list-item">Operación continua bajo buenas prácticas</div>
@@ -133,23 +143,27 @@
                         </div>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-left">
-                        <div class="card-custom p-8 rounded-[40px]">
-                            <h4 class="text-cyan-500 font-extrabold text-xs uppercase tracking-widest mb-4">Continuidad</h4>
-                            <p class="text-sm font-bold opacity-80 leading-relaxed">Reducción drástica de riesgos operativos.</p>
-                        </div>
-                        <div class="card-custom p-8 rounded-[40px]">
-                            <h4 class="text-cyan-500 font-extrabold text-xs uppercase tracking-widest mb-4">Eficiencia</h4>
-                            <p class="text-sm font-bold opacity-80 leading-relaxed">Mejora de la productividad interna y optimización de costos.</p>
-                        </div>
-                        <div class="card-custom p-8 rounded-[40px]">
-                            <h4 class="text-cyan-500 font-extrabold text-xs uppercase tracking-widest mb-4">Estructura</h4>
-                            <p class="text-sm font-bold opacity-80 leading-relaxed">Capacidad de escalar con orden y control total.</p>
-                        </div>
-                        <div class="card-custom p-8 rounded-[40px]">
-                            <h4 class="text-cyan-500 font-extrabold text-xs uppercase tracking-widest mb-4">Foco</h4>
-                            <p class="text-sm font-bold opacity-80 leading-relaxed">Libertad para enfocarse exclusivamente en el crecimiento del negocio.</p>
-                        </div>
+                    <div class="image-reveal" data-aos="fade-left">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" alt="Tecnología Estratégica" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-16">
+                    <div class="card-custom p-8 rounded-[40px]" data-aos="fade-up">
+                        <h4 class="text-cyan-500 font-extrabold text-xs uppercase tracking-widest mb-4">Continuidad</h4>
+                        <p class="text-sm font-bold opacity-80 leading-relaxed">Reducción drástica de riesgos operativos.</p>
+                    </div>
+                    <div class="card-custom p-8 rounded-[40px]" data-aos="fade-up" data-aos-delay="100">
+                        <h4 class="text-cyan-500 font-extrabold text-xs uppercase tracking-widest mb-4">Eficiencia</h4>
+                        <p class="text-sm font-bold opacity-80 leading-relaxed">Mejora de la productividad interna y optimización de costos.</p>
+                    </div>
+                    <div class="card-custom p-8 rounded-[40px]" data-aos="fade-up" data-aos-delay="200">
+                        <h4 class="text-cyan-500 font-extrabold text-xs uppercase tracking-widest mb-4">Estructura</h4>
+                        <p class="text-sm font-bold opacity-80 leading-relaxed">Capacidad de escalar con orden y control total.</p>
+                    </div>
+                    <div class="card-custom p-8 rounded-[40px]" data-aos="fade-up" data-aos-delay="300">
+                        <h4 class="text-cyan-500 font-extrabold text-xs uppercase tracking-widest mb-4">Foco</h4>
+                        <p class="text-sm font-bold opacity-80 leading-relaxed">Libertad para enfocarse exclusivamente en el crecimiento del negocio.</p>
                     </div>
                 </div>
             </div>
@@ -157,27 +171,61 @@
 
         <section class="py-24 px-6 bg-cyan-500/5">
             <div class="container mx-auto">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <span class="text-cyan-500 font-bold uppercase tracking-[0.3em] text-[10px]">Especialidades</span>
+                    <h2 class="text-4xl font-extrabold tracking-tighter uppercase mt-2">Nuestras Unidades de Ingeniería</h2>
+                </div>
                 <div class="grid md:grid-cols-3 gap-8">
-                    <article class="card-custom p-10 rounded-[40px]" data-aos="fade-up">
-                        <i class="fas fa-server text-cyan-400 text-3xl mb-6"></i>
-                        <h3 class="text-xl font-bold mb-4 uppercase tracking-widest">Infraestructura</h3>
-                        <p class="opacity-60 text-sm leading-relaxed mb-8">Base sólida para el rendimiento corporativo.</p>
-                        <a href="infraestructura.html" class="text-xs font-black uppercase text-cyan-400">Detalles →</a>
+                    <article class="card-custom rounded-[40px]" data-aos="fade-up">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=600" alt="Data Center" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-10">
+                            <i class="fas fa-server text-cyan-400 text-2xl mb-6"></i>
+                            <h3 class="text-xl font-bold mb-4 uppercase tracking-widest">Infraestructura</h3>
+                            <p class="opacity-60 text-sm leading-relaxed mb-8">Diseño y despliegue de redes, servidores y centros de datos de alta disponibilidad.</p>
+                            <a href="infraestructura.html" class="text-xs font-black uppercase text-cyan-400 hover:tracking-widest transition-all">Detalles →</a>
+                        </div>
                     </article>
-                    <article class="card-custom p-10 rounded-[40px]" data-aos="fade-up" data-aos-delay="100">
-                        <i class="fas fa-shield-alt text-cyan-400 text-3xl mb-6"></i>
-                        <h3 class="text-xl font-bold mb-4 uppercase tracking-widest">Protección</h3>
-                        <p class="opacity-60 text-sm leading-relaxed mb-8">Seguridad blindada desde la arquitectura.</p>
-                        <a href="proteccion.html" class="text-xs font-black uppercase text-cyan-400">Detalles →</a>
+
+                    <article class="card-custom rounded-[40px]" data-aos="fade-up" data-aos-delay="100">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=600" alt="Ciberseguridad" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-10">
+                            <i class="fas fa-shield-alt text-cyan-400 text-2xl mb-6"></i>
+                            <h3 class="text-xl font-bold mb-4 uppercase tracking-widest">Protección</h3>
+                            <p class="opacity-60 text-sm leading-relaxed mb-8">Ciberseguridad integrada para blindar los activos digitales contra amenazas críticas.</p>
+                            <a href="proteccion.html" class="text-xs font-black uppercase text-cyan-400 hover:tracking-widest transition-all">Detalles →</a>
+                        </div>
                     </article>
-                    <article class="card-custom p-10 rounded-[40px]" data-aos="fade-up" data-aos-delay="200">
-                        <i class="fas fa-headset text-cyan-400 text-3xl mb-6"></i>
-                        <h3 class="text-xl font-bold mb-4 uppercase tracking-widest">MSP</h3>
-                        <p class="opacity-60 text-sm leading-relaxed mb-8">Operación continua y soporte estratégico.</p>
-                        <a href="msp.html" class="text-xs font-black uppercase text-cyan-400">Detalles →</a>
+
+                    <article class="card-custom rounded-[40px]" data-aos="fade-up" data-aos-delay="200">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=600" alt="Soporte Técnico" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-10">
+                            <i class="fas fa-headset text-cyan-400 text-2xl mb-6"></i>
+                            <h3 class="text-xl font-bold mb-4 uppercase tracking-widest">MSP</h3>
+                            <p class="opacity-60 text-sm leading-relaxed mb-8">Operación continua, monitoreo proactivo y soporte técnico con visión estratégica.</p>
+                            <a href="msp.html" class="text-xs font-black uppercase text-cyan-400 hover:tracking-widest transition-all">Detalles →</a>
+                        </div>
                     </article>
                 </div>
             </div>
+        </section>
+
+        <section class="py-24 px-6 relative overflow-hidden">
+            <div class="container mx-auto text-center relative z-10">
+                <div class="max-w-3xl mx-auto" data-aos="zoom-in">
+                    <h2 class="text-4xl md:text-6xl font-extrabold mb-8 tracking-tighter">¿Listo para evolucionar su <span class="text-gradient">operación técnica?</span></h2>
+                    <p class="text-lg opacity-70 mb-12">
+                        Gestión IT convierte la tecnología en un habilitador estratégico, asegurando continuidad, eficiencia y evolución constante.
+                    </p>
+                    <a href="contacto.html" class="btn-pill px-12 py-5 text-white font-bold uppercase text-xs tracking-widest inline-block">Habla con nosotros</a>
+                </div>
+            </div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
         </section>
     </main>
 
