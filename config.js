@@ -1,96 +1,183 @@
-// config.js - Gestión IT Centralizada
-document.addEventListener('DOMContentLoaded', () => {
-    const themeBtn = document.getElementById('theme-btn');
-    const themeIcon = document.getElementById('theme-icon');
-    const mainLogo = document.getElementById('main-logo');
-    const html = document.documentElement;
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión IT | Liderazgo técnico, resultados que trascienden.</title>
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 
-    // 1. FUNCIÓN MAESTRA DE TEMA
-    function applyTheme(theme) {
-        html.setAttribute('data-theme', theme);
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
         
-        // Intercambio de Logos
-        if (mainLogo) {
-            mainLogo.src = (theme === 'dark') ? 'logogestionitblanco.png' : 'logogestionit.png';
+        :root {
+            --navy: #002D5A; --cyan: #00A4E4;
+            --bg-main: #FFFFFF; --text-main: #1E293B;
+            --card-bg: #FFFFFF; --border-color: rgba(0, 0, 0, 0.05);
         }
 
-        // Cambio de Ícono del Botón
-        if (themeIcon) {
-            themeIcon.className = (theme === 'dark') ? 'fas fa-sun' : 'fas fa-moon';
+        [data-theme='dark'] {
+            --bg-main: #000000; --text-main: #FFFFFF;
+            --card-bg: #0A0C10; --border-color: rgba(255, 255, 255, 0.08);
         }
 
-        // Persistencia
-        localStorage.setItem('theme', theme);
-    }
-
-    // Carga inicial sincronizada con la memoria del navegador
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    applyTheme(savedTheme);
-
-    // Evento del Botón (si existe en la página actual)
-    if (themeBtn) {
-        themeBtn.onclick = () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = (currentTheme === 'dark') ? 'light' : 'dark';
-            applyTheme(newTheme);
-        };
-    }
-
-    // 2. LÓGICA DEL GLOBO TERRÁQUEO (Solo se activa si existe el canvas)
-    const canvas = document.getElementById('globe-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let points = [];
-        let angle = 0;
-
-        function initGlobe() {
-            const size = window.innerWidth < 768 ? 600 : 950;
-            canvas.width = size; canvas.height = size;
-            const radius = size / 2.7;
-            points = [];
-            for (let i = 0; i < 480; i++) {
-                const theta = Math.random() * 2 * Math.PI;
-                const phi = Math.acos((Math.random() * 2) - 1);
-                points.push({
-                    x: radius * Math.sin(phi) * Math.cos(theta),
-                    y: radius * Math.sin(phi) * Math.sin(theta),
-                    z: radius * Math.cos(phi)
-                });
-            }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg-main); color: var(--text-main); 
+            overflow-x: hidden; transition: background-color 0.5s ease, color 0.5s ease;
         }
 
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            angle += 0.0015;
-            points.forEach(p => {
-                const x1 = p.x * Math.cos(angle) - p.z * Math.sin(angle);
-                const z1 = p.z * Math.cos(angle) + p.x * Math.sin(angle);
-                const scale = 500 / (500 - z1);
-                const x2 = x1 * scale + centerX;
-                const y2 = p.y * scale + centerY;
-                if (z1 > -50) {
-                    ctx.beginPath();
-                    ctx.arc(x2, y2, 1.3 * scale, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(0, 164, 228, ${0.45 * scale})`;
-                    ctx.fill();
-                }
-            });
-            requestAnimationFrame(draw);
+        .world-bg-container {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 100vw; height: 100vh; z-index: 1; pointer-events: none; opacity: 0.5;
         }
 
-        initGlobe();
-        draw();
-        window.onresize = initGlobe;
-    }
+        .glass-nav { 
+            background: rgba(var(--bg-main), 0.85); backdrop-filter: blur(15px); 
+            border-bottom: 1px solid var(--border-color); z-index: 100;
+        }
+        
+        .btn-pill {
+            border-radius: 50px; background: linear-gradient(135deg, var(--navy) 0%, var(--cyan) 100%);
+            transition: 0.4s ease; color: white; box-shadow: 0 10px 20px rgba(0, 164, 228, 0.2);
+        }
 
-    // 3. MENÚ MÓVIL (Universal)
-    const mobileBtn = document.getElementById('mobile-btn');
-    if (mobileBtn) {
-        mobileBtn.onclick = () => {
-            const nav = document.querySelector('nav');
-            if (nav) nav.classList.toggle('hidden');
-        };
-    }
-});
+        .text-gradient { background: linear-gradient(to right, var(--text-main), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .logos-slider { overflow: hidden; padding: 40px 0; background: transparent; position: relative; z-index: 20; border-top: 1px solid var(--border-color); }
+        .logos-slide-track { display: inline-flex; animation: slide 25s linear infinite; width: max-content; }
+        
+        .logos-slide-track img { height: 50px; margin: 0 40px; transition: 0.3s; }
+        [data-theme='dark'] .logos-slide-track img { filter: grayscale(100%) brightness(0) invert(1); opacity: 0.6; }
+        [data-theme='light'] .logos-slide-track img { filter: grayscale(100%) brightness(0); opacity: 0.7; }
+
+        .card-custom { background: var(--card-bg); border: 1px solid var(--border-color); transition: 0.4s ease; }
+
+        .theme-toggle {
+            background: rgba(var(--cyan), 0.1); border: 1px solid var(--border-color);
+            width: 45px; height: 45px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.3s; color: var(--cyan);
+        }
+
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: #25d366; color: #FFF;
+            border-radius: 50px; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; z-index: 1000; box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body data-theme="dark">
+
+    <a href="https://wa.me/18093321705" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <header class="fixed w-full py-4 glass-nav">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <img id="main-logo" src="logogestionitblanco.png" alt="Logo" class="h-10 md:h-12 w-auto object-contain transition-all duration-500">
+            </a>
+            <div class="flex items-center gap-8">
+                <nav class="hidden lg:flex space-x-8 items-center font-bold text-[10px] uppercase tracking-[0.2em]">
+                    <a href="#inicio">Inicio</a>
+                    <a href="infraestructura.html">Infraestructura</a>
+                    <a href="proteccion.html">Protección</a>
+                    <a href="nosotros.html">Nosotros</a>
+                    <a href="casosexito.html">Casos</a>
+                    <a href="contacto.html" class="btn-pill px-7 py-3 text-white uppercase font-bold tracking-widest text-[10px]">Habla con nosotros</a>
+                </nav>
+                <button class="theme-toggle" id="theme-btn"><i class="fas fa-sun" id="theme-icon"></i></button>
+                <button class="lg:hidden text-2xl" id="mobile-btn"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-black/95 p-8 text-center space-y-6 font-bold uppercase text-xs">
+            <a href="#inicio" class="block text-white">Inicio</a>
+            <a href="nosotros.html" class="block text-white">Nosotros</a>
+            <a href="contacto.html" class="block text-cyan-400">Contacto</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="relative min-h-screen flex items-center pt-32 pb-20 px-6 lg:px-0 overflow-hidden">
+            <div class="world-bg-container"><canvas id="globe-canvas"></canvas></div>
+            <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
+                <div data-aos="fade-right">
+                    <span class="inline-block text-[11px] font-bold mb-6 uppercase tracking-[0.4em] text-cyan-500">Tecnología e innovación</span>
+                    <h1 class="text-4xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-8 tracking-tight">Socio estratégico de <br> <span class="text-gradient">tu crecimiento.</span></h1>
+                    <p class="text-base md:text-xl opacity-80 mb-10 max-w-xl leading-relaxed">Más de 15 años proveyendo soluciones integrales y escalables en República Dominicana.</p>
+                    <a href="contacto.html" class="btn-pill px-10 py-5 text-center text-white font-bold uppercase text-xs tracking-widest inline-block">Habla con nosotros</a>
+                </div>
+                <div class="hidden lg:block relative" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80" alt="Consultoría" class="rounded-[50px] border border-white/5 shadow-2xl">
+                </div>
+            </div>
+        </section>
+
+        <div class="logos-slider border-y border-white/5">
+            <div class="logos-slide-track">
+                <img src="partner1.png" alt="P1"> <img src="partner2.png" alt="P2">
+                <img src="parnert2.png" alt="P3"> <img src="partner4.png" alt="P4">
+                <img src="Partner3.png" alt="P5"> <img src="partner2.png" alt="P6">
+            </div>
+        </div>
+
+        <section id="servicios" class="py-24 px-6 relative z-10">
+            <div class="container mx-auto grid md:grid-cols-3 gap-8 text-left">
+                <article class="card-custom p-10 rounded-3xl" data-aos="fade-up">
+                    <i class="fas fa-server text-cyan-400 text-3xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4">Infraestructura</h3>
+                    <p class="opacity-70 text-sm leading-relaxed mb-8">Arquitectura TI moderna, escalable y segura.</p>
+                    <a href="infraestructura.html" class="text-xs font-black uppercase text-cyan-400 transition">Ver más →</a>
+                </article>
+                <article class="card-custom p-10 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-shield-alt text-cyan-400 text-3xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4">Protección</h3>
+                    <p class="opacity-70 text-sm leading-relaxed mb-8">Ciberseguridad avanzada para blindar su información.</p>
+                    <a href="proteccion.html" class="text-xs font-black uppercase text-cyan-400 transition">Ver más →</a>
+                </article>
+                <article class="card-custom p-10 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-headset text-cyan-400 text-3xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4">Soporte & Gestión</h3>
+                    <p class="opacity-70 text-sm leading-relaxed mb-8">Especialistas en mantener entornos críticos.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="nosotros-prev" class="py-24 px-6">
+            <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-10 leading-tight">Socio Estratégico de <br><span class="text-gradient">tu Crecimiento.</span></h2>
+                    <div class="space-y-8">
+                        <div class="flex gap-6"><div class="w-1.5 h-auto rounded-full bg-cyan-500"></div><div><h4 class="font-bold uppercase text-xs tracking-widest mb-1 text-cyan-400">Confianza</h4><p class="opacity-70 text-sm">Transparencia absoluta en cada proceso técnico.</p></div></div>
+                        <div class="flex gap-6"><div class="w-1.5 h-auto rounded-full bg-cyan-500"></div><div><h4 class="font-bold uppercase text-xs tracking-widest mb-1 text-cyan-400">Responsabilidad</h4><p class="opacity-70 text-sm">Compromiso total con la continuidad de su negocio.</p></div></div>
+                    </div>
+                </div>
+                <div class="relative" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1573163281530-5be9c294833e?auto=format&fit=crop&q=80" alt="Equipo Gestión IT" class="rounded-[40px] border border-white/5 shadow-xl">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-16 text-center px-6 border-t border-white/5">
+        <div class="container mx-auto">
+            <div class="font-extrabold text-2xl mb-6">Gestion<span style="color:var(--cyan)">IT</span></div>
+            <p class="opacity-30 text-[9px] uppercase tracking-widest">© 2026 Gestión IT. Liderazgo técnico.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="config.js"></script>
+</body>
+</html>
