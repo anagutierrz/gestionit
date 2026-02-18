@@ -33,10 +33,13 @@
         }
 
         body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--bg-main); color: var(--text-main); 
-            overflow-x: hidden; transition: background-color 0.5s ease, color 0.5s ease;
-        }
+    font-family: 'Plus Jakarta Sans', sans-serif; 
+    /* ESTA LÍNEA ES LA QUE HACE QUE EL FONDO CAMBIE */
+    background-color: var(--bg-main); 
+    color: var(--text-main); 
+    overflow-x: hidden; 
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
 
         .world-bg-container {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -231,14 +234,19 @@
             localStorage.setItem('theme', theme);
         }
 
-        applyTheme(localStorage.getItem('theme') || 'dark');
-
-        themeBtn.onclick = () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            applyTheme(newTheme);
-        };
-
+        function applyTheme(theme) {
+    // Debe aplicarse al documento (etiqueta html) para que el CSS funcione
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    if (theme === 'dark') {
+        themeIcon.className = 'fas fa-sun';
+        if(mainLogo) mainLogo.src = 'logogestionitblanco.png';
+    } else {
+        themeIcon.className = 'fas fa-moon';
+        if(mainLogo) mainLogo.src = 'logogestionit.png';
+    }
+    localStorage.setItem('theme', theme);
+}
         const canvas = document.getElementById('globe-canvas');
         const ctx = canvas.getContext('2d');
         let points = [];
