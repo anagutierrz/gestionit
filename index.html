@@ -33,13 +33,12 @@
         }
 
         body { 
-    font-family: 'Plus Jakarta Sans', sans-serif; 
-    /* ESTA LÍNEA ES LA QUE HACE QUE EL FONDO CAMBIE */
-    background-color: var(--bg-main); 
-    color: var(--text-main); 
-    overflow-x: hidden; 
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg-main); 
+            color: var(--text-main); 
+            overflow-x: hidden; 
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
 
         .world-bg-container {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -102,7 +101,7 @@
                     <a href="#casos">Casos</a>
                     <a href="contacto.html" class="btn-pill px-7 py-3 text-white uppercase font-bold tracking-widest text-[10px]">Habla con nosotros</a>
                 </nav>
-                <button class="theme-toggle" id="theme-btn"><i class="fas fa-sun" id="theme-icon"></i></button>
+                <button class="theme-toggle" id="theme-btn" aria-label="Cambiar Tema"><i class="fas fa-sun" id="theme-icon"></i></button>
                 <button class="lg:hidden text-2xl" id="mobile-btn"><i class="fas fa-bars"></i></button>
             </div>
         </div>
@@ -176,7 +175,7 @@
                     </div>
                 </div>
                 <div class="relative" data-aos="zoom-in">
-                    <img src="https://images.unsplash.com/photo-1573163281530-5be9c294833e?auto=format&fit=crop&q=80" alt="Equipo Gestión IT" class="rounded-[40px] border border-white/5 shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1573163281530-5be9c294833e?auto=format&fit=crop&q=80" alt="Equipo" class="rounded-[40px] border border-white/5 shadow-xl">
                 </div>
             </div>
         </section>
@@ -185,13 +184,13 @@
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl md:text-5xl font-extrabold mb-16 uppercase tracking-tighter">Casos de Éxito</h2>
                 <div class="grid md:grid-cols-2 gap-10 text-left">
-                    <article class="card-custom p-10 rounded-3xl" data-aos="fade-up">
+                    <article class="card-custom p-10 rounded-3xl">
                         <span class="text-cyan-400 text-[10px] font-bold tracking-widest uppercase">Sector Servicios</span>
                         <h4 class="text-2xl font-bold mt-4 mb-4">Optimización de Data Center</h4>
                         <p class="opacity-70 text-sm mb-6">Reducción del 40% en tiempos de caída mediante arquitectura híbrida.</p>
                         <a href="casosexito.html" class="text-xs font-bold border-b-2 border-cyan-600">Leer más</a>
                     </article>
-                    <article class="card-custom p-10 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                    <article class="card-custom p-10 rounded-3xl">
                         <span class="text-cyan-400 text-[10px] font-bold tracking-widest uppercase">Sector Industrial</span>
                         <h4 class="text-2xl font-bold mt-4 mb-4">Blindaje de Ciberseguridad</h4>
                         <p class="opacity-70 text-sm mb-6">Implementación de SOC y respuesta proactiva ante Ransomware.</p>
@@ -234,19 +233,18 @@
             localStorage.setItem('theme', theme);
         }
 
-        function applyTheme(theme) {
-    // Debe aplicarse al documento (etiqueta html) para que el CSS funcione
-    document.documentElement.setAttribute('data-theme', theme);
-    
-    if (theme === 'dark') {
-        themeIcon.className = 'fas fa-sun';
-        if(mainLogo) mainLogo.src = 'logogestionitblanco.png';
-    } else {
-        themeIcon.className = 'fas fa-moon';
-        if(mainLogo) mainLogo.src = 'logogestionit.png';
-    }
-    localStorage.setItem('theme', theme);
-}
+        // Leer preferencia guardada
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+
+        // EVENTO CLICK: Esto es lo que hacía falta
+        themeBtn.onclick = () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(newTheme);
+        };
+
+        // GLOBO TERRÁQUEO
         const canvas = document.getElementById('globe-canvas');
         const ctx = canvas.getContext('2d');
         let points = [];
