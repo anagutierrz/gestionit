@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Servicios Gestionados MSP | Gestión IT</title>
-    <meta name="description" content="IT como Servicio. Tu infraestructura tecnológica en manos expertas: Menos interrupciones, más crecimiento.">
+    <meta name="description" content="IT como Servicio: Tu infraestructura tecnológica en manos expertas. Menos interrupciones, más crecimiento.">
     
     <script>
         (function() {
@@ -24,7 +24,6 @@
         :root {
             --navy: #002D5A; 
             --cyan: #00A4E4;
-            --cta-accent: #FF5722; /* Acento de contraste fuerte para el CTA */
             --bg-main: #FFFFFF; 
             --text-main: #1E293B;
             --card-bg: rgba(255, 255, 255, 0.8); 
@@ -50,20 +49,27 @@
             border-bottom: 1px solid var(--border-color); z-index: 100;
         }
         
+        /* Botones secundarios */
         .btn-pill {
-            border-radius: 50px; background: linear-gradient(135deg, var(--navy) 0%, var(--cyan) 100%);
-            transition: 0.4s ease; color: white; box-shadow: 0 10px 20px rgba(0, 164, 228, 0.2);
+            border-radius: 50px; border: 1px solid rgba(0, 164, 228, 0.3);
+            background: rgba(0, 164, 228, 0.05);
+            transition: 0.4s ease; color: var(--cyan);
         }
+        .btn-pill:hover { background: rgba(0, 164, 228, 0.1); border-color: var(--cyan); }
 
-        /* Nuevo botón de impacto CTA */
-        .btn-cta-strong {
-            border-radius: 50px; background: var(--cta-accent);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); color: white;
-            box-shadow: 0 10px 25px rgba(255, 87, 34, 0.3);
+        /* NUEVO Botón de impacto CTA (Degradado Corporativo) */
+        .btn-cta-brand {
+            border-radius: 50px; 
+            background: linear-gradient(135deg, #001A35 0%, #002D5A 50%, #00A4E4 100%);
+            background-size: 200% auto;
+            transition: 0.5s ease; color: white;
+            box-shadow: 0 10px 20px rgba(0, 164, 228, 0.15);
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .btn-cta-strong:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(255, 87, 34, 0.5);
+        .btn-cta-brand:hover {
+            background-position: right center; /* Desplaza el degradado hacia el cyan */
+            box-shadow: 0 15px 30px rgba(0, 164, 228, 0.3);
+            transform: translateY(-2px);
         }
 
         .text-gradient { background: linear-gradient(to right, var(--text-main), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -121,7 +127,7 @@
                     <a href="proteccion.html" class="hover:text-cyan-400 transition">Protección</a>
                     <a href="msp.html" class="text-cyan-400 border-b-2 border-cyan-400 pb-1">MSP</a>
                     <a href="casosexito.html" class="hover:text-cyan-400 transition">Casos de Éxito</a>
-                    <a href="contacto.html" class="btn-pill px-6 py-3 text-white uppercase font-bold tracking-widest text-[10px]">Habla con nosotros</a>
+                    <a href="contacto.html" class="btn-pill px-6 py-3 uppercase font-bold tracking-widest text-[10px]">Habla</a>
                 </nav>
                 <button class="theme-toggle" disabled aria-label="Tema oscuro fijo"><i class="fas fa-moon"></i></button>
                 <button class="lg:hidden text-2xl" id="mobile-btn"><i class="fas fa-bars"></i></button>
@@ -141,7 +147,7 @@
     <main class="relative">
         <div class="glow-overlay"></div>
 
-        <section class="pt-48 pb-20 px-6">
+        <section class="pt-52 pb-24 px-6">
             <div class="container mx-auto text-center max-w-5xl" data-aos="fade-up">
                 <div class="mb-8">
                     <span class="badge-trust">99.9% de disponibilidad en servicios gestionados</span>
@@ -155,7 +161,7 @@
                     <strong class="text-cyan-400 font-semibold italic">Nosotros nos ocupamos de la tecnología, tú te ocupas de tu negocio.</strong>
                 </p>
                 <div class="mt-12">
-                    <a href="contacto.html" class="btn-cta-strong px-10 py-5 font-bold uppercase text-xs tracking-widest inline-block">Solicitar Auditoría de IT Gratuita</a>
+                    <a href="contacto.html" class="btn-cta-brand px-10 py-5 font-bold uppercase text-xs tracking-widest inline-block">Solicitar Auditoría Gratuita</a>
                 </div>
             </div>
         </section>
@@ -167,7 +173,7 @@
                         <div class="w-20 h-20 bg-cyan-500/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-cyan-500/20">
                             <i class="fas fa-server text-cyan-400 text-3xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4">Continuidad Total</h3>
+                        <h3 class="text-2xl font-bold mb-4 tracking-tight">Continuidad Total</h3>
                         <p class="opacity-70 text-sm leading-relaxed">
                             Monitoreo proactivo para resolver incidencias antes de que afecten la operación. <br><strong class="text-white mt-2 inline-block">Cero caídas, cero excusas.</strong>
                         </p>
@@ -176,7 +182,7 @@
                         <div class="w-20 h-20 bg-cyan-500/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-cyan-500/20">
                             <i class="fas fa-shield-alt text-cyan-400 text-3xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4">Seguridad Proactiva</h3>
+                        <h3 class="text-2xl font-bold mb-4 tracking-tight">Seguridad Proactiva</h3>
                         <p class="opacity-70 text-sm leading-relaxed">
                             Blindaje de dispositivos y gestión de vulnerabilidades en tiempo real. <br><strong class="text-white mt-2 inline-block">No reaccionamos a ataques, los prevenimos.</strong>
                         </p>
@@ -185,7 +191,7 @@
                         <div class="w-20 h-20 bg-cyan-500/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-cyan-500/20">
                             <i class="fas fa-cogs text-cyan-400 text-3xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4">Eficiencia Operativa</h3>
+                        <h3 class="text-2xl font-bold mb-4 tracking-tight">Eficiencia Operativa</h3>
                         <p class="opacity-70 text-sm leading-relaxed">
                             Estandarización de procesos de IT para <strong class="text-white">optimizar el retorno de inversión tecnológica</strong> de su empresa.
                         </p>
@@ -215,7 +221,7 @@
                         <i class="fas fa-magic text-cyan-400 text-3xl mb-6"></i>
                         <h3 class="text-xl font-bold mb-4">Mantenimiento Inteligente</h3>
                         <p class="opacity-70 text-sm leading-relaxed italic">
-                            "Gestión invisible y automatizada de parches y actualizaciones. Control total de inventario y salud de tus activos sin interrumpir el flujo de trabajo."
+                            "Gestión invisible y automatizada de parches y actualizaciones. Control total de inventario y salud de tus activos sin interrumpir el flujo."
                         </p>
                     </div>
                 </div>
@@ -226,9 +232,9 @@
             <div class="container mx-auto text-center relative z-10 max-w-4xl" data-aos="zoom-in">
                 <h2 class="text-4xl md:text-5xl font-extrabold mb-8 tracking-tighter">El enfoque es simple:</h2>
                 <p class="text-xl md:text-3xl opacity-90 leading-relaxed mb-12 font-light italic">
-                    "Garantizar que tus usuarios dispongan de herramientas <span class="font-bold text-cyan-400 not-italic">estables, seguras y optimizadas</span> para su productividad diaria. Sin excusas."
+                    "Garantizar que tus usuarios dispongan de herramientas <span class="font-bold text-cyan-400 not-italic">estables, seguras y optimizadas</span> <br class="hidden md:block"> para su productividad diaria. Sin excusas."
                 </p>
-                <a href="contacto.html" class="btn-cta-strong px-12 py-5 font-bold uppercase text-xs tracking-widest inline-block">Hablar con un Especialista</a>
+                <a href="contacto.html" class="btn-cta-brand px-12 py-5 font-bold uppercase text-xs tracking-widest inline-block">Hablar con un Especialista</a>
                 <div class="mt-8">
                     <span class="badge-trust">Respuesta proactiva garantizada</span>
                 </div>
