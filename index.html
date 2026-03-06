@@ -25,217 +25,362 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
         
         :root {
-            --navy: #002D5A; --cyan: #00A4E4;
-            --bg-main: #FFFFFF; --text-main: #1E293B;
-            --card-bg: #FFFFFF; --border-color: rgba(0, 0, 0, 0.05);
-        }
-
-        [data-theme='dark'] {
-            --bg-main: #000000; --text-main: #FFFFFF;
-            --card-bg: #0A0C10; --border-color: rgba(255, 255, 255, 0.08);
+            --navy: #001A35; --cyan: #00A4E4; --cyan-glow: rgba(0, 164, 228, 0.4);
+            --bg-main: #030508; --text-main: #FFFFFF;
+            --card-bg: rgba(10, 14, 23, 0.7); --border-color: rgba(255, 255, 255, 0.06);
         }
 
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             background-color: var(--bg-main); color: var(--text-main); 
-            overflow-x: hidden; transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden; 
+        }
+
+        /* Textura de fondo tecnológica (Grid sutil) */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
         }
 
         .world-bg-container {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 100vw; height: 100vh; z-index: 1; pointer-events: none; opacity: 0.5;
+            width: 100vw; height: 100vh; z-index: 1; pointer-events: none; opacity: 0.6;
         }
 
         .glass-nav { 
-            background: rgba(var(--bg-main), 0.85); backdrop-filter: blur(15px); 
+            background: rgba(3, 5, 8, 0.85); backdrop-filter: blur(20px); 
             border-bottom: 1px solid var(--border-color); z-index: 100;
         }
         
         .btn-pill {
-            border-radius: 50px; background: linear-gradient(135deg, var(--navy) 0%, var(--cyan) 100%);
-            transition: 0.4s ease; color: white; box-shadow: 0 10px 20px rgba(0, 164, 228, 0.2);
+            border-radius: 50px; background: linear-gradient(135deg, #002D5A 0%, var(--cyan) 100%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); color: white; 
+            box-shadow: 0 4px 15px rgba(0, 164, 228, 0.2); border: 1px solid rgba(0, 164, 228, 0.5);
+        }
+        .btn-pill:hover {
+            transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 164, 228, 0.4);
         }
 
-        .text-gradient { background: linear-gradient(to right, var(--text-main), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .text-gradient { 
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--cyan) 100%); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+        }
 
-        .card-custom { background: var(--card-bg); border: 1px solid var(--border-color); transition: 0.4s ease; overflow: hidden; }
-        .card-custom:hover { border-color: var(--cyan); transform: translateY(-5px); }
+        /* Tarjetas estilo "Módulo SaaS / Cyber" */
+        .tech-card { 
+            background: var(--card-bg); backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color); border-radius: 24px;
+            transition: all 0.4s ease; position: relative; overflow: hidden;
+        }
+        .tech-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+            opacity: 0; transition: opacity 0.4s ease;
+        }
+        .tech-card:hover { 
+            border-color: rgba(0, 164, 228, 0.3); transform: translateY(-5px); 
+            box-shadow: 0 10px 30px rgba(0, 164, 228, 0.08); background: rgba(15, 20, 30, 0.9);
+        }
+        .tech-card:hover::before { opacity: 1; }
+
+        /* Píldoras de lista (Reemplazo moderno de viñetas) */
+        .tech-pill {
+            display: inline-flex; items-center; gap: 0.75rem;
+            padding: 0.75rem 1.5rem; background: rgba(0, 164, 228, 0.05);
+            border: 1px solid rgba(0, 164, 228, 0.15); border-radius: 100px;
+            font-size: 0.9rem; font-weight: 600; color: #E2E8F0;
+            transition: all 0.3s ease;
+        }
+        .tech-pill:hover { background: rgba(0, 164, 228, 0.1); border-color: var(--cyan); }
 
         .theme-toggle {
-            background: rgba(0, 164, 228, 0.1); border: 1px solid var(--border-color);
+            background: rgba(0, 164, 228, 0.05); border: 1px solid var(--border-color);
             width: 45px; height: 45px; border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
             cursor: not-allowed; opacity: 0.4; color: var(--cyan);
         }
 
-        .list-item { position: relative; padding-left: 2rem; margin-bottom: 0.75rem; font-weight: 600; font-size: 0.9rem; }
-        .list-item::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; color: var(--cyan); }
-
-        .image-reveal { border-radius: 40px; overflow: hidden; border: 1px solid var(--border-color); }
+        .image-reveal { border-radius: 30px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative;}
         .image-reveal img { transition: transform 0.8s ease; }
         .image-reveal:hover img { transform: scale(1.05); }
+        .image-reveal::after {
+            content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 50px rgba(0,0,0,0.8); pointer-events: none;
+        }
+
+        /* Botón Flotante WhatsApp */
+        .wa-float {
+            position: fixed; bottom: 30px; right: 30px; z-index: 999;
+            background-color: #25D366; color: white; width: 60px; height: 60px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 32px; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease; border: 2px solid transparent;
+        }
+        .wa-float:hover { transform: scale(1.1) rotate(-5deg); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); }
     </style>
 </head>
-<body data-theme="dark">
+<body>
+
+    <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
 
     <header class="fixed w-full py-4 glass-nav">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <a href="index.html" class="flex items-center">
-                <img id="main-logo" src="logogestionitblanco.png" alt="Logo" class="h-10 md:h-12 w-auto object-contain transition-all duration-500">
+                <img id="main-logo" src="logogestionitblanco.png" alt="Logo" class="h-10 md:h-12 w-auto object-contain">
             </a>
             <div class="flex items-center gap-8">
-                <nav class="hidden lg:flex space-x-7 items-center font-bold text-[10px] uppercase tracking-[0.2em]">
-                    <a href="index.html" class="hover:text-cyan-400 transition">Inicio</a>
-                    <a href="nosotros.html" class="hover:text-cyan-400 transition">Nosotros</a>
-                    <a href="infraestructura.html" class="hover:text-cyan-400 transition">Infraestructura</a>
-                    <a href="proteccion.html" class="hover:text-cyan-400 transition">Protección</a>
-                    <a href="msp.html" class="hover:text-cyan-400 transition">MSP</a>
-                    <a href="casosexito.html" class="hover:text-cyan-400 transition">Casos de Éxito</a>
-                    <a href="contacto.html" class="btn-pill px-6 py-3 text-white uppercase font-bold tracking-widest text-[10px]">Habla con nosotros</a>
+                <nav class="hidden lg:flex space-x-8 items-center font-bold text-[10px] uppercase tracking-[0.2em]">
+                    <a href="index.html" class="hover:text-cyan-400 transition-colors">Inicio</a>
+                    <a href="nosotros.html" class="hover:text-cyan-400 transition-colors">Nosotros</a>
+                    <a href="#soluciones" class="hover:text-cyan-400 transition-colors">Soluciones</a>
+                    <a href="casosexito.html" class="hover:text-cyan-400 transition-colors">Casos de Éxito</a>
+                    <a href="contacto.html" class="btn-pill px-7 py-3 text-white uppercase font-bold tracking-widest text-[10px]">Habla con nosotros</a>
                 </nav>
                 <button class="theme-toggle" disabled aria-label="Tema oscuro fijo"><i class="fas fa-moon"></i></button>
-                <button class="lg:hidden text-2xl" id="mobile-btn"><i class="fas fa-bars"></i></button>
+                <button class="lg:hidden text-2xl text-white" id="mobile-btn" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden bg-black/95 p-8 text-center space-y-6 font-bold uppercase text-xs absolute w-full left-0 top-full">
-            <a href="index.html" class="block text-white">Inicio</a>
-            <a href="nosotros.html" class="block text-white">Nosotros</a>
-            <a href="infraestructura.html" class="block text-white">Infraestructura</a>
-            <a href="proteccion.html" class="block text-white">Protección</a>
-            <a href="msp.html" class="block text-white">MSP</a>
-            <a href="casosexito.html" class="block text-white">Casos de Éxito</a>
-            <a href="contacto.html" class="block text-cyan-400">Contacto</a>
+        <div id="mobile-menu" class="hidden lg:hidden bg-[#030508]/95 backdrop-blur-xl p-8 text-center space-y-6 font-bold uppercase text-xs absolute w-full left-0 top-full border-b border-white/10">
+            <a href="index.html" class="block text-white hover:text-cyan-400">Inicio</a>
+            <a href="nosotros.html" class="block text-white hover:text-cyan-400">Nosotros</a>
+            <a href="#soluciones" class="block text-white hover:text-cyan-400">Soluciones</a>
+            <a href="casosexito.html" class="block text-white hover:text-cyan-400">Casos de Éxito</a>
+            <a href="contacto.html" class="block text-cyan-400">Habla con nosotros</a>
         </div>
     </header>
 
-    <main>
-        <section id="inicio" class="relative min-h-screen flex items-center pt-32 pb-20 px-6 lg:px-0 overflow-hidden">
+    <main class="relative z-10">
+        <section id="inicio" class="relative min-h-screen flex items-center pt-32 pb-20 px-6 lg:px-0">
             <div class="world-bg-container"><canvas id="globe-canvas"></canvas></div>
             <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
                 <div data-aos="fade-right">
-                    <span class="inline-block text-[11px] font-bold mb-6 uppercase tracking-[0.4em] text-cyan-500">Socio Tecnológico Estratégico</span>
-                    <h1 class="text-4xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-8 tracking-tight">Convertimos la tecnología en <br> <span class="text-gradient">crecimiento.</span></h1>
-                    <p class="text-base md:text-xl opacity-80 mb-10 max-w-xl leading-relaxed">
-                        Aseguramos la continuidad, eficiencia y evolución constante de su negocio a través de un modelo integral de ingeniería.
+                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 mb-8">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                        <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-400">Socio Tecnológico Estratégico</span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[1.1] mb-8 tracking-tight">Convertimos la tecnología en <br> <span class="text-gradient">crecimiento.</span></h1>
+                    <p class="text-base md:text-xl opacity-80 mb-10 max-w-xl leading-relaxed font-light">
+                        Gestión IT convierte la tecnología en un habilitador estratégico, asegurando continuidad, eficiencia y evolución constante.
                     </p>
-                    <a href="contacto.html" class="btn-pill px-10 py-5 text-center text-white font-bold uppercase text-xs tracking-widest inline-block">Habla con nosotros</a>
+                    <a href="contacto.html" class="btn-pill px-10 py-5 text-center text-white font-bold uppercase text-xs tracking-widest inline-flex items-center gap-3">
+                        Habla con nosotros <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="hidden lg:block" data-aos="fade-left">
-                    <div class="image-reveal shadow-[0_0_50px_rgba(0,164,228,0.15)] aspect-square max-w-lg mx-auto">
+                <div class="hidden lg:block relative" data-aos="fade-left">
+                    <div class="absolute -inset-4 bg-cyan-500/20 rounded-[40px] blur-2xl z-0"></div>
+                    <div class="image-reveal aspect-square max-w-lg mx-auto z-10 shadow-2xl">
                         <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1000" alt="Consultoría" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 px-6 relative z-10">
-            <div class="container mx-auto">
+        <section class="py-24 px-6 relative border-t border-white/5 bg-gradient-to-b from-[#030508] to-[#080d14]">
+            <div class="container mx-auto max-w-7xl">
                 <div class="grid lg:grid-cols-2 gap-20 items-center">
                     <div data-aos="fade-right">
-                        <h2 class="text-3xl md:text-5xl font-extrabold mb-8 leading-tight uppercase tracking-tighter">Más que implementación, <br><span class="text-cyan-500">Diseño Estratégico.</span></h2>
-                        <p class="text-lg opacity-70 mb-10 leading-relaxed">
+                        <h2 class="text-3xl md:text-5xl font-extrabold mb-8 leading-[1.2] tracking-tighter">
+                            Más que implementación, <br><span class="text-gradient">Diseño Estratégico.</span>
+                        </h2>
+                        <p class="text-lg opacity-70 mb-10 leading-relaxed font-light">
                             En Gestión IT no solo implementamos tecnología. Diseñamos un modelo integral donde infraestructura, seguridad y operación trabajan alineadas con los objetivos del negocio. Actuamos como un socio tecnológico, no como un proveedor puntual.
                         </p>
-                        <div class="grid md:grid-cols-1 gap-2 mb-8">
-                            <div class="list-item">Arquitectura tecnológica sólida y escalable</div>
-                            <div class="list-item">Seguridad integrada desde el diseño</div>
-                            <div class="list-item">Operación continua bajo buenas prácticas</div>
-                            <div class="list-item">Trazabilidad y control sobre los activos tecnológicos</div>
-                            <div class="list-item">Soporte especializado con visión estratégica</div>
+                        
+                        <p class="text-xs font-bold text-cyan-400 uppercase tracking-[0.2em] mb-6">Nuestro enfoque combina:</p>
+                        
+                        <div class="flex flex-wrap gap-4 mb-8">
+                            <div class="tech-pill"><i class="fas fa-layer-group text-cyan-400"></i> Arquitectura tecnológica sólida y escalable</div>
+                            <div class="tech-pill"><i class="fas fa-shield-check text-cyan-400"></i> Seguridad integrada desde el diseño</div>
+                            <div class="tech-pill"><i class="fas fa-sync-alt text-cyan-400"></i> Operación continua bajo buenas prácticas</div>
+                            <div class="tech-pill"><i class="fas fa-route text-cyan-400"></i> Trazabilidad y control sobre los activos tecnológicos</div>
+                            <div class="tech-pill"><i class="fas fa-headset text-cyan-400"></i> Soporte especializado con visión estratégica</div>
                         </div>
                     </div>
                     
-                    <div class="image-reveal" data-aos="fade-left">
-                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" alt="Tecnología Estratégica" class="w-full h-full object-cover aspect-video lg:aspect-square" loading="lazy">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-16">
-                    <div class="card-custom p-8 rounded-[40px]" data-aos="fade-up">
-                        <h4 class="text-cyan-500 font-extrabold text-xs uppercase tracking-widest mb-4">Continuidad</h4>
-                        <p class="text-sm font-bold opacity-80 leading-relaxed">Reducción drástica de riesgos operativos.</p>
-                    </div>
-                    <div class="card-custom p-8 rounded-[40px]" data-aos="fade-up" data-aos-delay="100">
-                        <h4 class="text-cyan-500 font-extrabold text-xs uppercase tracking-widest mb-4">Eficiencia</h4>
-                        <p class="text-sm font-bold opacity-80 leading-relaxed">Mejora de la productividad interna y optimización de costos.</p>
-                    </div>
-                    <div class="card-custom p-8 rounded-[40px]" data-aos="fade-up" data-aos-delay="200">
-                        <h4 class="text-cyan-500 font-extrabold text-xs uppercase tracking-widest mb-4">Estructura</h4>
-                        <p class="text-sm font-bold opacity-80 leading-relaxed">Capacidad de escalar con orden y control total.</p>
-                    </div>
-                    <div class="card-custom p-8 rounded-[40px]" data-aos="fade-up" data-aos-delay="300">
-                        <h4 class="text-cyan-500 font-extrabold text-xs uppercase tracking-widest mb-4">Foco</h4>
-                        <p class="text-sm font-bold opacity-80 leading-relaxed">Libertad para enfocarse exclusivamente en el crecimiento del negocio.</p>
+                    <div data-aos="fade-left" class="relative">
+                        <div class="tech-card p-10 relative overflow-hidden shadow-2xl border-cyan-500/20">
+                            <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-[80px] -mr-20 -mt-20"></div>
+                            
+                            <h3 class="text-xl font-bold mb-8 flex items-center gap-3">
+                                <span class="w-1 h-6 bg-cyan-500 rounded-full"></span> Esto permite a las organizaciones:
+                            </h3>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10">
+                                <div class="bg-[#0f1520] p-6 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-colors group">
+                                    <div class="w-10 h-10 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-shield-alt text-cyan-400 text-lg"></i>
+                                    </div>
+                                    <h4 class="font-bold text-sm text-gray-200">Reducir riesgos operativos</h4>
+                                </div>
+                                <div class="bg-[#0f1520] p-6 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-colors group">
+                                    <div class="w-10 h-10 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-chart-line text-cyan-400 text-lg"></i>
+                                    </div>
+                                    <h4 class="font-bold text-sm text-gray-200">Mejorar la productividad interna</h4>
+                                </div>
+                                <div class="bg-[#0f1520] p-6 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-colors group">
+                                    <div class="w-10 h-10 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-piggy-bank text-cyan-400 text-lg"></i>
+                                    </div>
+                                    <h4 class="font-bold text-sm text-gray-200">Optimizar costos tecnológicos</h4>
+                                </div>
+                                <div class="bg-[#0f1520] p-6 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-colors group">
+                                    <div class="w-10 h-10 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-rocket text-cyan-400 text-lg"></i>
+                                    </div>
+                                    <h4 class="font-bold text-sm text-gray-200">Enfocarse en el crecimiento del negocio</h4>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 px-6 bg-cyan-500/5">
-            <div class="container mx-auto">
-                <div class="text-center mb-16" data-aos="fade-up">
-                    <span class="text-cyan-500 font-bold uppercase tracking-[0.3em] text-[10px]">Especialidades</span>
-                    <h2 class="text-4xl font-extrabold tracking-tighter uppercase mt-2">Nuestras Unidades de Ingeniería</h2>
+       <section id="soluciones" class="py-32 px-6 relative scroll-mt-24">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[600px] bg-cyan-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+            
+            <div class="container mx-auto relative z-10 max-w-7xl">
+                <div class="text-center mb-20" data-aos="fade-up">
+                    <span class="inline-block px-4 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 font-bold uppercase tracking-[0.3em] text-[10px] mb-4">Unidades de Ingeniería</span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold tracking-tighter uppercase mt-2">Nuestras Soluciones</h2>
                 </div>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <article class="card-custom rounded-[40px]" data-aos="fade-up">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=600" alt="Data Center" class="w-full h-full object-cover" loading="lazy">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <a href="infraestructura.html" class="tech-card p-8 group block" data-aos="fade-up" data-aos-delay="0">
+                        <i class="fas fa-server text-cyan-400 text-3xl mb-6 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>
+                        <h3 class="text-lg font-bold leading-snug text-white">Infraestructura <br>Tecnológica Corporativa</h3>
+                        <div class="mt-6 flex items-center gap-2 text-cyan-500 text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Explorar solución <i class="fas fa-arrow-right"></i>
                         </div>
-                        <div class="p-10">
-                            <i class="fas fa-server text-cyan-400 text-2xl mb-6"></i>
-                            <h3 class="text-xl font-bold mb-4 uppercase tracking-widest">Infraestructura</h3>
-                            <p class="opacity-60 text-sm leading-relaxed mb-8">Base sólida para el rendimiento corporativo.</p>
-                            <a href="infraestructura.html" class="text-xs font-black uppercase text-cyan-400">Detalles →</a>
+                    </a>
+                    
+                    <a href="msp.html" class="tech-card p-8 group block" data-aos="fade-up" data-aos-delay="50">
+                        <i class="fas fa-headset text-cyan-400 text-3xl mb-6 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>
+                        <h3 class="text-lg font-bold leading-snug text-white">Servicios Gestionados <br><span class="text-cyan-500 text-sm font-medium tracking-wide">(IT como Servicio)</span></h3>
+                        <div class="mt-6 flex items-center gap-2 text-cyan-500 text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Explorar solución <i class="fas fa-arrow-right"></i>
                         </div>
-                    </article>
-                    <article class="card-custom rounded-[40px]" data-aos="fade-up" data-aos-delay="100">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=600" alt="Ciberseguridad" class="w-full h-full object-cover" loading="lazy">
+                    </a>
+                    
+                    <a href="servicios-profesionales.html" class="tech-card p-8 group block" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-briefcase text-cyan-400 text-3xl mb-6 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>
+                        <h3 class="text-lg font-bold leading-snug text-white">Servicios Profesionales <br>Especializados</h3>
+                        <div class="mt-6 flex items-center gap-2 text-cyan-500 text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Explorar solución <i class="fas fa-arrow-right"></i>
                         </div>
-                        <div class="p-10">
-                            <i class="fas fa-shield-alt text-cyan-400 text-2xl mb-6"></i>
-                            <h3 class="text-xl font-bold mb-4 uppercase tracking-widest">Protección</h3>
-                            <p class="opacity-60 text-sm leading-relaxed mb-8">Seguridad blindada desde la arquitectura.</p>
-                            <a href="proteccion.html" class="text-xs font-black uppercase text-cyan-400">Detalles →</a>
+                    </a>
+                    
+                    <a href="proteccion.html" class="tech-card p-8 group block" data-aos="fade-up" data-aos-delay="150">
+                        <i class="fas fa-shield-alt text-cyan-400 text-3xl mb-6 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>
+                        <h3 class="text-lg font-bold leading-snug text-white">Seguridad y <br>Ciberseguridad</h3>
+                        <div class="mt-6 flex items-center gap-2 text-cyan-500 text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Explorar solución <i class="fas fa-arrow-right"></i>
                         </div>
-                    </article>
-                    <article class="card-custom rounded-[40px]" data-aos="fade-up" data-aos-delay="200">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=600" alt="Soporte Técnico" class="w-full h-full object-cover" loading="lazy">
+                    </a>
+                    
+                    <a href="monitoreo.html" class="tech-card p-8 group block" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-eye text-cyan-400 text-3xl mb-6 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>
+                        <h3 class="text-lg font-bold leading-snug text-white">Observabilidad y <br>Monitoreo</h3>
+                        <div class="mt-6 flex items-center gap-2 text-cyan-500 text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Explorar solución <i class="fas fa-arrow-right"></i>
                         </div>
-                        <div class="p-10">
-                            <i class="fas fa-headset text-cyan-400 text-2xl mb-6"></i>
-                            <h3 class="text-xl font-bold mb-4 uppercase tracking-widest">MSP</h3>
-                            <p class="opacity-60 text-sm leading-relaxed mb-8">Operación continua y soporte estratégico.</p>
-                            <a href="msp.html" class="text-xs font-black uppercase text-cyan-400">Detalles →</a>
+                    </a>
+                    
+                    <a href="endpoints.html" class="tech-card p-8 group block" data-aos="fade-up" data-aos-delay="250">
+                        <i class="fas fa-laptop-code text-cyan-400 text-3xl mb-6 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>
+                        <h3 class="text-lg font-bold leading-snug text-white">Gestión de <br>Endpoints</h3>
+                        <div class="mt-6 flex items-center gap-2 text-cyan-500 text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Explorar solución <i class="fas fa-arrow-right"></i>
                         </div>
-                    </article>
+                    </a>
+                    
+                    <a href="comunicaciones.html" class="tech-card p-8 group block" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-network-wired text-cyan-400 text-3xl mb-6 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>
+                        <h3 class="text-lg font-bold leading-snug text-white">Comunicaciones <br>Empresariales</h3>
+                        <div class="mt-6 flex items-center gap-2 text-cyan-500 text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Explorar solución <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                    
+                    <a href="cloud.html" class="tech-card p-8 group block" data-aos="fade-up" data-aos-delay="350">
+                        <i class="fas fa-cloud text-cyan-400 text-3xl mb-6 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>
+                        <h3 class="text-lg font-bold leading-snug text-white">Infraestructura <br>y Cloud</h3>
+                        <div class="mt-6 flex items-center gap-2 text-cyan-500 text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Explorar solución <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 px-6 relative overflow-hidden">
+        <section class="py-24 px-6 bg-gradient-to-t from-[#030508] to-[#0a0e17] border-t border-b border-white/5 relative overflow-hidden">
+            <div class="container mx-auto relative z-10 max-w-7xl">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-5" data-aos="fade-right">
+                        <div class="inline-flex items-center gap-2 mb-6">
+                            <i class="fas fa-file-contract text-cyan-400"></i>
+                            <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-cyan-400">Auditoría y Estándares</span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-extrabold mb-8 leading-[1.2] tracking-tighter">
+                            Cumplimiento Normativo y <br><span class="text-gradient">Gobierno Tecnológico</span>
+                        </h2>
+                        <p class="text-lg opacity-70 mb-6 leading-relaxed font-light">
+                            Todas las soluciones implementadas por Gestión IT están diseñadas bajo estándares internacionales de seguridad y gobierno tecnológico.
+                        </p>
+                        <p class="text-lg opacity-70 leading-relaxed font-light">
+                            Esto permite a las organizaciones cumplir con regulaciones y mantener control total sobre accesos, actividad de usuarios y configuraciones críticas.
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4" data-aos="fade-left">
+                        <div class="tech-card p-8 flex flex-col justify-center">
+                            <i class="fas fa-check-double text-cyan-400 text-3xl mb-4"></i>
+                            <h4 class="font-bold text-base leading-relaxed text-gray-100">Cumplir regulaciones de seguridad internacional</h4>
+                        </div>
+                        <div class="tech-card p-8 flex flex-col justify-center">
+                            <i class="fas fa-fingerprint text-cyan-400 text-3xl mb-4"></i>
+                            <h4 class="font-bold text-base leading-relaxed text-gray-100">Mantener control riguroso sobre accesos</h4>
+                        </div>
+                        <div class="tech-card p-8 flex flex-col justify-center">
+                            <i class="fas fa-user-secret text-cyan-400 text-3xl mb-4"></i>
+                            <h4 class="font-bold text-base leading-relaxed text-gray-100">Auditar en tiempo real la actividad de usuarios</h4>
+                        </div>
+                        <div class="tech-card p-8 flex flex-col justify-center bg-gradient-to-br from-[#0a0e17] to-[#001A35]">
+                            <i class="fas fa-lock text-cyan-400 text-3xl mb-4"></i>
+                            <h4 class="font-bold text-base leading-relaxed text-gray-100">Proteger activos tecnológicos críticos</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-cyan-900/10 to-transparent pointer-events-none"></div>
+        </section>
+
+        <section class="py-32 px-6 relative overflow-hidden">
             <div class="container mx-auto text-center relative z-10">
-                <div class="max-w-3xl mx-auto" data-aos="zoom-in">
+                <div class="max-w-4xl mx-auto" data-aos="zoom-in">
                     <h2 class="text-4xl md:text-6xl font-extrabold mb-8 tracking-tighter">¿Listo para evolucionar su <span class="text-gradient">operación técnica?</span></h2>
-                    <p class="text-lg opacity-70 mb-12">
-                        Gestión IT convierte la tecnología en un habilitador estratégico, asegurando continuidad, eficiencia y evolución constante.
+                    <p class="text-xl opacity-70 mb-12 font-light">
+                        Deje de reaccionar a los problemas. Implemente un modelo proactivo hoy.
                     </p>
-                    <a href="contacto.html" class="btn-pill px-12 py-5 text-white font-bold uppercase text-xs tracking-widest inline-block relative z-20">Habla con nosotros</a>
+                    <a href="contacto.html" class="btn-pill px-14 py-6 text-white font-bold uppercase text-xs tracking-widest inline-flex items-center gap-3">
+                        Habla con nosotros <i class="fas fa-chevron-right"></i>
+                    </a>
                 </div>
             </div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
         </section>
     </main>
 
-    <footer class="py-20 px-6 border-t border-white/5 bg-alt relative z-10">
-        <div class="container mx-auto">
+    <footer class="py-20 px-6 border-t border-white/5 bg-[#010204] relative z-10">
+        <div class="container mx-auto max-w-7xl">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 text-left">
                 
                 <div class="space-y-6">
-                    <div class="font-extrabold text-2xl tracking-tighter">
-                        Gestion<span style="color:var(--cyan)">IT</span>
+                    <div class="font-extrabold text-2xl tracking-tighter flex items-center gap-1">
+                        <img src="logogestionitblanco.png" alt="Logo" class="h-8 object-contain opacity-90 hover:opacity-100 transition-opacity">
                     </div>
                     <p class="text-xs font-bold text-cyan-500 uppercase tracking-[0.2em] leading-relaxed">
                         Liderazgo técnico, <br>resultados que trascienden.
@@ -244,39 +389,39 @@
                         Socio tecnológico estratégico. Convertimos la complejidad técnica en una ventaja competitiva para su negocio.
                     </p>
                     <div class="flex gap-5 text-lg">
-                        <a href="#" class="hover:text-cyan-400 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="hover:text-cyan-400 transition" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="hover:text-cyan-400 transition" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
 
                 <div>
-                    <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] mb-8 text-cyan-500">Servicios</h4>
-                    <ul class="space-y-4 text-xs font-bold uppercase tracking-widest opacity-70">
-                        <li><a href="infraestructura.html" class="hover:text-cyan-400 transition">Infraestructura</a></li>
-                        <li><a href="proteccion.html" class="hover:text-cyan-400 transition">Protección</a></li>
-                        <li><a href="msp.html" class="hover:text-cyan-400 transition">MSP</a></li>
-                        <li><a href="nosotros.html" class="hover:text-cyan-400 transition">Nosotros</a></li>
+                    <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] mb-8 text-cyan-500">Navegación</h4>
+                    <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-gray-400">
+                        <li><a href="nosotros.html" class="hover:text-cyan-400 transition-colors">Nosotros</a></li>
+                        <li><a href="#soluciones" class="hover:text-cyan-400 transition-colors">Soluciones</a></li>
+                        <li><a href="casosexito.html" class="hover:text-cyan-400 transition-colors">Casos de Éxito</a></li>
+                        <li><a href="contacto.html" class="hover:text-cyan-400 transition-colors">Contacto</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] mb-8 text-cyan-500">Contacto</h4>
-                    <ul class="space-y-4 text-xs font-bold opacity-70">
+                    <ul class="space-y-4 text-xs font-bold text-gray-400">
                         <li class="flex items-center gap-3">
                             <i class="fas fa-phone-alt text-cyan-400"></i>
-                            <a href="tel:8093321705" class="hover:text-cyan-400 transition">809 332 1705</a>
+                            <a href="tel:8093321705" class="hover:text-cyan-400 transition-colors">809 332 1705</a>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fas fa-envelope text-cyan-400"></i>
-                            <a href="mailto:info@gestionit.com.do" class="hover:text-cyan-400 transition lowercase">info@gestionit.com.do</a>
+                            <a href="mailto:info@gestionit.com.do" class="hover:text-cyan-400 transition-colors lowercase">info@gestionit.com.do</a>
                         </li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] mb-8 text-cyan-500">Ubicación</h4>
-                    <p class="text-xs font-bold opacity-70 leading-relaxed uppercase tracking-widest">
+                    <p class="text-xs font-bold text-gray-400 leading-relaxed uppercase tracking-widest">
                         <i class="fas fa-map-marker-alt text-cyan-400 mr-2"></i>
                         Calle Dr. Jacinto Ignacio Mañón #25, <br>
                         Santo Domingo, República Dominicana.
@@ -286,59 +431,66 @@
             </div>
 
             <div class="pt-8 border-t border-white/5 text-center">
-                <p class="opacity-30 text-[9px] uppercase tracking-widest">
+                <p class="text-[9px] uppercase tracking-widest text-gray-500">
                     © 2026 Gestión IT. Tecnología e innovación, Sabemos cómo.
                 </p>
             </div>
         </div>
     </footer>
 
+    <a href="https://wa.me/18093321705" target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            AOS.init({ duration: 1000, once: true });
+            // Inicializar animaciones de scroll
+            AOS.init({ duration: 800, once: true, offset: 50 });
             
-            // Lógica Menú Móvil
+            // Menú Móvil
             const mobileBtn = document.getElementById('mobile-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             if(mobileBtn && mobileMenu) {
                 mobileBtn.onclick = () => { mobileMenu.classList.toggle('hidden'); }
             }
 
-            // Globo Interactivo
+            // Fondo Interactivo (Globo)
             const canvas = document.getElementById('globe-canvas');
-            const ctx = canvas.getContext('2d');
-            let points = [];
-            function initGlobe() {
-                const size = window.innerWidth < 768 ? 600 : 950;
-                canvas.width = size; canvas.height = size;
-                const radius = size / 2.7;
-                points = [];
-                for (let i = 0; i < 480; i++) {
-                    const theta = Math.random() * 2 * Math.PI;
-                    const phi = Math.acos((Math.random() * 2) - 1);
-                    points.push({ x: radius * Math.sin(phi) * Math.cos(theta), y: radius * Math.sin(phi) * Math.sin(theta), z: radius * Math.cos(phi) });
-                }
-            }
-            let angle = 0;
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                const centerX = canvas.width / 2; const centerY = canvas.height / 2;
-                angle += 0.0015;
-                points.forEach(p => {
-                    const x1 = p.x * Math.cos(angle) - p.z * Math.sin(angle);
-                    const z1 = p.z * Math.cos(angle) + p.x * Math.sin(angle);
-                    const scale = 500 / (500 - z1);
-                    const x2 = x1 * scale + centerX; const y2 = p.y * scale + centerY;
-                    if (z1 > -50) {
-                        ctx.beginPath(); ctx.arc(x2, y2, 1.3 * scale, 0, Math.PI * 2);
-                        ctx.fillStyle = `rgba(0, 164, 228, ${0.45 * scale})`; ctx.fill();
+            if(canvas) {
+                const ctx = canvas.getContext('2d');
+                let points = [];
+                function initGlobe() {
+                    const size = window.innerWidth < 768 ? 500 : 850;
+                    canvas.width = size; canvas.height = size;
+                    const radius = size / 2.7;
+                    points = [];
+                    for (let i = 0; i < 400; i++) {
+                        const theta = Math.random() * 2 * Math.PI;
+                        const phi = Math.acos((Math.random() * 2) - 1);
+                        points.push({ x: radius * Math.sin(phi) * Math.cos(theta), y: radius * Math.sin(phi) * Math.sin(theta), z: radius * Math.cos(phi) });
                     }
-                });
-                requestAnimationFrame(draw);
+                }
+                let angle = 0;
+                function draw() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    const centerX = canvas.width / 2; const centerY = canvas.height / 2;
+                    angle += 0.001; // Rotación sutil
+                    points.forEach(p => {
+                        const x1 = p.x * Math.cos(angle) - p.z * Math.sin(angle);
+                        const z1 = p.z * Math.cos(angle) + p.x * Math.sin(angle);
+                        const scale = 500 / (500 - z1);
+                        const x2 = x1 * scale + centerX; const y2 = p.y * scale + centerY;
+                        if (z1 > -50) {
+                            ctx.beginPath(); ctx.arc(x2, y2, 1.2 * scale, 0, Math.PI * 2);
+                            ctx.fillStyle = `rgba(0, 164, 228, ${0.4 * scale})`; ctx.fill();
+                        }
+                    });
+                    requestAnimationFrame(draw);
+                }
+                initGlobe(); draw();
+                window.addEventListener('resize', initGlobe);
             }
-            initGlobe(); draw();
-            window.addEventListener('resize', initGlobe);
         });
     </script>
 </body>
