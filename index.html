@@ -88,7 +88,7 @@
 
         /* Píldoras de lista (Reemplazo moderno de viñetas) */
         .tech-pill {
-            display: inline-flex; items-center; gap: 0.75rem;
+            display: inline-flex; align-items: center; gap: 0.75rem; /* Corregido items-center a align-items: center */
             padding: 0.75rem 1.5rem; background: rgba(0, 164, 228, 0.05);
             border: 1px solid rgba(0, 164, 228, 0.15); border-radius: 100px;
             font-size: 0.9rem; font-weight: 600; color: #E2E8F0;
@@ -119,35 +119,84 @@
             transition: all 0.3s ease; border: 2px solid transparent;
         }
         .wa-float:hover { transform: scale(1.1) rotate(-5deg); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); }
+
+        /* Estilos para el dropdown de escritorio */
+        .dropdown-menu {
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-container:hover .dropdown-menu {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
-</head>
-<body>
-
-    <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
-
-    <header class="fixed w-full py-4 glass-nav">
+<header class="fixed w-full py-4 glass-nav">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <a href="index.html" class="flex items-center">
-                <img id="main-logo" src="logogestionitblanco.png" alt="Logo" class="h-10 md:h-12 w-auto object-contain">
+                <img id="main-logo" src="logofinal.png" alt="Logo" class="h-10 md:h-12 w-auto object-contain">
             </a>
             <div class="flex items-center gap-8">
-                <nav class="hidden lg:flex space-x-8 items-center font-bold text-[10px] uppercase tracking-[0.2em]">
+                <nav class="hidden lg:flex space-x-8 items-center font-bold text-[10px] uppercase tracking-[0.2em] relative">
                     <a href="index.html" class="hover:text-cyan-400 transition-colors">Inicio</a>
                     <a href="nosotros.html" class="hover:text-cyan-400 transition-colors">Nosotros</a>
-                    <a href="#soluciones" class="hover:text-cyan-400 transition-colors">Soluciones</a>
+                    
+                    <!-- DROPDOWN DE SERVICIOS (ESCRITORIO) -->
+                    <div class="relative dropdown-container py-4"> 
+                        <button class="hover:text-cyan-400 transition-colors flex items-center gap-1 uppercase font-bold tracking-[0.2em] outline-none">
+                            SERVICIOS <i class="fas fa-chevron-down text-[8px] ml-1"></i>
+                        </button>
+                        <!-- Menú desplegable -->
+                        <div class="dropdown-menu absolute top-full left-0 mt-0 w-64 bg-[#0a0e17] border border-white/10 rounded-xl shadow-2xl p-2 z-50 normal-case tracking-normal font-semibold text-xs">
+                            <a href="infraestructura.html" class="block px-4 py-3 hover:bg-cyan-500/10 hover:text-cyan-400 rounded-lg transition-colors text-white">Infraestructura Tecnológica</a>
+                            <a href="msp.html" class="block px-4 py-3 hover:bg-cyan-500/10 hover:text-cyan-400 rounded-lg transition-colors text-white">Servicios Gestionados (MSP)</a>
+                            <a href="servicios-profesionales.html" class="block px-4 py-3 hover:bg-cyan-500/10 hover:text-cyan-400 rounded-lg transition-colors text-white">Servicios Profesionales</a>
+                            <a href="proteccion.html" class="block px-4 py-3 hover:bg-cyan-500/10 hover:text-cyan-400 rounded-lg transition-colors text-white">Ciberseguridad</a>
+                            <a href="monitoreo.html" class="block px-4 py-3 hover:bg-cyan-500/10 hover:text-cyan-400 rounded-lg transition-colors text-white">Observabilidad y Monitoreo</a>
+                            <a href="endpoints.html" class="block px-4 py-3 hover:bg-cyan-500/10 hover:text-cyan-400 rounded-lg transition-colors text-white">Gestión de Endpoints</a>
+                            <a href="comunicaciones.html" class="block px-4 py-3 hover:bg-cyan-500/10 hover:text-cyan-400 rounded-lg transition-colors text-white">Comunicaciones Empresariales</a>
+                            <a href="cloud.html" class="block px-4 py-3 hover:bg-cyan-500/10 hover:text-cyan-400 rounded-lg transition-colors text-white">Infraestructura y Cloud</a>
+                        </div>
+                    </div>
+
                     <a href="casosexito.html" class="hover:text-cyan-400 transition-colors">Casos de Éxito</a>
+                    <a href="blog.html" class="hover:text-cyan-400 transition-colors">Blogs</a>
+                    
                     <a href="contacto.html" class="btn-pill px-7 py-3 text-white uppercase font-bold tracking-widest text-[10px]">Habla con nosotros</a>
                 </nav>
                 <button class="theme-toggle" disabled aria-label="Tema oscuro fijo"><i class="fas fa-moon"></i></button>
                 <button class="lg:hidden text-2xl text-white" id="mobile-btn" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden bg-[#030508]/95 backdrop-blur-xl p-8 text-center space-y-6 font-bold uppercase text-xs absolute w-full left-0 top-full border-b border-white/10">
+
+        <!-- MENÚ MÓVIL (ACORDEÓN PARA SERVICIOS) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-[#030508]/95 backdrop-blur-xl p-8 text-left space-y-6 font-bold uppercase text-xs absolute w-full left-0 top-full border-b border-white/10 h-screen overflow-y-auto">
             <a href="index.html" class="block text-white hover:text-cyan-400">Inicio</a>
             <a href="nosotros.html" class="block text-white hover:text-cyan-400">Nosotros</a>
-            <a href="#soluciones" class="block text-white hover:text-cyan-400">Soluciones</a>
+            
+            <div>
+                <button id="mobile-servicios-btn" class="w-full flex justify-between items-center text-white hover:text-cyan-400 focus:outline-none uppercase">
+                    <span>Servicios</span>
+                    <i class="fas fa-chevron-down transition-transform duration-300" id="mobile-servicios-icon"></i>
+                </button>
+                <div id="mobile-servicios-menu" class="hidden mt-4 pl-4 space-y-4 border-l border-white/10 normal-case tracking-normal">
+                    <a href="infraestructura.html" class="block text-gray-300 hover:text-cyan-400 text-xs">Infraestructura Tecnológica</a>
+                    <a href="msp.html" class="block text-gray-300 hover:text-cyan-400 text-xs">Servicios Gestionados (MSP)</a>
+                    <a href="servicios-profesionales.html" class="block text-gray-300 hover:text-cyan-400 text-xs">Servicios Profesionales</a>
+                    <a href="proteccion.html" class="block text-gray-300 hover:text-cyan-400 text-xs">Ciberseguridad</a>
+                    <a href="monitoreo.html" class="block text-gray-300 hover:text-cyan-400 text-xs">Observabilidad y Monitoreo</a>
+                    <a href="endpoints.html" class="block text-gray-300 hover:text-cyan-400 text-xs">Gestión de Endpoints</a>
+                    <a href="comunicaciones.html" class="block text-gray-300 hover:text-cyan-400 text-xs">Comunicaciones Empresariales</a>
+                    <a href="cloud.html" class="block text-gray-300 hover:text-cyan-400 text-xs">Infraestructura y Cloud</a>
+                </div>
+            </div>
+
             <a href="casosexito.html" class="block text-white hover:text-cyan-400">Casos de Éxito</a>
-            <a href="contacto.html" class="block text-cyan-400">Habla con nosotros</a>
+            <a href="blog.html" class="block text-white hover:text-cyan-400">Blogs</a>
+            
+            <a href="contacto.html" class="block text-cyan-400 mt-8 pt-6 border-t border-white/10">Habla con nosotros</a>
         </div>
     </header>
 
@@ -239,7 +288,7 @@
             </div>
         </section>
 
-       <section id="soluciones" class="py-32 px-6 relative scroll-mt-24">
+        <section id="soluciones" class="py-32 px-6 relative scroll-mt-24">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[600px] bg-cyan-900/10 rounded-full blur-[120px] pointer-events-none"></div>
             
             <div class="container mx-auto relative z-10 max-w-7xl">
@@ -380,7 +429,8 @@
                 
                 <div class="space-y-6">
                     <div class="font-extrabold text-2xl tracking-tighter flex items-center gap-1">
-                        <img src="logogestionitblanco.png" alt="Logo" class="h-8 object-contain opacity-90 hover:opacity-100 transition-opacity">
+                        <!-- 4. ACTUALIZACIÓN DEL LOGO EN FOOTER -->
+                        <img src="logofinal.png" alt="Logo" class="h-8 object-contain opacity-90 hover:opacity-100 transition-opacity">
                     </div>
                     <p class="text-xs font-bold text-cyan-500 uppercase tracking-[0.2em] leading-relaxed">
                         Liderazgo técnico, <br>resultados que trascienden.
@@ -396,12 +446,12 @@
                 </div>
 
                 <div>
-                    <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] mb-8 text-cyan-500">Navegación</h4>
+                    <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] mb-8 text-cyan-500">Servicios</h4>
                     <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-gray-400">
-                        <li><a href="nosotros.html" class="hover:text-cyan-400 transition-colors">Nosotros</a></li>
-                        <li><a href="#soluciones" class="hover:text-cyan-400 transition-colors">Soluciones</a></li>
-                        <li><a href="casosexito.html" class="hover:text-cyan-400 transition-colors">Casos de Éxito</a></li>
-                        <li><a href="contacto.html" class="hover:text-cyan-400 transition-colors">Contacto</a></li>
+                        <li><a href="infraestructura.html" class="hover:text-cyan-400 transition-colors">Infraestructura</a></li>
+                        <li><a href="msp.html" class="hover:text-cyan-400 transition-colors">Servicios Gestionados</a></li>
+                        <li><a href="proteccion.html" class="hover:text-cyan-400 transition-colors">Ciberseguridad</a></li>
+                        <li><a href="#soluciones" class="hover:text-cyan-400 transition-colors">Ver todos...</a></li>
                     </ul>
                 </div>
 
@@ -448,11 +498,24 @@
             // Inicializar animaciones de scroll
             AOS.init({ duration: 800, once: true, offset: 50 });
             
-            // Menú Móvil
+            // Menú Móvil Principal
             const mobileBtn = document.getElementById('mobile-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             if(mobileBtn && mobileMenu) {
                 mobileBtn.onclick = () => { mobileMenu.classList.toggle('hidden'); }
+            }
+
+            // 5. LÓGICA PARA EL ACORDEÓN DE SERVICIOS EN MÓVIL
+            const mobileServiciosBtn = document.getElementById('mobile-servicios-btn');
+            const mobileServiciosMenu = document.getElementById('mobile-servicios-menu');
+            const mobileServiciosIcon = document.getElementById('mobile-servicios-icon');
+
+            if(mobileServiciosBtn && mobileServiciosMenu) {
+                mobileServiciosBtn.addEventListener('click', (e) => {
+                    e.preventDefault(); // Evita que salte hacia arriba
+                    mobileServiciosMenu.classList.toggle('hidden');
+                    mobileServiciosIcon.classList.toggle('rotate-180');
+                });
             }
 
             // Fondo Interactivo (Globo)
